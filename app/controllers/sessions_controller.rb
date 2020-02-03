@@ -13,13 +13,16 @@ class SessionsController < ApplicationController
     end
 
     def destroy
+        binding.pry
         session.delete :user_id
+        # redirect_to login_path
         redirect_to root_path
+
     end
-    
+
     private
 
-    def user_params
-        params.require(:user).permit(:username, :password)
-    end
+    # def user_params
+    #     params.require(:user).permit(:username, :password)
+    # end
 end
