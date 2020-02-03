@@ -13,7 +13,6 @@ class SessionsController < ApplicationController
     end
 
     def destroy
-        binding.pry
         session.delete :user_id
         # redirect_to login_path
         redirect_to root_path
