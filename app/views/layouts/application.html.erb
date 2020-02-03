@@ -15,7 +15,6 @@
         display: table;
       }
     </style>
-
   </head>
 
   <body>
@@ -35,8 +34,6 @@
       <a class="navbar-brand" <%= link_to "Log Out", logout_path %></a>
 
 
-
-
       </div>
 
       <div class="navbar-collapse collapse">
@@ -47,7 +44,9 @@
     </div>
   </div>
 
+  <div class="container"  role="main">
     <%= yield %>
+  </div
 
   </body>
 </html>

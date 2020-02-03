@@ -14,7 +14,6 @@ class UsersController < ApplicationController
     end
 
     def index
-        # @user = User.find
     end
 
     private
