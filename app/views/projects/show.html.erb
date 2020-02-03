@@ -1,0 +1,15 @@
+<p> project show page - project_path </p>
+
+<h1>Project Goals for <%= @project.address %></h1>
+
+<% @project.goals.each do |goal| %>
+    <h3><%= link_to goal.title, goal_path(goal) %></h3>
+
+    <li>Description: <%= goal.description %></li>
+    <li>Estimated Budget: $<%= goal.budget %></li>
+    <li>Status: <%= goal.status %></li>
+    <br>
+<% end %>
+
+
+

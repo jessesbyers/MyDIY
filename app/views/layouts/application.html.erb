@@ -1,58 +1,58 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <link rel="stylesheet" type="text/css" href="/css/style.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous"> </head>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous"> </head>
 
-  <title>My DIY</title>
+    <title>My DIY</title>
 
-  <style>
+    <style>
+    </style>
 
-  </style>
-</head>
+  </head>
 
 
 
-<body>
-<nav id='mainNav' class='navbar navbar-full  navbar-dark bg-faded navbar-fixed-top'>
-<h1 class="float-xs-right">My DIY</h1>
+  <body>
+    <nav id='mainNav' class='navbar navbar-full  navbar-dark bg-faded navbar-fixed-top'>
+    <h1 class="float-xs-right">My DIY</h1>
 
-    <button class='navbar-toggler hidden-sm-up light float-xs-top' type='button' data-toggle='collapse' data-target='#minimenu'></button>
+        <button class='navbar-toggler hidden-sm-up light float-xs-top' type='button' data-toggle='collapse' data-target='#minimenu'></button>
 
-      <% if logged_in?(session) %>
-        <div id='minimenu' class='collapse navbar-toggleable-xs'>
-          <ul class='nav navbar-nav float-right'>
-            <li class='nav-item'><a class='nav-link' <%= link_to "Home", root_path %></a></li>
-            <li class='nav-item'><a class='nav-link' <%= link_to "Log Out", logout_path %></a></li>
-           
-          </ul>
-        </div>
+          <% if logged_in?(session) %>
+            <div id='minimenu' class='collapse navbar-toggleable-xs'>
+              <ul class='nav navbar-nav float-right'>
+                <li class='nav-item'><a class='nav-link' <%= link_to "Home", root_path %></a></li>
+                <li class='nav-item'><a class='nav-link' <%= link_to "Log Out", logout_path %></a></li>
+              
+              </ul>
+            </div>
 
-      <% else %>
-        <div id='minimenu' class='collapse navbar-toggleable-xs'>
-          <ul class='nav navbar-nav float-right'>
-            <li class='nav-item'><a class='nav-link' <%= link_to "Sign Up", users_new_path %></a></li>
-            <li class='nav-item'><a class='nav-link' <%= link_to "Log In", login_path %></a></li>
-          </ul>
-        </div>
-      <% end %>
-</nav>
+          <% else %>
+            <div id='minimenu' class='collapse navbar-toggleable-xs'>
+              <ul class='nav navbar-nav float-right'>
+                <li class='nav-item'><a class='nav-link' <%= link_to "Sign Up", users_new_path %></a></li>
+                <li class='nav-item'><a class='nav-link' <%= link_to "Log In", login_path %></a></li>
+              </ul>
+            </div>
+          <% end %>
+    </nav>
 
-<header class="htop">
-</header>
- 
-  <div class="container"  role="main">
-    <%= yield %>
-  </div>
+    <header class="htop">
+    </header>
+    
+      <div class="container"  role="main">
+        <%= yield %>
+      </div>
 
-    <footer class='text-xs-center footer bg-inverse text-white navbar-fixed-bottom'>2020 - Jesse Byers - <a href="https://github.com/jessesbyers/MyDIY">Visit Project on GitHub</a></footer>
+        <footer class='text-xs-center footer bg-inverse text-white navbar-fixed-bottom'>2020 - Jesse Byers - <a href="https://github.com/jessesbyers/MyDIY">Visit Project on GitHub</a></footer>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
   </body>
 
 </html>

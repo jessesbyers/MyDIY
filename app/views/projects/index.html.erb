@@ -1,0 +1,10 @@
+<p> projects index page - projects_path</p>
+
+<h1><%= current_user(session).username %>'s Projects </h1>
+
+<ul>
+    <% current_user(session).projects.each do |project| %>
+        <li><%= link_to project.address, project_path(project) %></li><br>
+    <% end %>
+
+</ul>
