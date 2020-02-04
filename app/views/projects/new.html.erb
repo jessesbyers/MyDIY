@@ -1,5 +1,19 @@
 <h1> Create a New Project </h1>
 
+<% if @project.errors.any? %>
+<div id="error_explanation">
+  <h2>
+    <%= pluralize(@project.errors.count, "error") %>
+    prohibited this post from being saved:
+  </h2>
+  <ul>
+  <% @project.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+</div>
+<% end %>
+
 <%= form_for(@project) do |f| %>
 
     <div>
@@ -30,14 +44,10 @@
                 <br>
 
                 <%= ff.label :status %>
-                <%= ff.collection_select(:status, Goal.all[0..2], :id, :status ) %>
+                <%= ff.select :status, [["Not Started", "Not Started"], ["Incomplete", "Incomplete"], ["Completed", "Completed"]] %>
                 <br>
-    
             </div>
-
-                    </br>
             <% end %>
-
     <%= f.submit %>
 <% end %>
 

@@ -9,10 +9,13 @@ class ProjectsController < ApplicationController
     end
 
     def create
-        raise params.inspect
         @project = Project.new(project_params)
+        @project.user_id = session[:user_id]
+        
         if @project.save
             redirect_to project_path(@project)
+        else
+            render :new
         end
     end
 
