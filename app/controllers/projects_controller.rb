@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
-    accepts_nested_attributes_for :goals
-    accepts_nested_attributes_for :users
+    # validates :status, inclusion: { in: %w("Not Started" "In Progress" "Completed"),
+    # message: "%{value} is not a valid status" }
 
 
     def new
@@ -9,6 +9,11 @@ class ProjectsController < ApplicationController
     end
 
     def create
+        raise params.inspect
+        @project = Project.new(project_params)
+        if @project.save
+            redirect_to project_path(@project)
+        end
     end
 
     def index
@@ -22,6 +27,6 @@ class ProjectsController < ApplicationController
     private
 
     def project_params
-        params.require[:project].permit[:address, :user_id, :goal_id]
+        params.require(:project).permit(:address, :user_ids, goals_attributes: [:title, :description, :budget, :status])
     end
 end

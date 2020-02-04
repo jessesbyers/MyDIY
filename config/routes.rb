@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  # root 'application#index'
-  # resources :users
+
   root to: "users#index"
 
   get '/users/new' => 'users#new'
@@ -13,10 +11,10 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
   # post '/logout' => 'sessions#destroy'
 
-  get '/projects/new' => 'projects#new'
-  post '/projects' => 'projects#create'
+  # get '/projects/new' => 'projects#new'
+  # post '/projects' => 'projects#create'
 
-  # resources :projects
+  resources :projects
 
   resources :goals
 

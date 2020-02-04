@@ -1,40 +1,43 @@
-<p> new project form - new_project_path </p>
-
 <h1> Create a New Project </h1>
 
-<%= form_with(model: @project, url: projects_path) do |f| %>
+<%= form_for(@project) do |f| %>
 
     <div>
         <%= f.label :address %>
         <%= f.text_field :address %>
         <br>
+
+        <%= f.label "Add Project Collaborators" %>
+        <%= f.collection_check_boxes :user_ids, User.all, :id, :username,  { checked: current_user(session).id } %>
+
     </div>
 
     <h3> Create Goals for your Project </h3>
+        <%= f.fields_for :goals do |ff| %>
+            <div>
+                <%= ff.hidden_field :id %>
 
-    <%= f.fields_for :goals do |ff| %>
-        <div>
-            <%= ff.hidden_field :id %>
-            <%= ff.label :title %>
-            <%= ff.text_field :title %>
-            <br>
+                <%= ff.label :title %>
+                <%= ff.text_field :title %>
+                <br>
 
-            <%= ff.label :description %>
-            <%= ff.text_field :description %>
-            <br>
+                <%= ff.label :description %>
+                <%= ff.text_field :description %>
+                <br>
 
-            <%= ff.label :budget %>
-            <%= ff.number_field :budget %>
-            <br>
+                <%= ff.label :budget %>
+                <%= ff.number_field :budget %>
+                <br>
 
-            <%= ff.label :status %>
-            <%= ff..select :status, [“Not Started”, “In Progress”, “Completed”] %>
-            <br>
-  
-        </div>
+                <%= ff.label :status %>
+                <%= ff.collection_select(:status, Goal.all[0..2], :id, :status ) %>
+                <br>
+    
+            </div>
 
-                </br>
+                    </br>
             <% end %>
+
     <%= f.submit %>
 <% end %>
 
