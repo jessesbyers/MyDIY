@@ -6,11 +6,14 @@ class ProjectsController < ApplicationController
 
 
     def new
+        @users = User.all
         @project = Project.new
+        3.times { @project.collaborations.build }
         3.times { @project.goals.build }
     end
 
     def create
+        raise params.inspect
         @project = Project.new(project_params)
         @project.user_id = session[:user_id]
         

@@ -6,6 +6,11 @@ class User < ApplicationRecord
     validates :username, uniqueness: true
     validates :password, length: { :minimum => 6}
 
-    has_many :projects
-    has_many :goals, through: :projects
+    has_many :collaborations
+    has_many :projects, through: :collaborations
+    # has_many :goals, through: :projects, source: :collaborations
+
+    def self.all_except(user)
+        where.not(id: user)
+    end
 end

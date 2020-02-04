@@ -4,8 +4,8 @@ class CreateGoals < ActiveRecord::Migration[6.0]
       t.string :title
       t.string :description
       t.integer :budget
+      t.string :status
       t.integer :project_id
-
       t.timestamps
     end
   end
