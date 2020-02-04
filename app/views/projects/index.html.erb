@@ -1,10 +1,10 @@
-<h1><%= current_user(session).username %>'s Projects </h1>
+<h1><%= current_user.username %>'s Projects </h1>
 
 <%= link_to "Create A New Project", new_project_path %>
 <br>
 
 <ul>
-    <% current_user(session).projects.each do |project| %>
+    <% current_user.projects.each do |project| %>
         <li><%= link_to project.address, project_path(project) %></li><br>
     <% end %>
 

@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+    before_action :login_required
+
     # validates :status, inclusion: { in: %w("Not Started" "In Progress" "Completed"),
     # message: "%{value} is not a valid status" }
 

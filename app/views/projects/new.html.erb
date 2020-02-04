@@ -22,7 +22,7 @@
         <br>
 
         <%= f.label "Add Project Collaborators" %>
-        <%= f.collection_check_boxes :user_ids, User.all, :id, :username,  { checked: current_user(session).id } %>
+        <%= f.collection_check_boxes :user_ids, User.all, :id, :username,  { checked: current_user.id } %>
 
     </div>
 
@@ -50,4 +50,3 @@
             <% end %>
     <%= f.submit %>
 <% end %>
-

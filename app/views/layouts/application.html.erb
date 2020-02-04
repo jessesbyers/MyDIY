@@ -22,7 +22,7 @@
 
         <button class='navbar-toggler hidden-sm-up light float-xs-top' type='button' data-toggle='collapse' data-target='#minimenu'></button>
 
-          <% if logged_in?(session) %>
+          <% if logged_in? %>
             <div id='minimenu' class='collapse navbar-toggleable-xs'>
               <ul class='nav navbar-nav float-right'>
                 <li class='nav-item'><a class='nav-link' <%= link_to "Home", root_path %></a></li>

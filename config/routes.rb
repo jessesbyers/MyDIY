@@ -18,6 +18,6 @@ Rails.application.routes.draw do
 
   resources :goals
 
-
-
+# add nested route for project/:id/goals to show all photos/updates/etc
+# only use for index, create, and new if something has_many
 end
