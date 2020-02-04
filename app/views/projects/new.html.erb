@@ -1,0 +1,40 @@
+<p> new project form - new_project_path </p>
+
+<h1> Create a New Project </h1>
+
+<%= form_with(model: @project, url: projects_path) do |f| %>
+
+    <div>
+        <%= f.label :address %>
+        <%= f.text_field :address %>
+        <br>
+    </div>
+
+    <h3> Create Goals for your Project </h3>
+
+    <%= f.fields_for :goals do |ff| %>
+        <div>
+            <%= ff.hidden_field :id %>
+            <%= ff.label :title %>
+            <%= ff.text_field :title %>
+            <br>
+
+            <%= ff.label :description %>
+            <%= ff.text_field :description %>
+            <br>
+
+            <%= ff.label :budget %>
+            <%= ff.number_field :budget %>
+            <br>
+
+            <%= ff.label :status %>
+            <%= ff.text_field :status %>
+            <br>
+  
+        </div>
+
+                </br>
+            <% end %>
+    <%= f.submit %>
+<% end %>
+

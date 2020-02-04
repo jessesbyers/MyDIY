@@ -1,7 +1,11 @@
 class ProjectsController < ApplicationController
+    accepts_nested_attributes_for :goals
+    accepts_nested_attributes_for :users
+
 
     def new
         @project = Project.new
+        3.times { @project.goals.build }
     end
 
     def create

@@ -13,7 +13,10 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
   # post '/logout' => 'sessions#destroy'
 
-  resources :projects
+  get '/projects/new' => 'projects#new'
+  post '/projects' => 'projects#create'
+
+  # resources :projects
 
   resources :goals
 
