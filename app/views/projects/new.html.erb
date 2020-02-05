@@ -17,31 +17,12 @@
 <%= form_for(@project) do |f| %>
 
     <div>
-        <%= f.label :address %>
+        Project <%= f.label :address %>
         <%= f.text_field :address %>
         <br>
+        Project <%= f.label :overview %>
+        <%= f.text_area :overview %>
     </div>
-
-    <div>
-    <h3>Add Collaborators for your Project</h3>
-        <%= f.fields_for :collaboration do |cc| %>
-                <%= cc.hidden_field :id %>
-
-                <h4>Assign roles</h4><br>
-
-   NEED TO FIX THIS CHECKBOX FIELD OR REMOVE IT!!!             
-                <%= cc.collection_check_boxes :user_ids, User.find(current_user.id), :id, :username,  { checked: true}  %>
-
-                <%= cc.select  :role, [["Project Creator", "Project Creator"]]%>
-
-                <br>
-
-                <%= cc.collection_check_boxes :user_ids, User.all_except(current_user), :id, :username %>
-                <%= cc.select  :role, [["Update and View", "Update and View"], ["View Only", "View Only"]] %>
-                <br>
-
-            <% end %>
-            </div>
 
   <div>
     <h3> Create Goals for your Project </h3>

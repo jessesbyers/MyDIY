@@ -8,16 +8,14 @@ class ProjectsController < ApplicationController
     def new
         @users = User.all
         @project = Project.new
-        3.times { @project.collaborations.build }
+        # 3.times { @project.collaborations.build }
         3.times { @project.goals.build }
     end
 
     def create
-        raise params.inspect
         @project = Project.new(project_params)
-        @project.user_id = session[:user_id]
-        
         if @project.save
+            @collaboration = Collaboration.create(:user_id => current_user.id, :project_id => @project.id, :role => "Project Owner")
             redirect_to project_path(@project)
         else
             render :new
@@ -35,6 +33,6 @@ class ProjectsController < ApplicationController
     private
 
     def project_params
-        params.require(:project).permit(:address, :user_ids, goals_attributes: [:title, :description, :budget, :status])
+        params.require(:project).permit(:address, :overview, goals_attributes: [:title, :description, :budget, :status])
     end
 end
