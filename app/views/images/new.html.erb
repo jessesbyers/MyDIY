@@ -1,0 +1,14 @@
+<h1> Add an Image for this Goal <h1>
+
+<%= form_for(@image, url: goal_images_path) do |f| %>
+    <%= f.label :url %>
+    <%= f.url_field :url %><br>
+
+    <%= f.label :caption %>
+    <%= f.text_area :caption %><br>
+
+    <%= f.label :type %>
+    <%= f.select  :type, [["Inspiration", "Inspiration"], ["Design Plans", "Design Plans"], ["Before Photo", "Before Photo"], ["After Photo", "After Photo"], ["Work In Progress", "Work In Progress"]], :prompt => true %><br>
+
+    <%= f.submit %>
+<% end %>
