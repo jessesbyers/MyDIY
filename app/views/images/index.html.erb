@@ -4,9 +4,14 @@
 <h3><%= @goal.project.address %></h3>
 
 <% @images.each do |image| %>
-    <div><ul>
-        <li><%= image.genre %></li>
-        <li><%= image.url %></li>
-        <li><%= image.caption %></li>
-    </ul></div>
+
+    <img src="<%=image.url%>" alt="<%=image.caption%>">
+
+    <li><%= image.genre %></li>
+
+    <li><%= image.caption %></li>
+
+
+
+
 <% end %>
