@@ -1,10 +1,15 @@
 <p> project show page - project_path </p>
 
 <h1>Project Goals for <%= @project.address %></h1>
+<h3><%= @project.overview %></h3>
+
+<% @project.users.each do |user| %>
+
+    <%= user.collaborations.find_by(:project_id => @project.id).role %>: <%= user.username %>
+    <% end %>
 
 <% @project.goals.each do |goal| %>
     <h3><%= link_to goal.title, goal_path(goal) %></h3>
-
     <li>Description: <%= goal.description %></li>
     <li>Estimated Budget: $<%= goal.budget %></li>
     <li>Status: <%= goal.status %></li>
