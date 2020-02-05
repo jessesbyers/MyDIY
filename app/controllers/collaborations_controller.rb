@@ -3,11 +3,15 @@ class CollaborationsController < ApplicationController
 
     def new
         @collaboration = Collaboration.new
-        # @projects = 
     end
 
     def create
-        raise params.inspect
+        @collaboration = Collaboration.new(collaboration_params)
+        if @collaboration.save
+            redirect_to project_path(@collaboration.project)
+        else
+            render :new
+        end
     end
 
     def edit
@@ -18,7 +22,8 @@ class CollaborationsController < ApplicationController
 
     private
     
-    def collaborations_params
+    def collaboration_params
+        params.require(:collaboration).permit(:user_id, :project_id, :role)
     end
 
 end
