@@ -14,6 +14,9 @@ class CollaborationsController < ApplicationController
         end
     end
 
+    def index
+    end
+
     def edit
     end
 
