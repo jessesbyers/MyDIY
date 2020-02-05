@@ -19,4 +19,11 @@ Status: <%= @goal.status %><br>
 <br>
 
 <h3>Updates</h3>
+<%= link_to "Add an Update for this Goal", new_goal_update_path(@goal) %><br>
+<ul>
+<% @goal.updates.each do |update| %>
+    <li> <%= update.user.username %> - <%= update.date %> - <%= update.content %></li>
+    <% end %>
+</ul>
+
 <br>
