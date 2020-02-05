@@ -7,10 +7,17 @@ class ImagesController < ApplicationController
     end
 
     def create
-        raise params.inspect
+        @image = @goal.images.build(image_params)
+        @image.user_id = current_user.id
+        if @image.save
+            redirect_to goal_images_path(@goal)
+        else
+            render :new
+        end
     end
 
     def index
+        @images = @goal.images
     end
 
     private
@@ -20,6 +27,6 @@ class ImagesController < ApplicationController
     end
 
     def image_params
-        params.require(:resource).permit(:url, :caption, :type)
+        params.require(:image).permit(:url, :caption, :genre)
     end
 end

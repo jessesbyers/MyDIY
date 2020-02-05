@@ -1,0 +1,12 @@
+<p> goal image index page </p>
+
+<h1> Gallery for <%= @goal.title %> </h1>
+<h3><%= @goal.project.address %></h3>
+
+<% @images.each do |image| %>
+    <div><ul>
+        <li><%= image.genre %></li>
+        <li><%= image.url %></li>
+        <li><%= image.caption %></li>
+    </ul></div>
+<% end %>
