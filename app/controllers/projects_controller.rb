@@ -14,8 +14,8 @@ class ProjectsController < ApplicationController
 
     def create
         @project = Project.new(project_params)
+        @project.collaborations.build(:user_id => current_user.id, :role => "Project Owner")
         if @project.save
-            @collaboration = Collaboration.create(:user_id => current_user.id, :project_id => @project.id, :role => "Project Owner")
             redirect_to project_path(@project)
         else
             render :new
