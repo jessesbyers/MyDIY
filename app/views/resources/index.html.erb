@@ -1,1 +1,10 @@
-images index
+<h1> Resources for <%= @goal.title %> </h1>
+<h3><%= @goal.project.address %></h3>
+<%= link_to "Add a Resource for this Goal", new_goal_resource_path(@goal) %> 
+
+<ul>
+<% @goal.resources.each do |resource| %>
+    <li><%= link_to "Link", resource.url %>: <%= resource.description %></li>
+    <% end %>
+</ul>
+<br>

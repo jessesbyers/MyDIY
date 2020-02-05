@@ -15,9 +15,9 @@ class ResourcesController < ApplicationController
         end
     end
 
-    # def index
-    #     @resources = @goal.resources
-    # end
+    def index
+        @resources = @goal.resources
+    end
 
     private
 

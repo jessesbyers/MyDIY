@@ -5,7 +5,7 @@ Status: <%= @goal.status %><br>
 <br>
 
 <h3>Resources</h3>
-<%= link_to "Add a Resource for this Goal", new_goal_resource_path(@goal) %><br>
+<%= link_to "Add a Resource for this Goal", new_goal_resource_path(@goal) %> OR <%= link_to "View All Resources for this Goal", goal_resources_path(@goal) %><br>
 <ul>
 <% @goal.resources.each do |resource| %>
     <li><%= link_to "Link", resource.url %>: <%= resource.description %></li>
@@ -14,15 +14,15 @@ Status: <%= @goal.status %><br>
 <br>
 
 <h3>Images</h3>
-<%= link_to "Add an Image for this Goal", new_goal_image_path(@goal) %><br>
+<%= link_to "Add an Image for this Goal", new_goal_image_path(@goal) %> OR <%= link_to "View All Images for this Goal", goal_images_path(@goal) %><br>
 
 <br>
 
 <h3>Updates</h3>
-<%= link_to "Add an Update for this Goal", new_goal_update_path(@goal) %><br>
+<%= link_to "Add an Update for this Goal", new_goal_update_path(@goal) %> OR <%= link_to "View All Updates for this Goal", goal_updates_path(@goal) %>
 <ul>
 <% @goal.updates.each do |update| %>
-    <li> <%= update.user.username %> - <%= update.date %> - <%= update.content %></li>
+    <li> <%= update.user.username %> - <%= update.human_readable_date %> - <%= update.content %></li>
     <% end %>
 </ul>
 

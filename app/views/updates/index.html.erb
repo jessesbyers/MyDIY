@@ -1,0 +1,9 @@
+<h1> Updates for <%= @goal.title %> </h1>
+<h3><%= @goal.project.address %></h3>
+<%= link_to "Add an Update for this Goal", new_goal_update_path(@goal) %> 
+
+<ul>
+<% @goal.updates.each do |update| %>
+    <li> <%= update.user.username %> - <%= update.human_readable_date %> - <%= update.content %></li>
+    <% end %>
+</ul>

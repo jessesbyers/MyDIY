@@ -1,7 +1,7 @@
-<p> goal image index page </p>
-
 <h1> Gallery for <%= @goal.title %> </h1>
 <h3><%= @goal.project.address %></h3>
+<%= link_to "Add an Image for this Goal", new_goal_image_path(@goal) %>
+<br>
 
 <% @images.each do |image| %>
 

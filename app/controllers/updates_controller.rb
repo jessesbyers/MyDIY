@@ -16,9 +16,9 @@ class UpdatesController < ApplicationController
         end
     end
 
-    # def index
-    #     @updates = @goal.updates
-    # end
+    def index
+        @updates = @goal.updates
+    end
 
     private
 
