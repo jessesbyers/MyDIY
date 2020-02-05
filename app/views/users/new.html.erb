@@ -17,7 +17,7 @@
  </div>
 <% end %>
 
-<%= form_for @user do |f| %>
+<%= form_for(@user, url: signup_path) do |f| %>
     Email: <%= f.email_field :email %><br>
     Username: <%= f.text_field :username %><br>
     Password: <%= f.password_field :password %><br>

@@ -2,13 +2,13 @@ Rails.application.routes.draw do
 
   root to: "users#index"
 
-  get '/users/new' => 'users#new'
-  post '/users' => 'users#create'
+  get '/signup' => 'users#new'
+  post '/signup' => 'users#create'
 
   get '/login' => 'sessions#new'
   post '/sessions' => 'sessions#create'
 
-  get '/logout' => 'sessions#destroy'
+  delete '/logout' => 'sessions#destroy'
 
   resources :projects
 
@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   resources :collaborations
 
 
-  
+
 
   # get '/projects/new' => 'projects#new'
   # post '/projects' => 'projects#create'

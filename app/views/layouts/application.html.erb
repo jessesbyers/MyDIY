@@ -25,20 +25,20 @@
           <% if logged_in? %>
             <div id='minimenu' class='collapse navbar-toggleable-xs'>
               <ul class='nav navbar-nav float-right'>
-                <li class='nav-item'><a class='nav-link' <%= link_to "Home", root_path %></a></li>
-                <li class='nav-item'><a class='nav-link' <%= link_to "Log Out", logout_path %></a></li>
+                <li class='nav-item'><a class='nav-link' <%= link_to "Home: #{@current_user.username}", root_path %></a></li>
                 <li class='nav-item'><a class='nav-link' <%= link_to "Projects", projects_path %></a></li>
                 <li class='nav-item'><a class='nav-link' <%= link_to "Collaborations", collaborations_path %></a></li>
-
-
-              
               </ul>
+
+              <%= form_with(url: '/logout', method: 'delete') do |f| %>
+                <%= f.submit "Logout" %>
+              <% end %>
             </div>
 
           <% else %>
             <div id='minimenu' class='collapse navbar-toggleable-xs'>
               <ul class='nav navbar-nav float-right'>
-                <li class='nav-item'><a class='nav-link' <%= link_to "Sign Up", users_new_path %></a></li>
+                <li class='nav-item'><a class='nav-link' <%= link_to "Sign Up", signup_path %></a></li>
                 <li class='nav-item'><a class='nav-link' <%= link_to "Log In", login_path %></a></li>
               </ul>
             </div>
