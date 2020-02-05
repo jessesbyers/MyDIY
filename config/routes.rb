@@ -10,22 +10,15 @@ Rails.application.routes.draw do
 
   delete '/logout' => 'sessions#destroy'
 
+  resources :collaborations
   resources :projects
+
+  resources :goals, only: [:show] do
+    resources :resources, only: [:new, :create]
+    resources :images, only: [:index]
+    resources :updates, only: [:index]
+  end
 
   resources :goals
 
-  resources :collaborations
-
-
-
-
-  # get '/projects/new' => 'projects#new'
-  # post '/projects' => 'projects#create'
-    # post '/logout' => 'sessions#destroy'
-
-
-
-
-# add nested route for project/:id/goals to show all photos/updates/etc
-# only use for index, create, and new if something has_many
 end

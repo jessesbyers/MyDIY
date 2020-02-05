@@ -1,16 +1,20 @@
-<p>goals show page - goal_path</p>
-
 <h1><%= @goal.title %></h1>
 Description: <%= @goal.description %><br>
 Estimated Budget: <%= @goal.budget %><br>
 Status: <%= @goal.status %><br>
 <br>
 
-Add section for Resources
+<h3>Resources</h3>
+<%= link_to "Add Resources for this Goal", new_goal_resource_path(@goal) %><br>
+<ul>
+<% @goal.resources.each do |resource| %>
+    <li><%= link_to "Link", resource.url %>: <%= resource.description %></li>
+    <% end %>
+</ul>
 <br>
 
-Add section for Photos
+<h3>Images</h3>
 <br>
 
-Add section for Updates
+<h3>Updates</h3>
 <br>
