@@ -11,7 +11,7 @@ class User < ApplicationRecord
     has_many :goals, through: :projects, source: :goals
 
     has_many :resources
-    has_many :photos
+    has_many :images
     has_many :updates
 
 

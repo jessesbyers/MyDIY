@@ -3,6 +3,7 @@ class CollaborationsController < ApplicationController
 
     def new
         @collaboration = Collaboration.new
+        # @projects = 
     end
 
     def create
