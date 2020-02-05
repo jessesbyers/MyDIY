@@ -22,6 +22,10 @@
         <br>
         <%= f.label :project_id %>
         <%= f.number_field :project_id %>
+        <br>
+
+        <%= f.label :role %>
+        <%= f.select  :role, [["Update and View", "Update and View"], ["View Only", "View Only"]] %>
     </div>
 
     <%= f.submit %>
