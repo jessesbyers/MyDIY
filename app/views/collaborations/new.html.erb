@@ -1,0 +1,28 @@
+<h1> Create a New Collaboration</h1>
+
+<% if @collaboration.errors.any? %>
+<div id="error_explanation">
+  <h2>
+    <%= pluralize(@collaboration.errors.count, "error") %>
+    prohibited this post from being saved:
+  </h2>
+  <ul>
+  <% @collaboration.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+</div>
+<% end %>
+
+<%= form_for(@collaboration) do |f| %>
+
+    <div>
+        <%= f.label :user_id %>
+        <%= f.number_field :user_id %>
+        <br>
+        <%= f.label :project_id %>
+        <%= f.number_field :project_id %>
+    </div>
+
+    <%= f.submit %>
+    <% end %>

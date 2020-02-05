@@ -5,8 +5,10 @@
 
 <% @project.users.each do |user| %>
 
-    <%= user.collaborations.find_by(:project_id => @project.id).role %>: <%= user.username %>
+    <%= user.collaborations.find_by(:project_id => @project.id).role %>: <%= user.username %><br>
     <% end %>
+
+    <%= link_to "Add a New Collaborator", new_collaboration_path %>
 
 <% @project.goals.each do |goal| %>
     <h3><%= link_to goal.title, goal_path(goal) %></h3>
