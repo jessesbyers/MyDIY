@@ -4,7 +4,7 @@ goals index
 
 <ul>
 <% @goals.each do |goal| %>
-    <li><%= link_to goal.title, goal_path(goal) %>      -       <%= link_to goal.project.address, project_path(goal.project) %></li>
+    <li><%= link_to goal.title, goal_path(goal) %>      -       <%= link_to goal.project.address, project_path(goal.project) %> - <%= link_to "Edit Goal Details", edit_goal_path(goal) %></li>
 <% end %>
 </ul>
 
