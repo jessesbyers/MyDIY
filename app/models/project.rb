@@ -11,5 +11,4 @@ class Project < ApplicationRecord
 
     validates :address, uniqueness: true
 
-
 end

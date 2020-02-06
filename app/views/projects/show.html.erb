@@ -3,12 +3,17 @@
 <h1>Project Goals for <%= @project.address %></h1>
 <h3><%= @project.overview %></h3>
 
-<% @project.users.each do |user| %>
+<h4> Collaborators </h4>
 
-    <%= user.collaborations.find_by(:project_id => @project.id).role %>: <%= user.username %><br>
-    <% end %>
+<% @project.collaborations.where(role: "Project Owner").each do |collaboration| %>
+    <%= collaboration.user.username %> - <%= collaboration.role %><br>
+<% end %>
 
-    <%= link_to "Edit Project Details", edit_project_path %> OR <%= link_to "Add a New Goal", new_goal_path %> OR <%= link_to "Add a New Collaborator", new_collaboration_path %> OR <%= link_to "Edit Collaboration Details", edit_collaboration_path %> 
+<% @project.collaborations.where.not(role: "Project Owner").each do |collaboration| %>
+    <%= collaboration.user.username %> - <%= collaboration.role %> - <%= link_to "Edit Collaboration", edit_collaboration_path(collaboration) %><br>
+<% end %>
+
+<%= link_to "Edit Project Details", edit_project_path %> OR <%= link_to "Add a New Goal", new_goal_path %> OR <%= link_to "Add a New Collaborator", new_collaboration_path %>
 
 <% @project.goals.each do |goal| %>
     <h3><%= link_to goal.title, goal_path(goal) %></h3>
