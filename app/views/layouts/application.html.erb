@@ -26,6 +26,8 @@
               <ul class='nav navbar-nav float-right'>
                 <li class='nav-item'><a class='nav-link' <%= link_to "Home: #{current_user.username}", root_path %></a></li>
                 <li class='nav-item'><a class='nav-link' <%= link_to "Projects", projects_path %></a></li>
+                <li class='nav-item'><a class='nav-link' <%= link_to "Goals", goals_path %></a></li>
+
                 <li class='nav-item'>
                   <%= form_with(url: '/logout', method: 'delete') do |f| %>
                     <%= f.submit "Logout" %>
