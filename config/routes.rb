@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   resources :collaborations
   resources :projects
+  resources :goals  
+
 
   resources :goals, only: [:show] do
     resources :resources, only: [:new, :create, :index]
@@ -19,6 +21,5 @@ Rails.application.routes.draw do
     resources :updates, only: [:new, :create, :index]
   end
 
-  resources :goals
 
 end
