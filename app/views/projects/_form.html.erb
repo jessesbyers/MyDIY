@@ -9,8 +9,9 @@
     </div>
 
   <div>
-    <h3> Create Goals for your Project </h3>
         <%= f.fields_for :goals do |ff| %>
+          <h3> Create Goals for your Project </h3>
+
           <div>
                 <%= ff.hidden_field :id %>
 

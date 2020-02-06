@@ -22,6 +22,16 @@ class GoalsController < ApplicationController
         @goals = current_user.goals
     end
 
+    def edit
+        @goal = Goal.find(params[:id])
+    end
+
+    def update
+        @goal = Goal.find(params[:id])
+        @goal.update(goal_params)
+        redirect_to goal_path(@goal)
+    end
+
     private
 
     def goal_params

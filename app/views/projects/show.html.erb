@@ -15,6 +15,7 @@
     <li>Description: <%= goal.description %></li>
     <li>Estimated Budget: $<%= goal.budget %></li>
     <li>Status: <%= goal.status %></li>
+    <li><%= link_to "Edit Goal Details", edit_goal_path(goal) %></li>
     <br>
 <% end %>
 

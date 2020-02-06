@@ -1,0 +1,24 @@
+<%= form_for(@goal) do |f| %>
+    <%= f.hidden_field :id %>
+
+    Choose a <%= f.label :project_id %>
+    <%= f.collection_select :project_id, Collaboration.project_user_is_owner(current_user), :id, :address, :prompt => true %><br>
+
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <br>
+
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+    <br>
+
+    <%= f.label :budget %>
+    <%= f.number_field :budget %>
+    <br>
+
+    <%= f.label :status %>
+    <%= f.select :status, [["Not Started", "Not Started"], ["Incomplete", "Incomplete"], ["Completed", "Completed"]] %>
+    <br>
+
+    <%= f.submit %>
+<% end %>
