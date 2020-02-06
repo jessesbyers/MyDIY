@@ -14,12 +14,14 @@ Rails.application.routes.draw do
   resources :projects
   resources :goals  
 
-
   resources :goals, only: [:show] do
-    resources :resources, only: [:new, :create, :index]
+    resources :resources, only: [:new, :create, :index, :destroy]
     resources :images, only: [:new, :create, :index]
-    resources :updates, only: [:new, :create, :index]
+    resources :updates, only: [:new, :create, :index, :destroy]
   end
+
+  resources :images, only: [:index, :new, :show, :create, :edit, :update, :destroy]
+
 
 
 end

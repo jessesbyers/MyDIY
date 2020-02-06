@@ -5,8 +5,11 @@
 
 <% @images.each do |image| %>
     <div>
-        <h5><%= image.caption %></h5>
         <img src="<%=image.url%>" alt="<%=image.caption%>"><br>
-        <h5><%= image.genre %></h5><br>
+        <h5><%= image.genre %>: <%= image.caption %></h5>
+
+        <%= form_with(url: image_path(image), method: 'delete') do |f| %>
+            <%= f.submit "Delete Image" %>
+          <% end %>
     </div>
 <% end %>

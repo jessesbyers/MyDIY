@@ -1,12 +1,16 @@
 class ImagesController < ApplicationController
-    before_action :set_goal
+    # before_action :set_goal
 
     def new
+        @goal = Goal.find(params[:goal_id])
+
         @image = @goal.images.build
 
     end
 
     def create
+        @goal = Goal.find(params[:goal_id])
+
         @image = @goal.images.build(image_params)
         @image.user_id = current_user.id
         if @image.save
@@ -17,8 +21,21 @@ class ImagesController < ApplicationController
     end
 
     def index
+        @goal = Goal.find(params[:goal_id])
+
         @images = @goal.images
     end
+
+    def show
+    end
+
+    def destroy
+        @image = Image.find(params[:id])
+        @image.destroy
+        # need to find a better way to redirect - can't access @goal or @project
+        redirect_to root_path
+    end
+
 
     private
 
