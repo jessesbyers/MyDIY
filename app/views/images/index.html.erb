@@ -4,14 +4,9 @@
 <br>
 
 <% @images.each do |image| %>
-
-    <img src="<%=image.url%>" alt="<%=image.caption%>">
-
-    <li><%= image.genre %></li>
-
-    <li><%= image.caption %></li>
-
-
-
-
+    <div>
+        <h5><%= image.caption %></h5>
+        <img src="<%=image.url%>" alt="<%=image.caption%>"><br>
+        <h5><%= image.genre %></h5><br>
+    </div>
 <% end %>
