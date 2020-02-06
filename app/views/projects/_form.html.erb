@@ -1,0 +1,37 @@
+<%= form_for(@project) do |f| %>
+
+    <div>
+        Project <%= f.label :address %>
+        <%= f.text_field :address %>
+        <br>
+        Project <%= f.label :overview %>
+        <%= f.text_area :overview %>
+    </div>
+
+  <div>
+    <h3> Create Goals for your Project </h3>
+        <%= f.fields_for :goals do |ff| %>
+          <div>
+                <%= ff.hidden_field :id %>
+
+                <%= ff.label :title %>
+                <%= ff.text_field :title %>
+                <br>
+
+                <%= ff.label :description %>
+                <%= ff.text_field :description %>
+                <br>
+
+                <%= ff.label :budget %>
+                <%= ff.number_field :budget %>
+                <br>
+
+                <%= ff.label :status %>
+                <%= ff.select :status, [["Not Started", "Not Started"], ["Incomplete", "Incomplete"], ["Completed", "Completed"]] %>
+                <br>
+            </div>
+            <% end %>
+   </div>
+
+    <%= f.submit %>
+<% end %>

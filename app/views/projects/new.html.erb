@@ -1,53 +1,8 @@
 <h1> Create a New Project </h1>
 
-<% if @project.errors.any? %>
-<div id="error_explanation">
-  <h2>
-    <%= pluralize(@project.errors.count, "error") %>
-    prohibited this post from being saved:
-  </h2>
-  <ul>
-  <% @project.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-  <% end %>
-  </ul>
-</div>
-<% end %>
+<%= render partial: "layouts/errors" %>
 
-<%= form_for(@project) do |f| %>
+<%= render partial: "form" %>
 
-    <div>
-        Project <%= f.label :address %>
-        <%= f.text_field :address %>
-        <br>
-        Project <%= f.label :overview %>
-        <%= f.text_area :overview %>
-    </div>
 
-  <div>
-    <h3> Create Goals for your Project </h3>
-        <%= f.fields_for :goals do |ff| %>
-          <div>
-                <%= ff.hidden_field :id %>
 
-                <%= ff.label :title %>
-                <%= ff.text_field :title %>
-                <br>
-
-                <%= ff.label :description %>
-                <%= ff.text_field :description %>
-                <br>
-
-                <%= ff.label :budget %>
-                <%= ff.number_field :budget %>
-                <br>
-
-                <%= ff.label :status %>
-                <%= ff.select :status, [["Not Started", "Not Started"], ["Incomplete", "Incomplete"], ["Completed", "Completed"]] %>
-                <br>
-            </div>
-            <% end %>
-   </div>
-
-    <%= f.submit %>
-<% end %>
