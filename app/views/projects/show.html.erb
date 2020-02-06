@@ -8,7 +8,7 @@
     <%= user.collaborations.find_by(:project_id => @project.id).role %>: <%= user.username %><br>
     <% end %>
 
-    <%= link_to "Edit Project Details", edit_project_path %> OR <%= link_to "Add a New Goal", new_goal_path %> OR <%= link_to "Add a New Collaborator", new_collaboration_path %> 
+    <%= link_to "Edit Project Details", edit_project_path %> OR <%= link_to "Add a New Goal", new_goal_path %> OR <%= link_to "Add a New Collaborator", new_collaboration_path %> OR <%= link_to "Edit Collaboration Details", edit_collaboration_path %> 
 
 <% @project.goals.each do |goal| %>
     <h3><%= link_to goal.title, goal_path(goal) %></h3>

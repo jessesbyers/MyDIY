@@ -11,7 +11,8 @@
 <h3> Projects I Own </h3>
     <% Collaboration.project_user_is_owner(current_user).each do |p| %>
         <ul>
-            <li><%= link_to p.address, project_path(p) %></li>
+            <li><%= link_to p.address, project_path(p) %></li> 
+
         </ul>
     <% end %>
     <%= link_to "Add a New Collaborator", new_collaboration_path %> OR <%= link_to "Create A New Project", new_project_path %>

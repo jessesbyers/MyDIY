@@ -18,9 +18,13 @@ class CollaborationsController < ApplicationController
     end
 
     def edit
+        @collaboration = Collaboration.find(params[:id])
     end
 
     def update
+        @collaboration = Collaboration.find(params[:id])
+        @collaboration.update(collaboration_params)
+        redirect_to project_path(@collaboration.project)
     end
 
     private
