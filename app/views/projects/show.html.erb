@@ -1,4 +1,4 @@
-<h1>Project Goals for <%= @project.address %></h1>
+<h1>Project Details for <%= @project.address %></h1>
 <h3>Overview: <%= @project.overview %></h3>
 
 <h5><%= link_to "Edit Project Details", edit_project_path %> OR <%= link_to "Add a New Goal", new_goal_path %> OR <%= link_to "Add a New Collaborator", new_collaboration_path %></h5>
@@ -23,6 +23,3 @@
     <li><%= link_to "Edit Goal Details", edit_goal_path(goal) %></li>
     <br>
 <% end %>
-
-
-
