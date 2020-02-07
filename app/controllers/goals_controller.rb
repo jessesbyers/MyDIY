@@ -12,7 +12,7 @@ class GoalsController < ApplicationController
     def create
         @goal = Goal.new(goal_params)
         if @goal.save
-            redirect_to goal_path(@goal)
+            redirect_to project_path(@goal.project)
         else
             render :new
         end
@@ -30,6 +30,12 @@ class GoalsController < ApplicationController
         @goal = Goal.find(params[:id])
         @goal.update(goal_params)
         redirect_to goal_path(@goal)
+    end
+
+    def destroy
+        @goal = Goal.find(params[:id])
+        @goal.destroy
+        redirect_to project_path(@goal.project)
     end
 
     private

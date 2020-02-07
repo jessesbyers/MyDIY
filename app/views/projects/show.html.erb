@@ -21,5 +21,10 @@
     <li>Estimated Budget: $<%= goal.budget %></li>
     <li>Status: <%= goal.status %></li>
     <li><%= link_to "Edit Goal Details", edit_goal_path(goal) %></li>
+
+    <%= form_with(url: goal_path(goal), method: 'delete') do |f| %>
+        <%= f.hidden_field :project_id, :value => params[:project_id] %>
+        <%= f.submit "Delete Goal" %>
+      <% end %>
     <br>
 <% end %>

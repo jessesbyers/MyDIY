@@ -7,6 +7,5 @@ class Goal < ApplicationRecord
 
     validates :title, presence: true
     validates :description, presence: true
-    validates :project_id, presence: true
 
 end
