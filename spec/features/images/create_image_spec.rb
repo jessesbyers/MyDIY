@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-feature 'Sign Up' do
-    scenario 'able to sign up for an account and log in' do
+module LoginHelper
+    def user_signup
         visit '/'
         click_link("Sign Up")
         fill_in 'user_email', with: 'test1'
@@ -9,6 +9,29 @@ feature 'Sign Up' do
         fill_in 'user_password', with: 'test300'
         fill_in 'user_password_confirmation', with: 'test300'
         click_button('Submit')
+    end
+  
+    def user_login
+        visit '/'
+        click_link("Log In")
+        fill_in 'username', with: 'test2'
+        fill_in 'password', with: 'test300'
+      click_button('Log In')
+    end
+end
+
+include LoginHelper
+
+feature 'Sign Up' do
+    scenario 'able to sign up for an account and log in' do
+        # visit '/'
+        # click_link("Sign Up")
+        user_signup
+        # fill_in 'user_email', with: 'test1'
+        # fill_in 'user_username', with: 'test2'
+        # fill_in 'user_password', with: 'test300'
+        # fill_in 'user_password_confirmation', with: 'test300'
+        # click_button('Submit')
 
         expect(page).to have_content("Home: test2's Projects")
         expect(page).to have_content('Goals')
@@ -16,11 +39,11 @@ feature 'Sign Up' do
 end
 
 
-
 feature 'Add a Project' do
     scenario 'able to create a new project' do
-        visit '/'
-        click_link("Create a New Project")
+        user_signup
+        # visit '/projects/new'
+        # click_link("Create a New Project")
         fill_in 'project_address', with: 'test1'
         fill_in 'project_overview', with: 'test2'
         click_button('Create Project')
