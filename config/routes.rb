@@ -15,9 +15,9 @@ Rails.application.routes.draw do
   resources :goals  
 
   resources :goals, only: [:show] do
-    resources :resources, only: [:new, :create, :index, :destroy]
+    resources :resources, only: [:new, :create, :index]
     resources :images, only: [:new, :create, :index]
-    resources :updates, only: [:new, :create, :index, :destroy]
+    resources :updates, only: [:new, :create, :index]
   end
 
   resources :images, only: [:index, :new, :show, :create, :edit, :update, :destroy]
