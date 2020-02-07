@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/sessions' => 'sessions#create'
 
+  get '/auth/:provider/callback' => 'sessions#omniauth'
+
   delete '/logout' => 'sessions#destroy'
 
   resources :collaborations

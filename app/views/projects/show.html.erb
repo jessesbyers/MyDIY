@@ -11,7 +11,7 @@
 <% end %>
 
 <% @project.collaborations.where.not(role: "Project Owner").each do |collaboration| %>
-    <%= collaboration.user.username %> - <%= collaboration.role %><br>
+    <%= collaboration.user.username %> - <%= collaboration.role %>
 
     <% if Collaboration.project_user_is_owner(current_user).include?(@project) %>
         <%= link_to "Edit Collaboration Details", edit_collaboration_path(collaboration) %>
