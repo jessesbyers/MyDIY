@@ -31,7 +31,6 @@ class CollaborationsController < ApplicationController
         @collaboration = Collaboration.find(params[:id])
         @collaboration.delete
         redirect_to project_path(@collaboration.project)
-
     end
 
     private

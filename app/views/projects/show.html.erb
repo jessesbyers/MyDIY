@@ -1,9 +1,9 @@
 <h1>Project Details for <%= @project.address %></h1>
 <h3>Overview: <%= @project.overview %></h3>
 
-<h5><%= link_to "Edit Project Details", edit_project_path %> OR <%= link_to "Add a New Goal", new_goal_path %> OR <%= link_to "Add a New Collaborator", new_collaboration_path %></h5>
-
-
+<% if Collaboration.project_user_is_owner(current_user).include?(@project) %>
+    <h5><%= link_to "Edit Project Details", edit_project_path %> OR <%= link_to "Add a New Goal", new_goal_path %> OR <%= link_to "Add a New Collaborator", new_collaboration_path %></h5>
+<% end %>
 <h4> Collaborators: </h4>
 
 <% @project.collaborations.where(role: "Project Owner").each do |collaboration| %>
@@ -11,9 +11,18 @@
 <% end %>
 
 <% @project.collaborations.where.not(role: "Project Owner").each do |collaboration| %>
-    <%= collaboration.user.username %> - <%= collaboration.role %> - <%= link_to "Edit Collaboration Details", edit_collaboration_path(collaboration) %><br>
-<% end %>
+    <%= collaboration.user.username %> - <%= collaboration.role %><br>
 
+    <% if Collaboration.project_user_is_owner(current_user).include?(@project) %>
+        <%= link_to "Edit Collaboration Details", edit_collaboration_path(collaboration) %>
+
+        <%= form_with(url: collaboration_path(collaboration), method: 'delete') do |f| %>
+            <%= f.hidden_field :project_id, :value => params[:project_id] %>
+            <%= f.submit "Delete Collaboration" %>
+        <% end %>
+    <% end %>
+
+<% end %>
 
 <% @project.goals.each.with_index(1) do |goal, i| %>
     <h3><%= link_to "#{i}. #{goal.title}", goal_path(goal) %></h3>
@@ -22,9 +31,18 @@
     <li>Status: <%= goal.status %></li>
     <li><%= link_to "Edit Goal Details", edit_goal_path(goal) %></li>
 
-    <%= form_with(url: goal_path(goal), method: 'delete') do |f| %>
-        <%= f.hidden_field :project_id, :value => params[:project_id] %>
-        <%= f.submit "Delete Goal" %>
-      <% end %>
+    <% if Collaboration.project_user_is_owner(current_user).include?(@project) %>
+        <%= form_with(url: goal_path(goal), method: 'delete') do |f| %>
+            <%= f.hidden_field :project_id, :value => params[:project_id] %>
+            <%= f.submit "Delete Goal" %>
+        <% end %>
+    <% end %>
     <br>
+<% end %>
+
+<% if Collaboration.project_user_is_owner(current_user).include?(@project) %>
+    <%= form_with(url: project_path(@project), method: 'delete') do |f| %>
+        <%= f.submit "Delete Project" %>
+    <% end %>
+    <p>***Warning: Deleting this project will delete all goals, images, updates, and resources associated with this project*** </p>   
 <% end %>
