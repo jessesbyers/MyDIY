@@ -1,10 +1,15 @@
-<h1> Resources for <%= @goal.title %> </h1>
-<h3><%= @goal.project.address %></h3>
+<h1> Resources for <%= link_to @goal.title, goal_path(@goal) %> </h1>
+<h3><%= link_to @goal.project.address, project_path(@goal.project) %></h3>
 <%= link_to "Add a Resource for this Goal", new_goal_resource_path(@goal) %> 
 
 <ul>
-<% @goal.resources.each do |resource| %>
+<% @goal.resources.reverse.each do |resource| %>
     <li><%= link_to "Link", resource.url %>: <%= resource.description %></li>
+
+    <%= form_with(url: resource_path(resource), method: 'delete') do |f| %>
+        <%= f.hidden_field :goal_id, :value => params[:goal_id] %>
+        <%= f.submit "Delete Resource" %>
+      <% end %>
     <% end %>
 </ul>
 <br>

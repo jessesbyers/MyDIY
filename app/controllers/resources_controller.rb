@@ -19,6 +19,12 @@ class ResourcesController < ApplicationController
         @resources = @goal.resources
     end
 
+    def destroy
+        @resource = Resource.find(params[:id])
+        @resource.destroy
+        redirect_to goal_resources_path(@goal)
+    end
+
     private
 
     def set_goal

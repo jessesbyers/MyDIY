@@ -1,9 +1,14 @@
-<h1> Updates for <%= @goal.title %> </h1>
-<h3><%= @goal.project.address %></h3>
+<h1> Updates for <%= link_to @goal.title, goal_path(@goal) %> </h1>
+<h3><%= link_to @goal.project.address, project_path(@goal.project) %></h3>
 <%= link_to "Add an Update for this Goal", new_goal_update_path(@goal) %> 
 
 <ul>
-<% @goal.updates.each do |update| %>
+<% @goal.updates.reverse.each do |update| %>
     <li> <%= update.user.username %> - <%= update.human_readable_date %> - <%= update.content %></li>
+
+    <%= form_with(url: update_path(update), method: 'delete') do |f| %>
+        <%= f.hidden_field :goal_id, :value => params[:goal_id] %>
+        <%= f.submit "Delete Update" %>
+      <% end %>
     <% end %>
 </ul>

@@ -20,6 +20,12 @@ class UpdatesController < ApplicationController
         @updates = @goal.updates
     end
 
+    def destroy
+        @update = Update.find(params[:id])
+        @update.destroy
+        redirect_to goal_updates_path(@goal)
+    end
+
     private
 
     def set_goal
