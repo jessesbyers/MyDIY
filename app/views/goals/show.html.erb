@@ -1,18 +1,29 @@
-<h1><%= @goal.title %></h1>
-<h3><%= @goal.project.address %></h3>
+<h1><%= @goal.title%></h1>
+<h3><%= link_to @goal.project.address, project_path(@goal.project) %></h3>
 Description: <%= @goal.description %><br>
 Estimated Budget: <%= @goal.budget %><br>
 Status: <%= @goal.status %><br>
 <br>
 
 <h3>Latest Update</h3>
-<%= link_to "Add an Update for this Goal", new_goal_update_path(@goal) %> OR <%= link_to "View All Updates for this Goal", goal_updates_path(@goal) %>
-    <li><%= @goal.updates.last.user.username %> - <%= @goal.updates.last.human_readable_date %> - <%= @goal.updates.last.content %></li>
+<%= link_to "Add an Update for this Goal", new_goal_update_path(@goal) %> 
+<% if @goal.updates.any? %>
+        <li><%= @goal.updates.last.user.username %> - <%= @goal.updates.last.human_readable_date %> - <%= @goal.updates.last.content %></li>
+        <%= link_to "View All Updates for this Goal", goal_updates_path(@goal) %>
+<% end %>
 
 <h3>Latest Resource</h3>
-<%= link_to "Add a Resource for this Goal", new_goal_resource_path(@goal) %> OR <%= link_to "View All Resources for this Goal", goal_resources_path(@goal) %><br>
-    <li><%= link_to "Link", @goal.resources.last.url %>: <%= @goal.resources.last.description %></li>
+<%= link_to "Add a Resource for this Goal", new_goal_resource_path(@goal) %>
+<% if @goal.resources.any? %>
+        <li><%= link_to "Link", @goal.resources.last.url %>: <%= @goal.resources.last.description %></li>
+        <%= link_to "View All Resources for this Goal", goal_resources_path(@goal) %>
+<% end %>
+
 
 <h3>Latest Image</h3>
-<%= link_to "Add an Image for this Goal", new_goal_image_path(@goal) %> OR <%= link_to "View All Images for this Goal", goal_images_path(@goal) %><br>
+<%= link_to "Add an Image for this Goal", new_goal_image_path(@goal) %>
+<% if @goal.resources.any? %>
     <img src="<%= @goal.images.last.url%>" alt="<%= @goal.images.last.caption%>">
+    <%= link_to "View All Images for this Goal", goal_images_path(@goal) %><br>
+<% end %>
+
