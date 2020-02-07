@@ -27,10 +27,16 @@ class CollaborationsController < ApplicationController
         redirect_to project_path(@collaboration.project)
     end
 
+    def destroy
+        @collaboration = Collaboration.find(params[:id])
+        @collaboration.delete
+        redirect_to project_path(@collaboration.project)
+
+    end
+
     private
     
     def collaboration_params
         params.require(:collaboration).permit(:user_id, :project_id, :role)
     end
-
 end

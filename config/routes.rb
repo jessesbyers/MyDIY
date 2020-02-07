@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root to: "collaborations#index"
+  root to: "projects#index"
 
   get '/signup' => 'users#new'
   post '/signup' => 'users#create'

@@ -24,8 +24,7 @@
           <% if logged_in? %>
             <div id='minimenu' class='collapse navbar-toggleable-xs'>
               <ul class='nav navbar-nav float-right'>
-                <li class='nav-item'><a class='nav-link' <%= link_to "Home: #{current_user.username}", root_path %></a></li>
-                <li class='nav-item'><a class='nav-link' <%= link_to "Projects", projects_path %></a></li>
+                <li class='nav-item'><a class='nav-link' <%= link_to "Home: #{current_user.username}'s Projects", root_path %></a></li>
                 <li class='nav-item'><a class='nav-link' <%= link_to "Goals", goals_path %></a></li>
 
                 <li class='nav-item'>
