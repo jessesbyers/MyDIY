@@ -1,7 +1,7 @@
 <h1><%= @goal.title%></h1>
 <h3><%= link_to @goal.project.address, project_path(@goal.project) %></h3>
 Description: <%= @goal.description %><br>
-Estimated Budget: <%= @goal.budget %><br>
+Estimated Budget: $<%= @goal.budget %><br>
 Status: <%= @goal.status %><br>
 <br>
 
