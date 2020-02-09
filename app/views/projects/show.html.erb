@@ -13,19 +13,17 @@
 
 
 <% @project.collaborations.where.not(role: "Primary Project Owner").each do |collaboration| %>
-    <%= collaboration.user.username %> - <%= collaboration.role %>
+    <%= collaboration.user.username %> - <%= collaboration.role %><br>
 
     <% if Collaboration.project_user_is_primary_owner(current_user).include?(@project) %>
-        <%= link_to "Edit Collaboration Details", edit_collaboration_path(collaboration) %>
+        <%= link_to "Edit Collaboration Details", edit_collaboration_path(collaboration) %><br>
 
         <%= form_with(url: collaboration_path(collaboration), method: 'delete') do |f| %>
             <%= f.hidden_field :project_id, :value => params[:project_id] %>
-            <%= f.submit "Delete Collaboration" %>
+            <%= f.submit "Delete Collaboration" %><br>
         <% end %>
     <% end %>
 <% end %>
-
-
 
 
 <% @project.goals.each.with_index(1) do |goal, i| %>
@@ -33,9 +31,12 @@
     <li>Description: <%= goal.description %></li>
     <li>Estimated Budget: $<%= goal.budget %></li>
     <li>Status: <%= goal.status %></li>
-    <li><%= link_to "Edit Goal Details", edit_goal_path(goal) %></li>
 
-    <% if Collaboration.project_user_is_owner(current_user).include?(@project) %>
+    <% if Collaboration.project_user_is_primary_or_owner_or_update(current_user).include?(@project) %>
+        <li><%= link_to "Edit Goal Details", edit_goal_path(goal) %></li>
+    <% end %>
+
+    <% if Collaboration.project_user_is_primary_owner(current_user).include?(@project) %>
         <%= form_with(url: goal_path(goal), method: 'delete') do |f| %>
             <%= f.hidden_field :project_id, :value => params[:project_id] %>
             <%= f.submit "Delete Goal" %>
@@ -44,7 +45,7 @@
     <br>
 <% end %>
 
-<% if Collaboration.project_user_is_owner(current_user).include?(@project) %>
+<% if Collaboration.project_user_is_primary_owner(current_user).include?(@project) %>
     <%= form_with(url: project_path(@project), method: 'delete') do |f| %>
         <%= f.submit "Delete Project" %>
     <% end %>

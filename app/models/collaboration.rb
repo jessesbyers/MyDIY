@@ -17,6 +17,10 @@ class Collaboration < ApplicationRecord
         project_user_is_primary_owner(user) + project_user_is_owner(user)
     end
 
+    def self.project_user_is_primary_or_owner_or_update(user)
+        project_user_is_primary_owner(user) + project_user_is_owner(user) + project_user_is_update(user)
+    end
+
     def self.project_user_is_update(user)
         where(user_id: user.id, role: "Update and View").map { |c| c.project }
     end
@@ -24,6 +28,4 @@ class Collaboration < ApplicationRecord
     def self.project_user_is_viewonly(user)
         where(user_id: user.id, role: "View Only").map { |c| c.project }
     end
-
-
 end

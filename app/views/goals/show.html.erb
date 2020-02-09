@@ -1,9 +1,13 @@
 <h1><%= @goal.title%></h1>
 <h3><%= link_to @goal.project.address, project_path(@goal.project) %></h3>
+
 Description: <%= @goal.description %><br>
 Estimated Budget: $<%= @goal.budget %><br>
 Status: <%= @goal.status %><br>
-<br>
+<% if Collaboration.project_user_is_primary_or_owner_or_update(current_user).include?(@goal.project) %>
+        <%= link_to "Edit Goal Details", edit_goal_path(@goal) %><br>
+<% end %>
+
 
 <h3>Latest Update</h3>
 <%= link_to "Add an Update for this Goal", new_goal_update_path(@goal) %> 
