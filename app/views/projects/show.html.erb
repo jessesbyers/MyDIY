@@ -6,8 +6,14 @@
 <% end %>
 <h4> Collaborators: </h4>
 
-<% @project.collaborations.where(role: "Project Owner").each do |collaboration| %>
-    <%= collaboration.user.username %> - <%= collaboration.role %><br>
+<%= @project.collaborations.where(role: "Project Owner").first.user.username %> - Primary <%= @project.collaborations.where(role: "Project Owner").first.role %><br>
+
+<% @project.collaborations.where(role: "Project Owner")[1..-1].each do |collaboration| %>
+    <%= collaboration.user.username %> - <%= collaboration.role %>
+    <% if @project.collaborations.where(role: "Project Owner").first.user == current_user %>
+        <%= link_to "Edit Collaboration Details", edit_collaboration_path(collaboration) %>
+    <% end %>
+<br>
 <% end %>
 
 <% @project.collaborations.where.not(role: "Project Owner").each do |collaboration| %>
