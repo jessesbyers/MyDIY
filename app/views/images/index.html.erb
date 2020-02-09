@@ -3,7 +3,7 @@
 <%= link_to "Add an Image for this Goal", new_goal_image_path(@goal) %>
 <br>
 
-<% @images.reverse.each do |image| %>
+<% @images.each do |image| %>
     <div>
         <img src="<%=image.url%>" alt="<%=image.caption%>"><br>
         <h5><%= image.genre %>: <%= image.caption %></h5>
