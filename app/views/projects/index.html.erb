@@ -10,12 +10,14 @@
 
 <h3> Projects I Own </h3>
 <% if Collaboration.project_user_is_owner(current_user).any? %>
+<% Collaboration.project_user_is_primary_owner(current_user).each do |p| %>
+    <ul>
+        <li><%= link_to p.address, project_path(p) %></li> 
+    </ul>
+<% end %>
     <% Collaboration.project_user_is_owner(current_user).each do |p| %>
         <ul>
             <li><%= link_to p.address, project_path(p) %></li> 
-
-
-
         </ul>
     <% end %>
 <% end %>

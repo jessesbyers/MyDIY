@@ -13,7 +13,7 @@ class ProjectsController < ApplicationController
 
     def create
         @project = Project.new(project_params)
-        @project.collaborations.build(:user_id => current_user.id, :role => "Project Owner")
+        @project.collaborations.build(:user_id => current_user.id, :role => "Primary Project Owner")
         if @project.save
             redirect_to project_path(@project)
         else
