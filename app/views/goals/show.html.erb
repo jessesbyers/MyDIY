@@ -10,14 +10,20 @@ Status: <%= @goal.status %><br>
 
 
 <h3>Latest Update</h3>
-<%= link_to "Add an Update for this Goal", new_goal_update_path(@goal) %> 
+<% if Collaboration.project_user_is_primary_or_owner_or_update(current_user).include?(@goal.project) %>
+        <%= link_to "Add an Update for this Goal", new_goal_update_path(@goal) %> 
+<% end %>
+
 <% if @goal.updates.any? %>
         <li><%= @goal.updates.last.user.username %> - <%= @goal.updates.last.human_readable_date %> - <%= @goal.updates.last.content %></li>
         <%= link_to "View All Updates for this Goal", goal_updates_path(@goal) %>
 <% end %>
 
 <h3>Latest Resource</h3>
-<%= link_to "Add a Resource for this Goal", new_goal_resource_path(@goal) %>
+<% if Collaboration.project_user_is_primary_or_owner_or_update(current_user).include?(@goal.project) %>
+        <%= link_to "Add a Resource for this Goal", new_goal_resource_path(@goal) %>
+<% end %>
+
 <% if @goal.resources.any? %>
         <li><%= link_to "Link", @goal.resources.last.url %>: <%= @goal.resources.last.description %></li>
         <%= link_to "View All Resources for this Goal", goal_resources_path(@goal) %>
@@ -25,9 +31,12 @@ Status: <%= @goal.status %><br>
 
 
 <h3>Latest Image</h3>
-<%= link_to "Add an Image for this Goal", new_goal_image_path(@goal) %>
+<% if Collaboration.project_user_is_primary_or_owner_or_update(current_user).include?(@goal.project) %>
+        <%= link_to "Add an Image for this Goal", new_goal_image_path(@goal) %><br>
+<% end %>
+
 <% if @goal.resources.any? %>
-    <img src="<%= @goal.images.last.url%>" alt="<%= @goal.images.last.caption%>">
+    <img src="<%= @goal.images.last.url%>" alt="<%= @goal.images.last.caption%>"><br>
     <%= link_to "View All Images for this Goal", goal_images_path(@goal) %><br>
 <% end %>
 
