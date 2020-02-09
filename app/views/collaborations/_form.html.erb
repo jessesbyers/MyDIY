@@ -6,7 +6,7 @@
     <%= f.collection_select :user_id, User.all_except(current_user), :id, :username, :prompt => true %><br>
   
     Choose their <%= f.label :role %>
-    <%= f.select  :role, [["Update and View", "Update and View"], ["View Only", "View Only"]], :prompt => true %><br>
+    <%= f.select  :role, [["Project Owner", "Project Owner"], ["Update and View", "Update and View"], ["View Only", "View Only"]], :prompt => true %><br>
       
     Choose a <%= f.label :project_id %> to Collaborate on
     <%= f.collection_select :project_id, Collaboration.project_user_is_owner(current_user), :id, :address, :prompt => true %><br>
