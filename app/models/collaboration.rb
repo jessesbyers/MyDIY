@@ -31,4 +31,8 @@ class Collaboration < ApplicationRecord
     def self.project_user_is_primary_or_owner_or_update(user)
         project_user_is_primary_owner(user) + project_user_is_owner(user) + project_user_is_update(user).compact
     end
+
+    def self.project_user_is_collaborator(user)
+        project_user_is_primary_or_owner_or_update(user) + project_user_is_viewonly(user)
+    end
 end

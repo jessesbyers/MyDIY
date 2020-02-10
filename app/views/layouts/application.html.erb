@@ -29,10 +29,10 @@
                 <li class='nav-item'><a class='nav-link' <%= link_to "Completed Goals", completed_path %></a></li>
 
 
-                <li class='nav-item'><a class='nav-link'
+                <li class='nav-item'>
                   <%= form_with(url: '/logout', method: 'delete') do |f| %>
                     <%= f.submit "Logout" %>
-                  <% end %></a></li>
+                  <% end %></li>
               </ul>
             </div>
 
