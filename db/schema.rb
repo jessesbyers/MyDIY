@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2020_02_07_155958) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "genre"
-  end
+ end
 
   create_table "projects", force: :cascade do |t|
     t.string "address"

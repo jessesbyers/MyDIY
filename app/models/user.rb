@@ -1,10 +1,10 @@
 class User < ApplicationRecord
     has_secure_password
-    validates :email, presence: true
-    validates :email, uniqueness: true
-    validates :username, presence: true
-    validates :username, uniqueness: true
+    validates :email, presence: true, uniqueness: true
+    validates :username, presence: true, uniqueness: true
     validates :password, length: { :minimum => 6}
+    validates_confirmation_of :password
+
 
     has_many :collaborations
     has_many :projects, through: :collaborations
