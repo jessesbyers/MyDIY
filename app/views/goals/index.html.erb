@@ -1,8 +1,29 @@
 <h1>My Goals</h1>
 
-<ul>
-<% @goals.each do |goal| %>
-    <li><%= link_to goal.title, goal_path(goal) %>      -       <%= link_to goal.project.address, project_path(goal.project) %> - <%= link_to "Edit Goal Details", edit_goal_path(goal) %></li>
+<% if @goals.completed.any? %>
+    <h3> Completed </h3>
+    <ul>
+    <% @goals.completed.each do |goal| %>
+        <li><%= link_to goal.title, goal_path(goal) %> at <%= goal.project.address %></li>
+    <% end %>
+    </ul>
 <% end %>
-</ul>
 
+<% if @goals.in_progress.any? %>
+    <h3> In Progress </h3>
+    <ul>
+    <% @goals.in_progress.each do |goal| %>
+        <li><%= link_to goal.title, goal_path(goal) %> at <%= goal.project.address %></li>
+    <% end %>
+    </ul>
+<% end %>
+
+<% if @goals.not_started.any? %>
+    <h3> Not Started </h3>
+    <ul>
+    <% @goals.not_started.each do |goal| %>
+        <li><%= link_to goal.title, goal_path(goal) %> at <%= goal.project.address %></li>
+    <% end %>
+    </ul>
+<% end %>
+   
