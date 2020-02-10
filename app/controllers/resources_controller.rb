@@ -1,6 +1,8 @@
 class ResourcesController < ApplicationController
     before_action :login_required
     before_action :set_goal
+    before_action :current_user_is_collaborator
+
 
     def new
         @resource = @goal.resources.build
@@ -24,12 +26,14 @@ class ResourcesController < ApplicationController
         @resource = Resource.find(params[:id])
         @resource.destroy
         redirect_to goal_resources_path(@goal)
+
     end
 
     private
 
     def set_goal
         @goal = Goal.find(params[:goal_id])
+        @project = @goal.project
     end
 
     def resource_params

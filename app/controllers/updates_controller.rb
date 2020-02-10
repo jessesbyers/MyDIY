@@ -1,6 +1,8 @@
 class UpdatesController < ApplicationController
     before_action :login_required
     before_action :set_goal
+    before_action :current_user_is_collaborator
+
 
     def new
         @update = @goal.updates.build
@@ -31,6 +33,7 @@ class UpdatesController < ApplicationController
 
     def set_goal
         @goal = Goal.find(params[:goal_id])
+        @project = @goal.project
     end
 
     def update_params
