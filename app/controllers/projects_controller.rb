@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
     before_action :login_required 
     before_action :set_project, only: [:show, :edit, :update, :destroy]
-    before_action :current_user_is_collaborator, only: [:show, :edit, :update, :destroy]
+    # before_action :current_user_is_collaborator, only: [:show, :edit, :update, :destroy]
 
 
     def new

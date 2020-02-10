@@ -1,8 +1,7 @@
 <h1><%= current_user.username %>'s Projects and Collaborations</h1>
 <button><%= link_to "Create A New Project", new_project_path %></button><br>
 
-
-<% if Collaboration.project_user_is_owner(current_user).any? %>
+<% if Collaboration.project_user_is_primary_or_owner(current_user).any? %>
     <h3> Projects I Own </h3>
     <% Collaboration.project_user_is_primary_owner(current_user).each do |p| %>
         <ul>
