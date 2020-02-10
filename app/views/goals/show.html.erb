@@ -25,7 +25,7 @@ Status: <%= @goal.status %><br>
 <% end %>
 
 <% if @goal.resources.any? %>
-        <li><%= link_to "Link", @goal.resources.last.url %>: <%= @goal.resources.last.description %></li>
+        <li><%= link_to "Link", @goal.resources.last.url, :target => "_blank" %>: <%= @goal.resources.last.description %></li>
         <%= link_to "View All Resources for this Goal", goal_resources_path(@goal) %>
 <% end %>
 
