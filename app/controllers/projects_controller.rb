@@ -1,8 +1,7 @@
 class ProjectsController < ApplicationController
     before_action :login_required
+    before_action :set_project, only: [:show, :edit, :update, :destroy]
 
-    # validates :status, inclusion: { in: %w("Not Started" "In Progress" "Completed"),
-    # message: "%{value} is not a valid status" }
 
 
     def new
@@ -27,21 +26,17 @@ class ProjectsController < ApplicationController
     end
 
     def show
-        @project = Project.find(params[:id])
     end
 
     def edit
-        @project = Project.find(params[:id])
     end
 
     def update
-        @project = Project.find(params[:id])
         @project.update(project_params)
         redirect_to project_path(@project)
     end
 
     def destroy
-        @project = Project.find(params[:id])
         @project.destroy
         redirect_to projects_path
     end
@@ -50,5 +45,9 @@ class ProjectsController < ApplicationController
 
     def project_params
         params.require(:project).permit(:address, :overview, goals_attributes: [:id, :title, :description, :budget, :status])
+    end
+
+    def set_project
+        @project = Project.find(params[:id])
     end
 end

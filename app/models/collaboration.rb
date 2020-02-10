@@ -9,26 +9,26 @@ class Collaboration < ApplicationRecord
 
 
     def self.project_user_is_primary_owner(user)
-        where(user_id: user.id, role: "Primary Project Owner").map { |c| c.project }
+        where(user_id: user.id, role: "Primary Project Owner").map { |c| c.project }.compact
     end
 
     def self.project_user_is_owner(user)
-        where(user_id: user.id, role: "Project Owner").map { |c| c.project }
+        where(user_id: user.id, role: "Project Owner").map { |c| c.project }.compact
     end
 
     def self.project_user_is_update(user)
-        where(user_id: user.id, role: "Update and View").map { |c| c.project }
+        where(user_id: user.id, role: "Update and View").map { |c| c.project }.compact
     end
 
     def self.project_user_is_viewonly(user)
-        where(user_id: user.id, role: "View Only").map { |c| c.project }
+        where(user_id: user.id, role: "View Only").map { |c| c.project }.compact
     end
 
     def self.project_user_is_primary_or_owner(user)
-        project_user_is_primary_owner(user) + project_user_is_owner(user)
+        project_user_is_primary_owner(user) + project_user_is_owner(user).compact
     end
 
     def self.project_user_is_primary_or_owner_or_update(user)
-        project_user_is_primary_owner(user) + project_user_is_owner(user) + project_user_is_update(user)
+        project_user_is_primary_owner(user) + project_user_is_owner(user) + project_user_is_update(user).compact
     end
 end
