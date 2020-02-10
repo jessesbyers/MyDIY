@@ -4,8 +4,10 @@ class Collaboration < ApplicationRecord
 
     validates :user_id, uniqueness: { scope: :project_id, message: ": A collaboration already exists with this user on this project." }
     validates :project_id, uniqueness: { scope: :user_id, message: ": A collaboration already exists with this user on this project." }
+    ROLE_OPTIONS = ["Primary Project Owner", "Project Owner", "Update and View", "View Only"]
+    validates :role, presence: true, inclusion: ROLE_OPTIONS
 
-        # scope :project_user_is_primary_owner(user), -> {where(user_id: user.id, role: "Primary Project Owner").map { |c| c.project }}
+
     def self.project_user_is_primary_owner(user)
         where(user_id: user.id, role: "Primary Project Owner").map { |c| c.project }
     end

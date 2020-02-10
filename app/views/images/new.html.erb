@@ -1,6 +1,8 @@
 <h1> Add an Image for this Goal </h1>
 <p>For best results, upload images to Imgur and use the "Direct Link" URL.</p>
 
+<%= render partial: "layouts/errors", locals: {object: @image} %>
+
 <%= form_for(@image, url: goal_images_path) do |f| %>
     <%= f.label :url %>
     <%= f.url_field :url %><br>

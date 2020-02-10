@@ -7,5 +7,7 @@ class Goal < ApplicationRecord
 
     validates :title, presence: true
     validates :description, presence: true
+    STATUS_OPTIONS = ["Not Started", "Incomplete", "Completed"]
+    validates :status, presence: true, inclusion: STATUS_OPTIONS
 
 end
