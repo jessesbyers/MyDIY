@@ -13,6 +13,9 @@ Rails.application.routes.draw do
 
   resources :collaborations
   resources :projects
+
+  get '/goals/completed', to: 'goals#completed', as: 'completed'
+
   resources :goals  
 
   resources :goals, only: [:show] do

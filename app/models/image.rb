@@ -7,4 +7,5 @@ class Image < ApplicationRecord
     validates :genre, presence: true, inclusion: GENRE_OPTIONS
     validates :caption, presence: true
 
+    scope :after, -> { where(genre: 'After Photo') }
 end

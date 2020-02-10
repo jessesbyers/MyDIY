@@ -35,6 +35,10 @@ class GoalsController < ApplicationController
         redirect_to project_path(@goal.project)
     end
 
+    def completed
+        @goals = current_user.goals.completed
+    end
+
     private
 
     def goal_params
