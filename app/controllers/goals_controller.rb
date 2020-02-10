@@ -1,6 +1,8 @@
 class GoalsController < ApplicationController
      before_action :login_required
      before_action :set_goal, only: [:show, :edit, :update, :destroy]
+     before_action :current_user_is_collaborator
+
 
     def show
     end
@@ -47,5 +49,7 @@ class GoalsController < ApplicationController
 
     def set_goal
         @goal = Goal.find(params[:id])
+        @project = @goal.project
     end
+
 end

@@ -49,6 +49,11 @@
     </nav>
 
     <header class="htop">
+      <% flash.each do |type, msg| %>
+        <div>
+          <%= msg %>
+        </div>
+      <% end %>
     </header>
 
     <div class="container"  role="main">
