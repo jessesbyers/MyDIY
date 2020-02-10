@@ -25,7 +25,7 @@ include LoginHelper
 feature 'Sign Up' do
     scenario 'able to sign up for an account and log in' do
         user_signup
-        expect(page).to have_content("Home: test2's Projects")
+        expect(page).to have_content("test2's Project Dashboard")
         expect(page).to have_content('Goals')
     end
 end

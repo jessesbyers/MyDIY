@@ -1,7 +1,7 @@
 class ResourcesController < ApplicationController
     before_action :login_required
     before_action :set_goal
-    before_action :current_user_is_collaborator
+    before_action :current_user_can_access, only: [:new, :destroy]
 
 
     def new
@@ -38,5 +38,12 @@ class ResourcesController < ApplicationController
 
     def resource_params
         params.require(:resource).permit(:url, :description)
+    end
+
+    def current_user_can_access
+        if !current_user.resources.include?(@resource)
+            redirect_to root_path, alert: "You may only view content if you are a collaborator on the project"
+            return
+        end
     end
 end

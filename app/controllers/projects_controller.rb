@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
     before_action :login_required 
     before_action :set_project, only: [:show, :edit, :update, :destroy]
-    # before_action :current_user_is_collaborator, only: [:show, :edit, :update, :destroy]
+    before_action :current_user_can_access, only: [:show, :edit, :update, :destroy]
 
 
     def new
@@ -48,5 +48,12 @@ class ProjectsController < ApplicationController
 
     def set_project
         @project = Project.find(params[:id])
+    end
+
+    def current_user_can_access
+        if !current_user.projects.include?(@project)
+            redirect_to root_path, alert: "You may only view content if you are a collaborator on the project"
+            return
+        end
     end
 end

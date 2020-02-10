@@ -1,8 +1,8 @@
 class CollaborationsController < ApplicationController
     before_action :login_required
-    before_action :current_user_is_collaborator
-
     before_action :set_collaboration, only: [:edit, :update, :destroy]
+    before_action :current_user_can_access
+
 
     def new
         @collaboration = Collaboration.new
@@ -18,17 +18,14 @@ class CollaborationsController < ApplicationController
     end
 
     def edit
-        @collaboration = Collaboration.find(params[:id])
     end
 
     def update
-        @collaboration = Collaboration.find(params[:id])
         @collaboration.update(collaboration_params)
         redirect_to project_path(@collaboration.project)
     end
 
     def destroy
-        @collaboration = Collaboration.find(params[:id])
         @collaboration.delete
         redirect_to project_path(@collaboration.project)
     end
@@ -41,5 +38,12 @@ class CollaborationsController < ApplicationController
 
     def set_collaboration
         @collaboration = Collaboration.find(params[:id])
+    end
+
+    def current_user_can_access
+        if !current_user.collaborations.include?(@collaboration)
+            redirect_to root_path, alert: "You may only view content if you are a collaborator on the project"
+            return
+        end
     end
 end
