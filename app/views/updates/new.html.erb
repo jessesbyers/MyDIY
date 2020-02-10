@@ -4,6 +4,8 @@
 
 
 <%= form_for(@update, url: goal_updates_path) do |f| %>
+    <%= f.hidden_field :id %>
+
     <%= f.label :content %>
     <%= f.text_area :content %><br>
 

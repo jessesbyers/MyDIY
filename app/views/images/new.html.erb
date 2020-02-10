@@ -4,6 +4,8 @@
 <%= render partial: "layouts/errors", locals: {object: @image} %>
 
 <%= form_for(@image, url: goal_images_path) do |f| %>
+    <%= f.hidden_field :id %>
+
     <%= f.label :url %>
     <%= f.url_field :url %><br>
 
