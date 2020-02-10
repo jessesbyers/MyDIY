@@ -8,7 +8,8 @@ class ProjectsController < ApplicationController
     def new
         @users = User.all
         @project = Project.new
-        3.times { @project.goals.build }
+        # 3.times { @project.goals.build }
+        @project.goals.build
     end
 
     def create

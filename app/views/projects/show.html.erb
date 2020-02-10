@@ -25,6 +25,7 @@
     <% end %>
 <% end %>
 
+<h4> Project Goals: </h4>
 
 <% @project.goals.each.with_index(1) do |goal, i| %>
     <h3><%= link_to "#{i}. #{goal.title}", goal_path(goal) %></h3>
@@ -47,7 +48,6 @@
 
 <% if Collaboration.project_user_is_primary_owner(current_user).include?(@project) %>
     <%= form_with(url: project_path(@project), method: 'delete') do |f| %>
-        <%= f.submit "Delete Project" %>
+        <%= f.submit "Delete Project: ***Warning: Deleting this project will delete all goals, images, updates, and resources associated with this project***" %>
     <% end %>
-    <p>***Warning: Deleting this project will delete all goals, images, updates, and resources associated with this project*** </p>   
 <% end %>

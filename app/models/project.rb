@@ -9,6 +9,7 @@ class Project < ApplicationRecord
     accepts_nested_attributes_for :goals, reject_if: proc { |attributes| attributes['title'].blank? || attributes['description'].blank? || attributes['budget'].blank? || attributes['status'].blank? }
     accepts_nested_attributes_for :collaborations
 
-    validates :address, uniqueness: true
+    validates :address, presence: true, uniqueness: true
+    validates :overview, presence: true
 
 end
