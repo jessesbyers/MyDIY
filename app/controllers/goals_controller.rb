@@ -1,8 +1,8 @@
 class GoalsController < ApplicationController
      before_action :login_required
+     before_action :set_goal, only: [:show, :edit, :update, :destroy]
 
     def show
-        @goal = Goal.find(params[:id])
     end
 
     def new
@@ -23,17 +23,14 @@ class GoalsController < ApplicationController
     end
 
     def edit
-        @goal = Goal.find(params[:id])
     end
 
     def update
-        @goal = Goal.find(params[:id])
         @goal.update(goal_params)
         redirect_to goal_path(@goal)
     end
 
     def destroy
-        @goal = Goal.find(params[:id])
         @goal.destroy
         redirect_to project_path(@goal.project)
     end
@@ -42,5 +39,9 @@ class GoalsController < ApplicationController
 
     def goal_params
         params.require(:goal).permit(:title, :project_id, :description, :budget, :status)
+    end
+
+    def set_goal
+        @goal = Goal.find(params[:id])
     end
 end

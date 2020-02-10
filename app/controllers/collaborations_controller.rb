@@ -1,5 +1,6 @@
 class CollaborationsController < ApplicationController
     before_action :login_required
+    before_action :set_collaboration, only: [:edit, :update, :destroy]
 
     def new
         @collaboration = Collaboration.new
@@ -12,9 +13,6 @@ class CollaborationsController < ApplicationController
         else
             render :new
         end
-    end
-
-    def index
     end
 
     def edit
@@ -37,5 +35,9 @@ class CollaborationsController < ApplicationController
     
     def collaboration_params
         params.require(:collaboration).permit(:user_id, :project_id, :role)
+    end
+
+    def set_collaboration
+        @collaboration = Collaboration.find(params[:id])
     end
 end
