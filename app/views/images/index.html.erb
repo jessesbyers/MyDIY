@@ -5,7 +5,7 @@
 
 <% @images.each do |image| %>
     <div>
-        <img src="<%=image.url%>" alt="<%=image.caption%>"><br>
+        <img src="<%= image.url %>" alt="<%= image.caption %>"><br>
         <h5><%= image.genre %>: <%= image.caption %></h5>
 
         <%= form_with(url: image_path(image), method: 'delete') do |f| %>
