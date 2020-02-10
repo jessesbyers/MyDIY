@@ -1,5 +1,8 @@
 <h1> Add an Update for this Goal </h1>
 
+<%= render partial: "layouts/errors", locals: {object: @update} %>
+
+
 <%= form_for(@update, url: goal_updates_path) do |f| %>
     <%= f.label :content %>
     <%= f.text_area :content %><br>
