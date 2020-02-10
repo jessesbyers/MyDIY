@@ -5,11 +5,10 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
   post '/signup' => 'users#create'
 
-  get '/login' => 'sessions#new'
-  post '/sessions' => 'sessions#create'
-
   get '/auth/:provider/callback' => 'sessions#omniauth'
 
+  get '/login' => 'sessions#new'
+  post '/sessions' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
 
   resources :collaborations
@@ -25,8 +24,4 @@ Rails.application.routes.draw do
   resources :images
   resources :resources
   resources :updates
-
-
-
-
 end
