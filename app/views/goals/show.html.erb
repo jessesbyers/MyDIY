@@ -5,13 +5,13 @@ Description: <%= @goal.description %><br>
 Estimated Budget: $<%= @goal.budget %><br>
 Status: <%= @goal.status %><br>
 <% if Collaboration.project_user_is_primary_or_owner_or_update(current_user).include?(@goal.project) %>
-        <%= link_to "Edit Goal Details", edit_goal_path(@goal) %><br>
+        <button><%= link_to "Edit Goal Details", edit_goal_path(@goal) %></button><br>
 <% end %>
 
 
 <h3>Latest Update</h3>
 <% if Collaboration.project_user_is_primary_or_owner_or_update(current_user).include?(@goal.project) %>
-        <%= link_to "Add an Update for this Goal", new_goal_update_path(@goal) %> 
+        <button><%= link_to "Add an Update for this Goal", new_goal_update_path(@goal) %></button>
 <% end %>
 
 <% if @goal.updates.any? %>
@@ -21,7 +21,7 @@ Status: <%= @goal.status %><br>
 
 <h3>Latest Resource</h3>
 <% if Collaboration.project_user_is_primary_or_owner_or_update(current_user).include?(@goal.project) %>
-        <%= link_to "Add a Resource for this Goal", new_goal_resource_path(@goal) %>
+        <button><%= link_to "Add a Resource for this Goal", new_goal_resource_path(@goal) %></button>
 <% end %>
 
 <% if @goal.resources.any? %>
@@ -32,7 +32,7 @@ Status: <%= @goal.status %><br>
 
 <h3>Latest Image</h3>
 <% if Collaboration.project_user_is_primary_or_owner_or_update(current_user).include?(@goal.project) %>
-        <%= link_to "Add an Image for this Goal", new_goal_image_path(@goal) %><br>
+        <button><%= link_to "Add an Image for this Goal", new_goal_image_path(@goal) %></button><br>
 <% end %>
 
 <% if @goal.resources.any? %>

@@ -1,6 +1,6 @@
 <h1> Resources for <%= link_to @goal.title, goal_path(@goal) %> </h1>
 <h3><%= link_to @goal.project.address, project_path(@goal.project) %></h3>
-<%= link_to "Add a Resource for this Goal", new_goal_resource_path(@goal) %> 
+<button><%= link_to "Add a Resource for this Goal", new_goal_resource_path(@goal) %> </button>
 
 <ul>
 <% @goal.resources.reverse.each do |resource| %>

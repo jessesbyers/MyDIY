@@ -9,7 +9,7 @@
                 <h5><%= image.genre %>: <%= image.caption %></h5>
             <% end %>
         <% else %>
-            <%= link_to "Add an After Image to Celebrate!", goal_images_path(goal) %>
+            <button><%= link_to "Add an After Image to Celebrate!", goal_images_path(goal) %></button>
         <% end %>
     </div>
 <% end %>
