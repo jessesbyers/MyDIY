@@ -1,7 +1,8 @@
 class ProjectsController < ApplicationController
     before_action :login_required 
     before_action :set_project, only: [:show, :edit, :update, :destroy]
-    before_action :current_user_can_access, only: [:show, :edit, :update, :destroy]
+    before_action :block_access_if_not_collaborator, only: [:show]
+    before_action :block_access_if_not_primary_owner, only: [:edit, :destroy]
 
 
     def new
@@ -50,9 +51,16 @@ class ProjectsController < ApplicationController
         @project = Project.find(params[:id])
     end
 
-    def current_user_can_access
-        if !current_user.projects.include?(@project)
-            redirect_to root_path, alert: "You may only view content if you are a collaborator on the project"
+    def block_access_if_not_primary_owner
+        if !current_user.projects.primary_owner.include?(@project)
+            redirect_to root_path, alert: "You may only edit or delete a project if you are the Primary Project Owner."
+            return
+        end
+    end
+
+    def block_access_if_not_collaborator
+        if !current_user.projects.collaborator_of_any_kind.include?(@project)
+            redirect_to root_path, alert: "You may only view this page if you are a Project Collaborator."
             return
         end
     end

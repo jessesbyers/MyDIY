@@ -45,12 +45,8 @@ class Project < ApplicationRecord
     end
 
     # returns array of projects in which the (current) user is Primary OR Project Owner
-    # would be better with an or query - need to figure out synta
     def self.primary_or_owner 
         primary_owner + owner
     end
-
-
-
 
 end
