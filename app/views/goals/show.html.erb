@@ -8,6 +8,13 @@ Status: <%= @goal.status %><br>
         <button><%= link_to "Edit Goal Details", edit_goal_path(@goal) %></button><br>
 <% end %>
 
+<% if Collaboration.project_user_is_primary_owner(current_user).include?(@goal.project) %>
+        <%= form_with(url: goal_path(@goal), method: 'delete') do |f| %>
+        <%= f.hidden_field :project_id, :value => params[:project_id] %>
+        <%= f.submit "Delete Goal" %>
+        <% end %>
+<% end %>
+
 
 <h3>Latest Update</h3>
 <% if Collaboration.project_user_is_primary_or_owner_or_update(current_user).include?(@goal.project) %>
