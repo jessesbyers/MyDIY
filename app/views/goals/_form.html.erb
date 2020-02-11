@@ -2,7 +2,7 @@
     <%= f.hidden_field :id %>
 
     Choose a <%= f.label :project_id %>
-    <%= f.collection_select :project_id, Collaboration.project_user_is_primary_or_owner(current_user), :id, :address, :prompt => true %><br>
+    <%= f.collection_select :project_id, current_user.projects.primary_or_owner, :id, :address, :prompt => true %><br>
 
     <%= f.label :title %>
     <%= f.text_field :title %>

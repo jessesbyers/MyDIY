@@ -1,6 +1,7 @@
 class CollaborationsController < ApplicationController
     before_action :login_required
     before_action :set_collaboration, only: [:edit, :update, :destroy]
+    # need to fix - new and edit blocked
     before_action :current_user_can_access
 
 

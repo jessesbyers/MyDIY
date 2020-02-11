@@ -34,7 +34,7 @@
     <%= f.select  :role, [["Project Owner", "Project Owner"], ["Update and View", "Update and View"], ["View Only", "View Only"]], :prompt => true %><br>
       
     Choose a <%= f.label :project_id %> to Collaborate on
-    <%= f.collection_select :project_id, Collaboration.project_user_is_primary_owner(current_user), :id, :address, :prompt => true %><br>
+    <%= f.collection_select :project_id, current_user.projects.primary_owner, :id, :address, :prompt => true %><br>
   
     <%= f.submit %>
   <% end %>
