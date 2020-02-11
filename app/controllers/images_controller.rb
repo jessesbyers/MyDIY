@@ -1,7 +1,7 @@
 class ImagesController < ApplicationController
     before_action :login_required
     before_action :set_goal
-    before_action :current_user_can_access, only: [:new, :destroy]
+    before_action :current_user_can_access, only: [:new, :index, :edit, :destroy]
 
 
     def new
@@ -45,7 +45,7 @@ class ImagesController < ApplicationController
     end
 
     def current_user_can_access
-        if !current_user.images.include?(@image)
+        if !current_user.goals.include?(@goal)
             redirect_to root_path, alert: "You may only view content if you are a collaborator on the project"
             return
         end
