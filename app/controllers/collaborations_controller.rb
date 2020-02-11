@@ -1,9 +1,7 @@
 class CollaborationsController < ApplicationController
     before_action :login_required
     before_action :set_collaboration, only: [:edit, :update, :destroy]
-    # need to fix - new and edit blocked
-    before_action :current_user_can_access
-
+    before_action :primary_owner_can_access, only: [:edit]
 
     def new
         @collaboration = Collaboration.new
@@ -41,10 +39,20 @@ class CollaborationsController < ApplicationController
         @collaboration = Collaboration.find(params[:id])
     end
 
-    def current_user_can_access
-        if !current_user.collaborations.include?(@collaboration)
+    def primary_owner_can_access
+        if !current_user.projects.primary_owner.include?(@collaboration.project)
             redirect_to root_path, alert: "You may only view content if you are a collaborator on the project"
             return
         end
     end
+
+
+
+
+    # def current_user_can_access
+    #     if !current_user.projects.include?(@collaboration.project)
+    #         redirect_to root_path, alert: "You may only view content if you are a collaborator on the project"
+    #         return
+    #     end
+    # end
 end
