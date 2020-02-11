@@ -1,54 +1,91 @@
-<h1>Project Details for <%= @project.address %></h1>
-<h3>Overview: <%= @project.overview %></h3>
+<div class="row">
+    <div class="col-sm-6">
+    <h1>Project Details: <%= @project.address %></h1>
 
-<% if Collaboration.project_user_is_owner(current_user).include?(@project) || Collaboration.project_user_is_primary_owner(current_user).include?(@project)%>
-    <button><%= link_to "Edit Project Details", edit_project_path %></button>  <button><%= link_to "Add a New Goal", new_goal_path %></button>  <button><%= link_to "Add a New Collaborator", new_collaboration_path %></button>
-<% end %>
+        <div class="card">
+            <div class="card-body">
+                <h3>Overview: <%= @project.overview %></h3>
 
-<h4> Collaborators: </h4>
+                <% if Collaboration.project_user_is_owner(current_user).include?(@project) || Collaboration.project_user_is_primary_owner(current_user).include?(@project)%>
+                    <button><%= link_to "Edit Project Details", edit_project_path %></button>  <button><%= link_to "Add a New Goal", new_goal_path %></button>  <button><%= link_to "Add a New Collaborator", new_collaboration_path %></button>
+                <% end %>
+            </div>
+        </div>
+    </div>
 
-<% @project.collaborations.where(role: "Primary Project Owner").each do |collaboration| %>
-   <%= collaboration.user.username %> - <%= collaboration.role %><br>
-<% end %>
+    <div class="col-sm-6">
+    <h4> Collaborators: </h4>
+
+        <div class="card">
+            <div class="card-body">
 
 
-<% @project.collaborations.where.not(role: "Primary Project Owner").each do |collaboration| %>
-    <%= collaboration.user.username %> - <%= collaboration.role %><br>
 
-    <% if Collaboration.project_user_is_primary_owner(current_user).include?(@project) %>
-        <button><%= link_to "Edit Collaboration Details", edit_collaboration_path(collaboration) %></button><br>
+                <% @project.collaborations.where(role: "Primary Project Owner").each do |collaboration| %>
+                    <div class="card">
+                        <div class="card-body">
+                            <%= collaboration.user.username %> - <%= collaboration.role %><br>
+                        </div>
+                    </div>
+                <% end %>
 
-        <%= form_with(url: collaboration_path(collaboration), method: 'delete') do |f| %>
-            <%= f.hidden_field :project_id, :value => params[:project_id] %>
-            <%= f.submit "Delete Collaboration" %><br>
-        <% end %>
-    <% end %>
-<% end %>
+
+                <% @project.collaborations.where.not(role: "Primary Project Owner").each do |collaboration| %>
+                    <div class="card">
+                        <div class="card-body">                   
+                            <%= collaboration.user.username %> - <%= collaboration.role %>
+
+                            <% if Collaboration.project_user_is_primary_owner(current_user).include?(@project) %>
+                                <button><%= link_to "Edit Collaboration Details", edit_collaboration_path(collaboration) %></button>
+
+                                <%= form_with(url: collaboration_path(collaboration), method: 'delete') do |f| %>
+                                    <%= f.hidden_field :project_id, :value => params[:project_id] %>
+                                    <%= f.submit "Delete Collaboration" %><br>
+                                <% end %>
+                            <% end %>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>    
 
 <h4> Project Goals: </h4>
+<div class="row">
+    <% @project.goals.each.with_index(1) do |goal, i| %>
+        <div class="col-sm-6">    
+            <div class="card">
+                <div class="card-body">  
+                    <h3><%= link_to "#{i}. #{goal.title}", goal_path(goal) %></h3>
 
-<% @project.goals.each.with_index(1) do |goal, i| %>
-    <h3><%= link_to "#{i}. #{goal.title}", goal_path(goal) %></h3>
+                        <li>Description: <%= goal.description %></li>
+                        <li>Estimated Budget: $<%= goal.budget %></li>
+                        <li>Status: <%= goal.status %></li>
 
-        <li>Description: <%= goal.description %></li>
-        <li>Estimated Budget: $<%= goal.budget %></li>
-        <li>Status: <%= goal.status %></li>
 
-    <% if Collaboration.project_user_is_primary_or_owner_or_update(current_user).include?(@project) %>
-        <button><%= link_to "Edit Goal Details", edit_goal_path(goal) %></button>
+                        <% if Collaboration.project_user_is_primary_or_owner_or_update(current_user).include?(@project) %>
+                            <button><%= link_to "Edit Goal Details", edit_goal_path(goal) %></button>
+                        <% end %>
+
+                        <% if Collaboration.project_user_is_primary_owner(current_user).include?(@project) %>
+                            <%= form_with(url: goal_path(goal), method: 'delete') do |f| %>
+                                <%= f.hidden_field :project_id, :value => params[:project_id] %>
+                                <%= f.submit "Delete Goal" %>
+                            <% end %>
+                        <% end %>
+                </div>
+            </div>
+        </div>
     <% end %>
+</div>
+
 
     <% if Collaboration.project_user_is_primary_owner(current_user).include?(@project) %>
-        <%= form_with(url: goal_path(goal), method: 'delete') do |f| %>
-            <%= f.hidden_field :project_id, :value => params[:project_id] %>
-            <%= f.submit "Delete Goal" %>
+        <%= form_with(url: project_path(@project), method: 'delete') do |f| %>
+            <%= f.submit "Delete Project: ***Warning: Deleting this project will delete all goals, images, updates, and resources associated with this project***" %>
         <% end %>
     <% end %>
-    <br>
-<% end %>
 
-<% if Collaboration.project_user_is_primary_owner(current_user).include?(@project) %>
-    <%= form_with(url: project_path(@project), method: 'delete') do |f| %>
-        <%= f.submit "Delete Project: ***Warning: Deleting this project will delete all goals, images, updates, and resources associated with this project***" %>
-    <% end %>
-<% end %>
+</div>
+

@@ -1,15 +1,20 @@
-<h1> Celebrate Everything You've Accomplished So Far! </h1>
+ <h1> Gallery of Completed Goals </h1>
 
-<% @goals.each.with_index(1) do |goal, i| %>
-    <div>
-        <h3><%= i %>. <%= link_to goal.title, goal_path(goal) %> at <%= goal.project.address %></h3><br>
-        <% if goal.images.any? %>
-            <% goal.images.after.each do |image| %>
-                <img src="<%=image.url%>" alt="<%=image.caption%>"><br>
-                <h5><%= image.genre %>: <%= image.caption %></h5>
-            <% end %>
-        <% else %>
-            <button><%= link_to "Add an After Image to Celebrate!", goal_images_path(goal) %></button>
-        <% end %>
-    </div>
-<% end %>
+    <% @goals.each.with_index(1) do |goal, i| %>
+        
+            <h3><%= i %>. <%= link_to goal.title, goal_path(goal) %> at <%= goal.project.address %></h3><br>
+
+                <% if goal.images.any? %>
+
+                    <% goal.images.after.each do |image| %>
+                        <img src="<%=image.url%>" alt="<%=image.caption%>"><br>
+                        <h5><%= image.genre %>: <%= image.caption %></h5>
+                    <% end %>
+                
+                <% else %>
+
+                    <button><%= link_to "Add an After Image to Celebrate!", goal_images_path(goal) %></button>
+
+                <% end %>
+    <% end %>
+
