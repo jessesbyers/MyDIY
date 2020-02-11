@@ -12,7 +12,7 @@
             <div class="card-body">
                 <h4><%= @project.overview %></h4>
 
-                <% if Collaboration.project_user_is_owner(current_user).include?(@project) || Collaboration.project_user_is_primary_owner(current_user).include?(@project)%>
+                <% if current_user.projects.primary_or_owner.include?(@project) %>
                     <button><%= link_to "Edit Project Details", edit_project_path %></button>  <button><%= link_to "Add a New Goal", new_goal_path %></button>  <button><%= link_to "Add a New Collaborator", new_collaboration_path %></button>
                 <% end %>
             </div>
@@ -26,7 +26,7 @@
 
 
 
-                <% @project.collaborations.where(role: "Primary Project Owner").each do |collaboration| %>
+                <% @project.collaborations.primary_owner.each do |collaboration| %>
                     <div class="card">
                         <div class="card-body">
                             <%= collaboration.user.username %> - <%= collaboration.role %><br>
@@ -35,12 +35,12 @@
                 <% end %>
 
 
-                <% @project.collaborations.where.not(role: "Primary Project Owner").each do |collaboration| %>
+                <% @project.collaborations.not_primary_owner.each do |collaboration| %>
                     <div class="card">
                         <div class="card-body">                   
                             <%= collaboration.user.username %> - <%= collaboration.role %>
 
-                            <% if Collaboration.project_user_is_primary_owner(current_user).include?(@project) %>
+                            <% if current_user.projects.primary_owner.include?(@project) %>
                                 <button><%= link_to "Edit Collaboration Details", edit_collaboration_path(collaboration) %></button>
 
                                 <%= form_with(url: collaboration_path(collaboration), method: 'delete') do |f| %>
@@ -72,7 +72,7 @@
 
 <h3>Delete Project</h3>
 <h6>Warning: Deleting this project will delete all goals, images, updates, and resources associated with this project</h6>
-<% if Collaboration.project_user_is_primary_owner(current_user).include?(@project) %>
+<% if current_user.projects.primary_owner.include?(@project) %>
     <%= form_with(url: project_path(@project), method: 'delete') do |f| %>
         <%= f.submit "Delete Project" %>
     <% end %>

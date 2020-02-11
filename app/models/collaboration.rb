@@ -7,6 +7,16 @@ class Collaboration < ApplicationRecord
     ROLE_OPTIONS = ["Primary Project Owner", "Project Owner", "Update and View", "View Only"]
     validates :role, presence: true, inclusion: ROLE_OPTIONS
 
+    # returns array of collaborations in which the (current) user is Primary Project Owner
+    def self.primary_owner
+        where('role = ?', "Primary Project Owner")
+    end
+
+    # returns array of collaborations in which the (current) user is Primary Project Owner
+    def self.not_primary_owner
+        where.not('role = ?', "Primary Project Owner")
+    end
+
 
 # CHANGE ALL OF THESE METHODS TO PROJECT MODEL AND CALL WITH current_user.projects.___
 

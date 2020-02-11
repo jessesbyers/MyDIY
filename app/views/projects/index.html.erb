@@ -1,20 +1,10 @@
-
-
-
-
     <h1><%= current_user.username %>'s Projects and Collaborations</h1>
     <button><%= link_to "Create A New Project", new_project_path %></button><br>
 
-    <% if Collaboration.project_user_is_primary_or_owner(current_user).any? %>
+    <% if current_user.projects.primary_or_owner.any? %>
 
         <h3> Projects I Own </h3>
-        <% Collaboration.project_user_is_primary_owner(current_user).each do |p| %>
-            <ul>
-                <li><%= link_to p.address, project_path(p) %></li> 
-            </ul>
-        <% end %>
-
-        <% Collaboration.project_user_is_owner(current_user).each do |p| %>
+        <% current_user.projects.primary_or_owner.each do |p| %>
             <ul>
                 <li><%= link_to p.address, project_path(p) %></li> 
             </ul>
@@ -22,9 +12,9 @@
     <% end %>
 
 
-    <% if Collaboration.project_user_is_update(current_user).any? %>
+    <% if current_user.projects.update_and_view.any? %>
         <h3> Projects I Can Update </h3>
-            <% Collaboration.project_user_is_update(current_user).each do |p| %>
+            <% current_user.projects.update_and_view.each do |p| %>
                 <ul>
                     <li><%= link_to p.address, project_path(p) %></li>
                 </ul>
@@ -32,9 +22,9 @@
     <% end %>
 
 
-    <% if Collaboration.project_user_is_viewonly(current_user).any? %>
+    <% if current_user.projects.view_only.any? %>
         <h3> Projects I Can View </h3>
-            <% Collaboration.project_user_is_viewonly(current_user).each do |p| %>
+            <% current_user.projects.view_only.each do |p| %>
                 <ul>
                     <li><%= link_to p.address, project_path(p) %></li>
                 </ul>
