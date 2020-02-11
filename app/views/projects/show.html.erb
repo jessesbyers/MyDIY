@@ -70,9 +70,10 @@
     <% end %>
 </div>
 
+
+<% if current_user.projects.primary_owner.include?(@project) %>
 <h3>Delete Project</h3>
 <h6>Warning: Deleting this project will delete all goals, images, updates, and resources associated with this project</h6>
-<% if current_user.projects.primary_owner.include?(@project) %>
     <%= form_with(url: project_path(@project), method: 'delete') do |f| %>
         <%= f.submit "Delete Project" %>
     <% end %>
