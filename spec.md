@@ -64,14 +64,28 @@ X    Include a class level ActiveRecord scope method (model object & class metho
             # URL: /goals/completed
 
 X    Include signup (how e.g. Devise)
-        # /signup
-        
+        # /signup - created manually
+
 X    Include login (how e.g. Devise)
+        # /login - created manually
+
 X    Include logout (how e.g. Devise)
+        # form posts to /logout in navbar - created manually
+
 X    Include third party signup/login (how e.g. Devise/OmniAuth)
+        # OmniAuth login with google account
+
 X    Include nested resource show or index (URL e.g. users/2/recipes)
+        # Index pages for images, updates, and resources nested within goal
+            # Example: /goals/8/images
+
 X    Include nested resource "new" form (URL e.g. recipes/1/ingredients/new)
+        # New form for images, updates, and resources nested within goal
+            # Example: /goals/8/images/new
+
 X    Include form display of validation errors (form URL e.g. /recipes/new)
+        # Validation errors displayed on all new and edit forms except login form, which includes a flash message if user does not exist.
+
 Confirm:
 
  The application is pretty DRY
