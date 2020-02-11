@@ -3,12 +3,12 @@ class SessionsController < ApplicationController
     def create
         @user = User.find_by(username: params[:username])
 
-        if @user
-            return head(:forbidden) unless @user.authenticate(params[:password])
+        if @user.authenticate(params[:password])
+            # return head(:forbidden) unless @user.authenticate(params[:password])
             session[:user_id] = @user.id
             redirect_to root_path
         else
-            redirect_to login_path, alert: "User not found. Please try again."
+            redirect_to login_path, alert: "Username and Password combination is not valid. Please try again."
         end
     end
 
