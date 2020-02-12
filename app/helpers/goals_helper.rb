@@ -24,4 +24,16 @@ module GoalsHelper
         end
     end
 
+    # def list_goals
+    #     @goals.completed.map do |goal|
+    #         render "goal_details", {goal: goal} 
+    #     end.join
+    # end
+ 
+    def list_goals(status)
+        status.map do |goal|
+            render "goal_details", {goal: goal} 
+        end.join
+    end
+
 end

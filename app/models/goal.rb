@@ -12,7 +12,7 @@ class Goal < ApplicationRecord
     validates :status, presence: true, inclusion: STATUS_OPTIONS
 
     scope :completed, -> { where(status: 'Completed') }
-    scope :in_progress, -> { where(status: 'In Progress') }
+    scope :incomplete, -> { where(status: 'Incomplete') }
     scope :not_started, -> { where(status: 'Not Started') }
 
 

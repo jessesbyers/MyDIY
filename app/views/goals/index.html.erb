@@ -1,29 +1,25 @@
 <h1>My Goals</h1>
 
+
 <% if @goals.completed.any? %>
     <h3> Completed </h3>
     <ul>
-    <% @goals.completed.each do |goal| %>
-        <%= render "goal_details", {goal: goal} %>
-    <% end %>
+        <%= raw list_goals(@goals.completed) %>
     </ul>
 <% end %>
 
-<% if @goals.in_progress.any? %>
-    <h3> In Progress </h3>
+<% if @goals.incomplete.any? %>
+    <h3> Incomplete </h3>
     <ul>
-    <% @goals.in_progress.each do |goal| %>
-        <%= render "goal_details", {goal: goal} %>
-    <% end %>
+        <%= raw list_goals(@goals.incomplete) %>
     </ul>
 <% end %>
 
 <% if @goals.not_started.any? %>
     <h3> Not Started </h3>
     <ul>
-    <% @goals.not_started.each do |goal| %>
-        <%= render "goal_details", {goal: goal} %>
-    <% end %>
+        <%= raw list_goals(@goals.not_started) %>
+
     </ul>
 <% end %>
    
