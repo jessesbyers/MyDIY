@@ -11,4 +11,17 @@ module GoalsHelper
             link_to "View All #{object.capitalize}s for this Goal", "/goals/#{goal.id}/#{object}s"
         end
     end
+
+    def edit_goal(goal)
+        if current_user.projects.primary_or_owner_or_update.include?(goal.project)
+            link_to "Edit Goal Details", "/goals/#{goal.id}/edit" 
+        end
+    end
+
+    def delete_goal(goal)
+        if current_user.projects.primary_owner.include?(goal.project)
+            render "/goals/delete_goal"
+        end
+    end
+
 end

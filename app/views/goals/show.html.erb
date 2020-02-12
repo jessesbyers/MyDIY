@@ -1,19 +1,21 @@
 <div class="row">
     <div class="col">
 
-                <h1><%= @goal.title%></h1>
-                <h3><%= link_to @goal.project.address, project_path(@goal.project) %></h3>
+        <h1><%= @goal.title%></h1>
+        <h3><%= link_to @goal.project.address, project_path(@goal.project) %></h3>
 
-                Description: <%= @goal.description %><br>
-                Estimated Budget: $<%= @goal.budget %><br>
-                Status: <%= @goal.status %><br>
+        Description: <%= @goal.description %><br>
+        Estimated Budget: $<%= @goal.budget %><br>
+        Status: <%= @goal.status %><br>
 
+        <button><%= edit_goal(@goal) %></button>  <%= delete_goal(@goal) %>
+                
     </div>
 </div>
 
 
 <div class="row">
-    <div class="col-sm-3">
+    <div class="col-sm-6">
         <div class="card">
             <div class="card-body">
 
@@ -24,24 +26,25 @@
         </div>
     </div>
 
-
     <div class="col-sm-6">
-        <div class="card">
-            <div class="card-body">
-
-                <%= render "view_latest_activity", {:string => "image", :goal => @goal} %><br>
-                <%= view_latest_image %><br>
-
-            </div>
-        </div>
-    </div>
-
-    <div class="col-sm-3">
         <div class="card">
             <div class="card-body">
 
                 <%= render "view_latest_activity", {:string => "resource", :goal => @goal} %><br>
                 <h6><%= view_latest_resource_link %></h6><br>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+
+                <%= render "view_latest_activity", {:string => "image", :goal => @goal} %><br>
+                <%= view_latest_image %><br>
 
             </div>
         </div>
