@@ -24,12 +24,8 @@ module GoalsHelper
         end
     end
 
-    # def list_goals
-    #     @goals.completed.map do |goal|
-    #         render "goal_details", {goal: goal} 
-    #     end.join
-    # end
- 
+
+ # This loop renders HTML as a return value, so .join transforms it into a string.
     def list_goals(status)
         status.map do |goal|
             render "goal_details", {goal: goal} 
