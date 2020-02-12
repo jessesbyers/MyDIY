@@ -1,8 +1,0 @@
-<% if current_user.projects.primary_or_owner_or_update.include?(@goal.project) %>
-        <button><%= link_to "Add an Update for this Goal", new_goal_update_path(@goal) %></button>
-<% end %>
-
-<% if @goal.updates.any? %>
-        <li><%= @goal.updates.last.user.username %> - <%= @goal.updates.last.human_readable_date %> - <%= @goal.updates.last.content %></li>
-        <%= link_to "View All Updates for this Goal", goal_updates_path(@goal) %>
-<% end %>

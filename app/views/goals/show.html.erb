@@ -5,39 +5,21 @@ Description: <%= @goal.description %><br>
 Estimated Budget: $<%= @goal.budget %><br>
 Status: <%= @goal.status %><br>
 
-<h3>Latest Update</h3>
-<button><%= add_update %></button>
-<%= view_all_updates %>
-<%= view_latest_update %>
+<h3>Latest Image</h3>
+<%= view_latest_image %><br>
+<button><%= add_image %></button>
+<button><%= view_all_images %></button>
 
 <h3>Latest Update</h3>
-<button><%= add_update %></button>
-<%= view_all_updates %>
 <%= view_latest_update %>
-
-<h3>Latest Update</h3>
 <button><%= add_update %></button>
-<%= view_all_updates %>
-<%= view_latest_update %>
------------------------------
+<button><%= view_all_updates %></button>
 
 <h3>Latest Resource</h3>
-<% if current_user.projects.primary_or_owner_or_update.include?(@goal.project) %>
-        <button><%= link_to "Add a Resource for this Goal", new_goal_resource_path(@goal) %></button>
-<% end %>
-
-<% if @goal.resources.any? %>
-        <li><%= link_to "Link", @goal.resources.last.url, :target => "_blank" %>: <%= @goal.resources.last.description %></li>
-        <%= link_to "View All Resources for this Goal", goal_resources_path(@goal) %>
-<% end %>
+<h6><%= view_latest_resource_link %></h6>
+<button><%= add_resource %></button>
+<button><%= view_all_resources %></button><br>
 
 
-<h3>Latest Image</h3>
-<% if current_user.projects.primary_or_owner_or_update.include?(@goal.project) %>
-        <button><%= link_to "Add an Image for this Goal", new_goal_image_path(@goal) %></button><br>
-<% end %>
 
-<% if @goal.resources.any? %>
-    <img src="<%= @goal.images.last.url%>" alt="<%= @goal.images.last.caption%>"><br>
-    <%= link_to "View All Images for this Goal", goal_images_path(@goal) %><br>
-<% end %>
+
