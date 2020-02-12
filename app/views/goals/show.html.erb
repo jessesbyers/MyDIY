@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col">
-        <div class="card">
-            <div class="card-body">
+
+
                 <h1><%= @goal.title%></h1>
                 <h3><%= link_to @goal.project.address, project_path(@goal.project) %></h3>
 
@@ -9,8 +9,6 @@
                 Estimated Budget: $<%= @goal.budget %><br>
                 Status: <%= @goal.status %><br>
 
-            </div>
-        </div>
     </div>
 </div>
 
