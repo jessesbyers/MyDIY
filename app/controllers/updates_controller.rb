@@ -41,14 +41,14 @@ class UpdatesController < ApplicationController
     end
 
     def block_access_if_view_only
-        if current_user.projects.view_only.include?(@goal)
+        if current_user.projects.view_only.include?(@goal.project)
             redirect_to root_path, alert: "You do not have permission to create a goal."
             return
         end
     end
 
     def block_access_if_not_primary_owner
-        if !current_user.projects.primary_owner.include?(@goal)
+        if !current_user.projects.primary_owner.include?(@goal.project)
             redirect_to root_path, alert: "You may only delete a goal if you are the Primary Project Owner."
             return
         end
