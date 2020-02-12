@@ -5,19 +5,21 @@ Description: <%= @goal.description %><br>
 Estimated Budget: $<%= @goal.budget %><br>
 Status: <%= @goal.status %><br>
 
-
-<%= render "goal_options" %>
-
+<h3>Latest Update</h3>
+<button><%= add_update %></button>
+<%= view_all_updates %>
+<%= view_latest_update %>
 
 <h3>Latest Update</h3>
-<% if current_user.projects.primary_or_owner_or_update.include?(@goal.project) %>
-        <button><%= link_to "Add an Update for this Goal", new_goal_update_path(@goal) %></button>
-<% end %>
+<button><%= add_update %></button>
+<%= view_all_updates %>
+<%= view_latest_update %>
 
-<% if @goal.updates.any? %>
-        <li><%= @goal.updates.last.user.username %> - <%= @goal.updates.last.human_readable_date %> - <%= @goal.updates.last.content %></li>
-        <%= link_to "View All Updates for this Goal", goal_updates_path(@goal) %>
-<% end %>
+<h3>Latest Update</h3>
+<button><%= add_update %></button>
+<%= view_all_updates %>
+<%= view_latest_update %>
+-----------------------------
 
 <h3>Latest Resource</h3>
 <% if current_user.projects.primary_or_owner_or_update.include?(@goal.project) %>
