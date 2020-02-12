@@ -14,7 +14,6 @@ class User < ApplicationRecord
     has_many :images
     has_many :updates
 
-
     def self.all_except(user)
         where.not(id: user)
     end

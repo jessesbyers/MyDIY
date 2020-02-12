@@ -6,17 +6,13 @@
     </div>
 </div>
 
-
-
-
     <% @goals.each.with_index(1) do |goal, i| %>
-        <div class="row">
-
+<div class="row">
     <div class="col">
         <div class="card">
-        <div class="card-body">
+            <div class="card-body">
         
-            <h3><%= i %>. <%= link_to goal.title, goal_path(goal) %> at <%= goal.project.address %></h3><br>
+                <h3><%= i %>. <%= link_to goal.title, goal_path(goal) %> at <%= goal.project.address %></h3><br>
 
                 <% if goal.images.any? %>
 
@@ -30,10 +26,10 @@
                     <button><%= link_to "Add an After Image to Celebrate!", goal_images_path(goal) %></button>
 
                 <% end %>
-                </div>
-                </div>
-                </div>
-                </div>
+            </div>
+        </div>
+    </div>
+</div>
     <% end %>
 
 

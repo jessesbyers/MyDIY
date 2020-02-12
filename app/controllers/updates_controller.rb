@@ -24,7 +24,6 @@ class UpdatesController < ApplicationController
     end
 
     def destroy
-        # block_access_if_not_primary_owner
         @update = Update.find(params[:id])
         @update.destroy
         redirect_to goal_updates_path(@goal)

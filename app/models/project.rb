@@ -12,7 +12,6 @@ class Project < ApplicationRecord
     validates :address, presence: true, uniqueness: true
     validates :overview, presence: true
 
-    # call on a user.projects, 
     # returns the array of projects in which user is any role except view_only
     def self.primary_or_owner_or_update
         joins(:collaborations).where.not('collaborations.role = ?', "View Only").uniq
@@ -21,7 +20,6 @@ class Project < ApplicationRecord
     # returns array of projects in which the (current) user is a Collaborator in any role
     def self.collaborator_of_any_kind
         joins(:collaborations).uniq
-        # project_user_is_primary_or_owner_or_update(user) + project_user_is_viewonly(user)
     end
 
     # returns array of projects in which the (current) user is a Primary Project Owner
@@ -48,5 +46,4 @@ class Project < ApplicationRecord
     def self.primary_or_owner 
         primary_owner + owner
     end
-
 end
