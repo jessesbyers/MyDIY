@@ -1,0 +1,6 @@
+<% if current_user.projects.primary_owner.include?(object.project) %>
+        <%= form_with(url: "#{model}_path(object)", method: 'delete') do |f| %>
+        <%= f.hidden_field :project_id, :value => params[:project_id] %>
+        <%= f.submit "Delete #{model.capitalize}" %>
+        <% end %>
+<% end %>

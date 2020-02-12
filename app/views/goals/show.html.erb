@@ -4,16 +4,12 @@
 Description: <%= @goal.description %><br>
 Estimated Budget: $<%= @goal.budget %><br>
 Status: <%= @goal.status %><br>
+
 <% if current_user.projects.primary_or_owner_or_update.include?(@goal.project) %>
         <button><%= link_to "Edit Goal Details", edit_goal_path(@goal) %></button><br>
 <% end %>
 
-<% if current_user.projects.primary_owner.include?(@goal.project) %>
-        <%= form_with(url: goal_path(@goal), method: 'delete') do |f| %>
-        <%= f.hidden_field :project_id, :value => params[:project_id] %>
-        <%= f.submit "Delete Goal" %>
-        <% end %>
-<% end %>
+<%= render partial: "layouts/delete", locals: {object: @goal, model: "goal"} %>
 
 
 <h3>Latest Update</h3>
