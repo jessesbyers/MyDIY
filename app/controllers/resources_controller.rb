@@ -43,14 +43,14 @@ class ResourcesController < ApplicationController
 
     def block_access_if_view_only
         if current_user.projects.view_only.include?(@goal.project)
-            redirect_to root_path, alert: "You do not have permission to create a goal."
+            redirect_to root_path, alert: "You do not have permission to create a resource."
             return
         end
     end
 
     def block_access_if_not_primary_owner
         if !current_user.projects.primary_owner.include?(@goal.project)
-            redirect_to root_path, alert: "You may only delete a goal if you are the Primary Project Owner."
+            redirect_to root_path, alert: "You may only delete a resource if you are the Primary Project Owner."
             return
         end
     end
