@@ -5,21 +5,13 @@ Description: <%= @goal.description %><br>
 Estimated Budget: $<%= @goal.budget %><br>
 Status: <%= @goal.status %><br>
 
-<h3>Latest Image</h3>
+<%= render "view_latest_activity", {:string => "image"} %><br>
 <%= view_latest_image %><br>
-<button><%= add_image %></button>
-<button><%= view_all_images %></button>
-
-<h3>Latest Update</h3>
-<%= view_latest_update %>
-<button><%= add_update %></button>
-<button><%= view_all_updates %></button>
-
-<h3>Latest Resource</h3>
-<h6><%= view_latest_resource_link %></h6>
-<button><%= add_resource %></button>
-<button><%= view_all_resources %></button><br>
 
 
+<%= render "view_latest_activity", {:string => "update"} %><br>
+<%= view_latest_update %><br>
 
 
+<%= render "view_latest_activity", {:string => "resource"} %><br>
+<h6><%= view_latest_resource_link %></h6><br>
