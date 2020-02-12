@@ -20,7 +20,6 @@ X    Include at least two has_many through relationships (x has_many y through z
             # User has many Projects through Collaborations,  
             # Project has many Images through Goals
 
-
 X    Include at least one many-to-many relationship (x has_many y through z, y has_many x through z; e.g.               Recipe has_many Items through Ingredients, Item has_many Recipes through Ingredients)
         #  User has many Projects through Collaborations, and Projects have many Users through Collaborations
 
@@ -84,11 +83,13 @@ X    Include nested resource "new" form (URL e.g. recipes/1/ingredients/new)
             # Example: /goals/8/images/new
 
 X    Include form display of validation errors (form URL e.g. /recipes/new)
-        # Validation errors displayed on all new and edit forms except login form, which includes a flash message if user does not exist.
+        # Validation errors displayed on all new and edit forms except login form, which instead includes a flash message if user does not exist or can not authenticate.
 
 Confirm:
 
- The application is pretty DRY
- Limited logic in controllers
- Views use helper methods if appropriate
- Views use partials if appropriate
+ X      The application is pretty DRY
+ X      Limited logic in controllers
+ X      Views use helper methods if appropriate
+                # See goals show page
+ X      Views use partials if appropriate
+                # See new and edit forms

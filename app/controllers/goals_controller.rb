@@ -34,7 +34,6 @@ class GoalsController < ApplicationController
     end
 
     def destroy
-        # block_access_if_not_primary_owner
         @goal.destroy
         redirect_to project_path(@goal.project)
         return
