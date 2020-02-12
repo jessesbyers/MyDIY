@@ -1,7 +1,7 @@
 class GoalsController < ApplicationController
      before_action :login_required
      before_action :set_goal, only: [:show, :edit, :update, :destroy]
-     before_action :block_access_if_not_primary_or_owner, only: [:new, :edit]
+     before_action :block_access_if_not_primary_or_owner, only: [:edit]
 
 
     def show
@@ -34,9 +34,10 @@ class GoalsController < ApplicationController
     end
 
     def destroy
-        block_access_if_not_primary_owner
+        # block_access_if_not_primary_owner
         @goal.destroy
         redirect_to project_path(@goal.project)
+        return
     end
 
     def completed
@@ -54,6 +55,7 @@ class GoalsController < ApplicationController
     end
 
     def block_access_if_not_primary_or_owner
+        binding.pry
         if !current_user.projects.primary_or_owner.include?(@goal)
             redirect_to root_path, alert: "You may only create a goal if you are a Project Owner."
             return

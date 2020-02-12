@@ -1,0 +1,6 @@
+<% if current_user.projects.primary_owner.include?(@project) %>
+<button><%= link_to "Edit Project Details", edit_project_path %></button>  <button><%= link_to "Add a New Goal", new_goal_path %></button>  <button><%= link_to "Add a New Collaborator", new_collaboration_path %></button>
+<% end %>
+<% if current_user.projects.owner.include?(@project) %>
+<button><%= link_to "Add a New Goal", new_goal_path %></button>  
+<% end %>

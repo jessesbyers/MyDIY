@@ -39,7 +39,7 @@ class ProjectsController < ApplicationController
     end
 
     def destroy
-        block_access_if_not_primary_owner
+        # block_access_if_not_primary_owner
         @project.destroy
         redirect_to projects_path
     end
