@@ -1,6 +1,6 @@
 class CollaborationsController < ApplicationController
     before_action :login_required
-    before_action :block_access_if_not_primary_owner, only: [:new, :create, :edit, :update, :destroy]
+    before_action :block_access_if_not_primary_owner, only: [:new, :edit, :update, :destroy]
     before_action :set_collaboration, only: [:edit, :update, :destroy]
 
     def new

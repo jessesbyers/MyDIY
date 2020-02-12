@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
 
 
     def new
-        @users = User.all
+        # @users = User.all
         @project = Project.new
         @project.goals.build
     end
