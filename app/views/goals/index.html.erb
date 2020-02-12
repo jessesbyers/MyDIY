@@ -4,7 +4,7 @@
     <h3> Completed </h3>
     <ul>
     <% @goals.completed.each do |goal| %>
-        <li><%= link_to goal.title, goal_path(goal) %> at <%= goal.project.address %></li>
+        <%= render "goal_details", {goal: goal} %>
     <% end %>
     </ul>
 <% end %>
@@ -13,7 +13,7 @@
     <h3> In Progress </h3>
     <ul>
     <% @goals.in_progress.each do |goal| %>
-        <li><%= link_to goal.title, goal_path(goal) %> at <%= goal.project.address %></li>
+        <%= render "goal_details", {goal: goal} %>
     <% end %>
     </ul>
 <% end %>
@@ -22,7 +22,7 @@
     <h3> Not Started </h3>
     <ul>
     <% @goals.not_started.each do |goal| %>
-        <li><%= link_to goal.title, goal_path(goal) %> at <%= goal.project.address %></li>
+        <%= render "goal_details", {goal: goal} %>
     <% end %>
     </ul>
 <% end %>

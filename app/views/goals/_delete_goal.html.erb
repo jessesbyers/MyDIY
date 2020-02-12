@@ -1,5 +1,3 @@
-
-
 <%= form_with(url: goal_path(@goal), method: 'delete') do |f| %>
 <%= f.hidden_field :project_id, :value => params[:project_id] %>
 <%= f.submit "Delete Goal" %>
