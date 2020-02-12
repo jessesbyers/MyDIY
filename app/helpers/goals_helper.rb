@@ -2,7 +2,7 @@ module GoalsHelper
 
     def add_(object, goal)
         if current_user.projects.primary_or_owner_or_update.include?(goal.project)
-            link_to "Add an #{object.capitalize} for this Goal", "/goals/#{goal.id}/#{object}s/new"
+            link_to "Add #{object.capitalize} for this Goal", "/goals/#{goal.id}/#{object}s/new"
         end
     end
 

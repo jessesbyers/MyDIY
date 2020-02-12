@@ -15,5 +15,4 @@ class Goal < ApplicationRecord
     scope :incomplete, -> { where(status: 'Incomplete') }
     scope :not_started, -> { where(status: 'Not Started') }
 
-
 end

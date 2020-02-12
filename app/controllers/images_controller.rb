@@ -27,7 +27,6 @@ class ImagesController < ApplicationController
     end
 
     def destroy
-        block_access_if_not_primary_owner
         @image = Image.find(params[:id])
         @image.destroy
         redirect_to goal_images_path(@goal)

@@ -24,7 +24,7 @@ class ResourcesController < ApplicationController
     end
 
     def destroy
-        block_access_if_not_primary_owner
+        # block_access_if_not_primary_owner
         @resource = Resource.find(params[:id])
         @resource.destroy
         redirect_to goal_resources_path(@goal)

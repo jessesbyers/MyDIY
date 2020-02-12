@@ -1,6 +1,9 @@
 <h1> Gallery for <%= link_to @goal.title, goal_path(@goal) %> </h1>
 <h3><%= link_to @goal.project.address, project_path(@goal.project) %></h3>
-<button><%= link_to "Add an Image for this Goal", new_goal_image_path(@goal) %></button>
+
+<% if current_user.projects.primary_or_owner_or_update.include?(@goal.project) %>
+    <button><%= link_to "Add an Image for this Goal", new_goal_image_path(@goal) %></button>
+    <% end %>
 <br>
 
 <% @images.each do |image| %>
@@ -8,10 +11,13 @@
         <img src="<%= image.url %>" alt="<%= image.caption %>"><br>
         <h5><%= image.genre %>: <%= image.caption %></h5>
 
+
+    <% if current_user.projects.primary_or_owner_or_update.include?(@goal.project) %>
         <%= form_with(url: image_path(image), method: 'delete') do |f| %>
             <%= f.hidden_field :goal_id, :value => params[:goal_id] %>
             <%= f.submit "Delete Image" %>
           <% end %>
           <br>
+          <% end %>
     </div>
 <% end %>
