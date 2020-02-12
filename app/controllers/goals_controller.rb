@@ -55,9 +55,8 @@ class GoalsController < ApplicationController
     end
 
     def block_access_if_not_primary_or_owner
-        binding.pry
-        if !current_user.projects.primary_or_owner.include?(@goal)
-            redirect_to root_path, alert: "You may only create a goal if you are a Project Owner."
+        if !current_user.projects.primary_or_owner.include?(@goal.project)
+            redirect_to root_path, alert: "You may only create or edit a goal if you are a Project Owner."
             return
         end
     end

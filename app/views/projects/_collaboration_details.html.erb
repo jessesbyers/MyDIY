@@ -3,7 +3,6 @@
         <div class="card-body">                   
             <%= collaboration.user.username %> - <%= collaboration.role %>
 
-
             <% if current_user.projects.primary_owner.include?(@project) %>
                 <button><%= link_to "Edit Collaboration Details", edit_collaboration_path(collaboration) %></button>
 
