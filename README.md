@@ -1,24 +1,3 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+MyDIY is a collaborative project planning and blogging app for Do-It-Yourself-ers, House-Flippers, and Property Managers. Each User can work on mulitple projects and collaborate in different ways with other users. Users can create project goals, updates, resouces, and post images as the work is being done. 
