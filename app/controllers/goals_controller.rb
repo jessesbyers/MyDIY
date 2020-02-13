@@ -21,7 +21,12 @@ class GoalsController < ApplicationController
     end
 
     def index
-        @goals = current_user.goals.order("project_id")
+        if params[:title]
+            title = params[:title]
+            @goals = Goal.search_name(title)
+        else
+            @goals = current_user.goals.order("project_id")
+        end
     end
 
     def edit
