@@ -18,6 +18,7 @@ class CollaborationsController < ApplicationController
     end
 
     def edit
+        @users = User.all_except(current_user)
     end
 
     def update

@@ -6,7 +6,6 @@
 <% end %>
 
 
-
 <ul>
 <% @goal.updates.reverse.each do |update| %>
     <li> <%= update.user.username %> - <%= update.human_readable_date %> - <%= update.content %></li>
@@ -19,7 +18,4 @@
       <% end %>
     <% end %>
     <% end %>
-
-
-
 </ul>
