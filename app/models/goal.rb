@@ -16,4 +16,10 @@ class Goal < ApplicationRecord
     scope :incomplete, -> { where(status: 'Incomplete') }
     scope :not_started, -> { where(status: 'Not Started') }
 
+    # scope :search_name, -> { where(title: 'params[]')}
+
+    def self.search_name(params)
+        where('title = ?', "#{params}")
+    end
+
 end

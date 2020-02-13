@@ -1,5 +1,10 @@
 <h1>My Goals</h1>
 
+<%= form_tag(goals_path, method: :get) do %>
+    <%= text_field_tag :title %>
+    <%= submit_tag "Search for Goal Title" %>
+<% end %>
+
 <% if @goals.completed.any? %>
     <h3> Completed </h3>
     <ul>

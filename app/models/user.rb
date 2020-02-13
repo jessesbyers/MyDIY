@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
     has_many :collaborations
     has_many :projects, through: :collaborations
-    has_many :goals, through: :projects, source: :goals
+    has_many :goals, through: :projects
 
     has_many :resources
     has_many :images
