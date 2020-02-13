@@ -11,6 +11,7 @@ class Goal < ApplicationRecord
     STATUS_OPTIONS = ["Not Started", "Incomplete", "Completed"]
     validates :status, presence: true, inclusion: STATUS_OPTIONS
 
+    # Scope methods called in Goals index view to sort goals by completion status.
     scope :completed, -> { where(status: 'Completed') }
     scope :incomplete, -> { where(status: 'Incomplete') }
     scope :not_started, -> { where(status: 'Not Started') }

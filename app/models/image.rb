@@ -7,5 +7,6 @@ class Image < ApplicationRecord
     validates :genre, presence: true, inclusion: GENRE_OPTIONS
     validates :caption, presence: true
 
+    # Scope method called in Goals completed view to display only the After Photo for each completed goal.
     scope :after, -> { where(genre: 'After Photo') }
 end

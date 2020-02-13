@@ -14,6 +14,7 @@ class User < ApplicationRecord
     has_many :images
     has_many :updates
 
+    # Method used to filter current user from list of all users in dropdown menu for creating/editing collaborations.
     def self.all_except(user)
         where.not(id: user)
     end

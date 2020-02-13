@@ -8,7 +8,7 @@
                     <%= f.hidden_field :id %>
 
                     Choose a <%= f.label :user_id %>
-                    <%= f.collection_select :user_id, User.all_except(current_user), :id, :username, :prompt => true %><br>
+                    <%= f.collection_select :user_id, @users, :id, :username, :prompt => true %><br>
                   
                     Choose their <%= f.label :role %>
                     <%= f.select  :role, [["Project Owner", "Project Owner"], ["Update and View", "Update and View"], ["View Only", "View Only"]], :prompt => true %><br>
