@@ -6,7 +6,6 @@ class ProjectsController < ApplicationController
 
 
     def new
-        # @users = User.all
         @project = Project.new
         @project.goals.build
     end
@@ -39,7 +38,6 @@ class ProjectsController < ApplicationController
     end
 
     def destroy
-        # block_access_if_not_primary_owner
         @project.destroy
         redirect_to projects_path
     end
