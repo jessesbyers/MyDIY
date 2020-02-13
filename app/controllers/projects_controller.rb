@@ -1,8 +1,6 @@
 class ProjectsController < ApplicationController
     before_action :login_required 
     before_action :set_project, only: [:show, :edit, :update, :destroy]
-    # before_action :block_access_if_not_collaborator, only: [:show]
-    # before_action :block_access_if_not_primary_owner, only: [:edit, :destroy]
 
 
     def new
@@ -33,8 +31,11 @@ class ProjectsController < ApplicationController
     end
 
     def update
-        @project.update(project_params)
-        redirect_to project_path(@project)
+        if @project.update(project_params)
+            redirect_to project_path(@project)
+        else
+            render :edit
+        end
     end
 
     def destroy

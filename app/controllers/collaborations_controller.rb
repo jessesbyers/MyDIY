@@ -20,8 +20,11 @@ class CollaborationsController < ApplicationController
     end
 
     def update
-        @collaboration.update(collaboration_params)
-        redirect_to project_path(@collaboration.project)
+        if @collaboration.update(collaboration_params)
+            redirect_to project_path(@collaboration.project)
+        else
+            render :edit
+        end
     end
 
     def destroy
