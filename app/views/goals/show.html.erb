@@ -1,21 +1,39 @@
 <div class="row">
-    <div class="col">
+    <div class="col-sm-5">
+        <div class="card">
+            <div class="card-body">
 
-        <h1><%= @goal.title%></h1>
-        <h3><%= link_to @goal.project.address, project_path(@goal.project) %></h3>
+                <h1><%= @goal.title%></h1>
+                <h3><%= link_to @goal.project.address, project_path(@goal.project) %></h3>
 
-        Description: <%= @goal.description %><br>
+            </div>
+        </div>
+    </div>
 
-        <% if current_user.projects.primary_or_owner.include?(@goal.project) %>
-            Estimated Budget: $<%= @goal.budget %><br>
-        <% end %>
-        Status: <%= @goal.status %><br>
+    <div class="col-sm-7">
+        <div class="card">
+            <div class="card-body">
+                Description: <%= @goal.description %><br>
 
-        <%= edit_goal(@goal) %><%= delete_goal(@goal) %>
-                
+                <% if current_user.projects.primary_or_owner.include?(@goal.project) %>
+                    Estimated Budget: $<%= @goal.budget %><br>
+                <% end %>
+                Status: <%= @goal.status %><br>
+        
+                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                        <%= edit_goal(@goal) %>
+                    </div>
+
+                    <div class="btn-group mr-2" role="group" aria-label="Second group">
+                        <%= delete_goal(@goal) %>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
 </div>
-
 
 <div class="row">
     <div class="col-sm-6">
@@ -27,9 +45,12 @@
             <div class="card-body">
 
                 <%= render "view_latest_activity", {:string => "update", :goal => @goal} %>
-                <%= add_("update", @goal) %>
-                <%= view_latest_update %><br>
 
+                        <%= add_("update", @goal) %>
+
+                        <p class="card-text">
+                            <%= view_latest_update %>
+                        </p>
             </div>
         </div>
     </div>
@@ -44,15 +65,16 @@
 
                 <%= render "view_latest_activity", {:string => "resource", :goal => @goal} %>
                 <%= add_("resource", @goal) %>
-                <h6><%= view_latest_resource_link %></h6><br> 
 
+                <p class="card-text">
+                    <h6><%= view_latest_resource_link %></h6>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 <div class="row">
-    <div class="col">
+    <div class="col-sm">
         <div class="card">
             <div class="card-header">
                 <h3>Latest Image </h3>
@@ -61,8 +83,8 @@
             <div class="card-body">
 
                 <%= render "view_latest_activity", {:string => "image", :goal => @goal} %>
-                <%= add_("image", @goal) %><br>
-                <img class="mx-auto d-block" <%= view_latest_image %>
+                <%= add_("image", @goal) %>
+                <img class="mx-auto d-block img-fluid" <%= view_latest_image %>
 
             </div>
         </div>
