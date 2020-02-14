@@ -4,6 +4,20 @@
     display: table;
 }
 
+#error_explanation {
+    color: red;
+}
+
+.form-control.is-invalid {
+    border: 1px solid red;
+}
+
+.invalid-feedback {
+    color: red;
+}
+
+
+
 @media (min-width:768px) {
     .htop {
         min-height: 100%;
