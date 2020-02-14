@@ -4,11 +4,11 @@
             <%= collaboration.user.username %> - <%= collaboration.role %>
 
             <% if current_user.projects.primary_owner.include?(@project) %>
-                <button><%= link_to "Edit Collaboration Details", edit_collaboration_path(collaboration) %></button>
+                <button class = "btn btn-outline-primary" ><%= link_to "Edit Collaboration Details", edit_collaboration_path(collaboration) %></button>
 
                 <%= form_with(url: collaboration_path(collaboration), method: 'delete') do |f| %>
                     <%= f.hidden_field :project_id, :value => params[:project_id] %>
-                    <%= f.submit "Delete Collaboration" %><br>
+                    <%= f.submit "Delete Collaboration", :class => "btn btn-outline-danger" %><br>
                 <% end %>
 
             <% end %>

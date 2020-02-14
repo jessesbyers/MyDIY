@@ -8,7 +8,7 @@
         Estimated Budget: $<%= @goal.budget %><br>
         Status: <%= @goal.status %><br>
 
-        <button><%= edit_goal(@goal) %></button>  <%= delete_goal(@goal) %>
+        <%= edit_goal(@goal) %><%= delete_goal(@goal) %>
                 
     </div>
 </div>
@@ -24,7 +24,7 @@
             <div class="card-body">
 
                 <%= render "view_latest_activity", {:string => "update", :goal => @goal} %>
-                <button><%= add_("update", @goal) %></button>
+                <%= add_("update", @goal) %>
                 <%= view_latest_update %><br>
 
             </div>
@@ -40,7 +40,7 @@
             <div class="card-body">
 
                 <%= render "view_latest_activity", {:string => "resource", :goal => @goal} %>
-                <button><%= add_("resource", @goal) %></button>
+                <%= add_("resource", @goal) %>
                 <h6><%= view_latest_resource_link %></h6><br> 
 
             </div>
@@ -58,7 +58,7 @@
             <div class="card-body">
 
                 <%= render "view_latest_activity", {:string => "image", :goal => @goal} %>
-                <button class="btn btn-outline-primary"><%= add_("image", @goal) %></button><br>
+                <%= add_("image", @goal) %><br>
                 <img class="mx-auto d-block" <%= view_latest_image %>
 
             </div>

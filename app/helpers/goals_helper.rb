@@ -4,20 +4,20 @@ module GoalsHelper
     # They are called in the _view_latest_activity partial, which is called in the goals show view.
     def add_(object, goal)
         if current_user.projects.primary_or_owner_or_update.include?(goal.project)
-            link_to "Add #{object.capitalize} for this Goal", "/goals/#{goal.id}/#{object}s/new"
+            link_to "Add #{object.capitalize} for this Goal", "/goals/#{goal.id}/#{object}s/new", :class => "btn btn-outline-primary"
         end
     end
 
     def view_all_(object, goal)
         if "@goal.#{object}s.any?"
-            link_to "View All #{object.capitalize}s for this Goal", "/goals/#{goal.id}/#{object}s"
+            link_to "View All #{object.capitalize}s for this Goal", "/goals/#{goal.id}/#{object}s", :class => "btn btn-outline-primary"
         end
     end
 
     # The two methods below are called in the goals show view to create buttons based on user privileges.
     def edit_goal(goal)
         if current_user.projects.primary_or_owner_or_update.include?(goal.project)
-            link_to "Edit Goal Details", "/goals/#{goal.id}/edit" 
+            link_to "Edit Goal Details", "/goals/#{goal.id}/edit", :class => "btn btn-outline-primary"
         end
     end
 

@@ -10,7 +10,7 @@
                 <h6>Warning: Deleting this project will delete all goals, images, updates, and resources associated with this project</h6>
                     
                 <%= form_with(url: project_path(@project), method: 'delete') do |f| %>
-                        <%= f.submit "Delete Project" %>
+                        <%= f.submit "Delete Project", :class => "btn btn-outline-danger" %>
                     
                         <% end %>
                 <% end %>
