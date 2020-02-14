@@ -19,7 +19,8 @@
         <div class="card">
             <div class="card-body">
 
-                <%= render "view_latest_activity", {:string => "update", :goal => @goal} %><br>
+                <%= render "view_latest_activity", {:string => "update", :goal => @goal} %>
+                <button><%= add_("update", @goal) %></button>
                 <%= view_latest_update %><br>
 
             </div>
@@ -30,7 +31,8 @@
         <div class="card">
             <div class="card-body">
 
-                <%= render "view_latest_activity", {:string => "resource", :goal => @goal} %><br>
+                <%= render "view_latest_activity", {:string => "resource", :goal => @goal} %>
+                <button><%= add_("resource", @goal) %></button>
                 <h6><%= view_latest_resource_link %></h6><br> 
 
             </div>
@@ -43,7 +45,8 @@
         <div class="card">
             <div class="card-body">
 
-                <%= render "view_latest_activity", {:string => "image", :goal => @goal} %><br>
+                <%= render "view_latest_activity", {:string => "image", :goal => @goal} %>
+                <button><%= add_("image", @goal) %></button>
                 <%= view_latest_image %><br>
 
             </div>
