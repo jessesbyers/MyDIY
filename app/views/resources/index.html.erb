@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-sm">
         <div class="card">
-            <div class="card-body">
+            <div class="card">
 
                 <h1> Resources for <%= link_to @goal.title, goal_path(@goal) %> </h1>
                 <h3><%= link_to @goal.project.address, project_path(@goal.project) %></h3>
@@ -18,7 +18,7 @@
 <% @goal.resources.reverse.each do |resource| %>
     <div class="col-sm-4">
         <div class="card">
-            <div class="card-body">
+            <div class="card-header">
 
                 <%= link_to "Link", resource.url, :target => "_blank" %>: <%= resource.description %>
 
@@ -28,7 +28,7 @@
                         <%= f.submit "Delete Resource", :class => "btn btn-outline-danger" %>
                     <% end %>
                 <% end %>
-                
+
             </div>
         </div>
     </div>
