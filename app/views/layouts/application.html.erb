@@ -24,15 +24,10 @@
           <% if logged_in? %>
             <div id='minimenu' class='collapse navbar-toggleable-xs'>
               <ul class='nav navbar-nav float-right'>
-                <li class='nav-item'><a class='nav-link' <%= link_to "#{current_user.username}'s Project Dashboard", root_path %></a></li>
-                <li class='nav-item'><a class='nav-link' <%= link_to "All Goals", goals_path %></a></li>
-                <li class='nav-item'><a class='nav-link' <%= link_to "Completed Goals", completed_path %></a></li>
-
-
-                <li class='nav-item'>
-                  <%= form_with(url: '/logout', method: 'delete') do |f| %>
-                    <%= f.submit "Logout", :class => "btn btn-dark" %>
-                  <% end %></li>
+                <li class='nav-item'><%= button_to "#{current_user.username}'s Project Dashboard", root_path, method: "get", :class => "btn btn-outline-secondary" %></li>
+                <li class='nav-item'><%= button_to "All Goals", goals_path, method: "get", :class => "btn btn-outline-secondary" %></li>
+                <li class='nav-item'><%= button_to "Completed Goals", completed_path, method: "get", :class => "btn btn-outline-secondary" %></li>
+                <li class='nav-item'><%= button_to "Logout", logout_path, method: "delete", :class => "btn btn-outline-secondary" %></li>
               </ul>
             </div>
 

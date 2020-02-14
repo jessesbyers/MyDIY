@@ -28,7 +28,8 @@
                 
                 <% else %>
 
-                    <button class="btn btn-outline-primary" ><%= link_to "Add an After Image to Celebrate!", goal_images_path(goal) %></button>
+                    <%= button_to "Add an After Image to Celebrate!", new_goal_image_path(goal), method: "get", :class => "btn btn-outline-primary" %>
+
 
                 <% end %>
             </div>
