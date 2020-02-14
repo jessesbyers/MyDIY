@@ -1,15 +1,20 @@
 <div class="row">
-    <div class="col"> 
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
 
-        <h1> Gallery for <%= link_to @goal.title, goal_path(@goal) %> </h1>
-        <h3><%= link_to @goal.project.address, project_path(@goal.project) %></h3>
+                <h1> Gallery for <%= link_to @goal.title, goal_path(@goal) %> </h1>
+                <h3><%= link_to @goal.project.address, project_path(@goal.project) %></h3>
 
-        <% if current_user.projects.primary_or_owner_or_update.include?(@goal.project) %>
-            <%= button_to "Add an Image for this Goal", new_goal_image_path(@goal), method: "get", :class => "btn btn-outline-primary" %>
-        <% end %>
+                <% if current_user.projects.primary_or_owner_or_update.include?(@goal.project) %>
+                    <%= button_to "Add an Image for this Goal", new_goal_image_path(@goal), method: "get", :class => "btn btn-outline-primary" %>
+                <% end %>
+                 
+            </div>
+        </div>               
     </div>
 </div>
-<br>
+
 
 <% @images.each do |image| %>
     <div class="row">
@@ -17,13 +22,12 @@
             <div class="card" >
             
                 <div class="card-header">
-                    <h5><%= image.genre %>: <%= image.caption %></h5>
+                    <h4><%= image.genre %>: <%= image.caption %></h4>
                 </div>
 
                 <div class="card-body">
 
-                    <img class="mx-auto d-block" src="<%= image.url %>" alt="<%= image.caption %>"><br>
-
+                    <img class="mx-auto d-block img-fluid" src="<%= image.url %>" alt="<%= image.caption %>"><br>
 
                     <% if current_user.projects.primary_or_owner_or_update.include?(@goal.project) %>
                         <%= form_with(url: image_path(image), method: 'delete') do |f| %>
