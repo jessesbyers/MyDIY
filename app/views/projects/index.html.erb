@@ -1,5 +1,5 @@
     <h1><%= current_user.username %>'s Projects and Collaborations</h1>
-    <button><%= link_to "Create A New Project", new_project_path %></button><br>
+    <button class = "btn btn-outline-primary" ><%= link_to "Create A New Project", new_project_path %></button><br>
 
     <% if current_user.projects.primary_or_owner.any? %>
 
