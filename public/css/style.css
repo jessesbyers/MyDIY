@@ -2,9 +2,9 @@
     padding: 2px;
     background-color: red;
     display: table;
-  }
+}
 
-  @media (min-width:768px) {
+@media (min-width:768px) {
     .htop {
         min-height: 100%;
     }
@@ -20,7 +20,7 @@ body {
 }
 
 .content {
-    margin-bottom: 20px;
+    margin-bottom: 60px;
 }
 
 #mainNav {
@@ -59,11 +59,10 @@ body {
 .footer {
     height: auto;
     padding: 20px;
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
 .card, .card-body {
     padding: 1em;
-
 }
 
