@@ -1,8 +1,11 @@
 <div class="row">
     <div class="col"> 
- 
-        <h1> Gallery of Completed Goals </h1>
+        <div class="card" >
+            <div class="card-body">
 
+                <h1> Gallery of Completed Goals </h1>
+            </div>
+        </div> 
     </div>
 </div>
 
@@ -23,7 +26,7 @@
                     <% goal.images.after.each do |image| %>
                         <h5 class="card-title text-center" ><%= image.genre %>: <%= image.caption %></h5>
 
-                        <img class="mx-auto d-block" src="<%=image.url%>" alt="<%=image.caption%>"></br>
+                        <img class="mx-auto d-block img-fluid"" src="<%=image.url%>" alt="<%=image.caption%>"></br>
                     <% end %>
                 
                 <% else %>
