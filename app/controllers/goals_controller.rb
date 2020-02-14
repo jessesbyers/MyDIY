@@ -23,7 +23,7 @@ class GoalsController < ApplicationController
     def index
         if params[:title]
             title = params[:title]
-            @goals = Goal.search_name(title)
+            @goals = current_user.goals.search_name(title)
         else
             @goals = current_user.goals.order("project_id")
         end
