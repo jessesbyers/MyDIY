@@ -1,24 +1,15 @@
-<%= form_for(@goal) do |f| %>
+<%= bootstrap_form_for(@goal) do |f| %>
     <%= f.hidden_field :id %>
 
-    Choose a <%= f.label :project_id %>
-    <%= f.collection_select :project_id, current_user.projects.primary_or_owner, :id, :address, :prompt => true %><br>
+    <%= f.collection_select :project_id, current_user.projects.primary_or_owner, :id, :address, :prompt => true %>
 
-    <%= f.label :title %>
     <%= f.text_field :title %>
-    <br>
 
-    <%= f.label :description %>
     <%= f.text_field :description %>
-    <br>
 
-    <%= f.label :budget %>
     <%= f.number_field :budget %>
-    <br>
 
-    <%= f.label :status %>
     <%= f.select :status, [["Not Started", "Not Started"], ["Incomplete", "Incomplete"], ["Completed", "Completed"]] %>
-    <br>
 
     <%= f.submit nil, class: 'btn btn-secondary' %>
 <% end %>

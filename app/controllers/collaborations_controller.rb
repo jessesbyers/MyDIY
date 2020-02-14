@@ -5,7 +5,6 @@ class CollaborationsController < ApplicationController
 
     def new
         @collaboration = Collaboration.new
-        @users = User.all_except(current_user)
     end
 
     def create
@@ -18,7 +17,6 @@ class CollaborationsController < ApplicationController
     end
 
     def edit
-        @users = User.all_except(current_user)
     end
 
     def update
