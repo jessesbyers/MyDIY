@@ -3,15 +3,23 @@
         <div class="card-body">                   
             <%= collaboration.user.username %> - <%= collaboration.role %><br>
 
-            <% if current_user.projects.primary_owner.include?(@project) %>
-                <%= button_to "Edit Collaboration Details", edit_collaboration_path(collaboration), method: "get", :class => "btn btn-outline-primary"  %>
+            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
 
-                <%= form_with(url: collaboration_path(collaboration), method: 'delete') do |f| %>
-                    <%= f.hidden_field :project_id, :value => params[:project_id] %>
-                    <%= f.submit "Delete Collaboration", :class => "btn btn-outline-danger" %><br>
+                <% if current_user.projects.primary_owner.include?(@project) %>
+                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                        <%= button_to "Edit Collaboration Details", edit_collaboration_path(collaboration), method: "get", :class => "btn btn-outline-primary"  %>
+                    </div>
+                    
+                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                        <%= form_with(url: collaboration_path(collaboration), method: 'delete') do |f| %>
+                            <%= f.hidden_field :project_id, :value => params[:project_id] %>
+                            <%= f.submit "Delete Collaboration", :class => "btn btn-outline-danger" %><br>
+                        <% end %>
+                    </div>
+
                 <% end %>
 
-            <% end %>
+            </div>
 
         </div>
     </div>
