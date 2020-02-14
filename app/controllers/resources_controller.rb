@@ -13,7 +13,7 @@ class ResourcesController < ApplicationController
         @resource = @goal.resources.build(resource_params)
         @resource.user_id = current_user.id
         if @resource.save
-            redirect_to goal_path(@goal)
+            redirect_to goal_resources_path(@goal)
         else
             render :new
         end

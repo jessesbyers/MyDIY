@@ -13,7 +13,7 @@ class UpdatesController < ApplicationController
         @update.user_id = current_user.id
         @update.date = Time.now
         if @update.save
-            redirect_to goal_path(@goal)
+            redirect_to goal_updates_path(@goal)
         else
             render :new
         end
