@@ -16,7 +16,7 @@
                     Choose a <%= f.label :project_id %> to Collaborate on
                     <%= f.collection_select :project_id, current_user.projects.primary_owner, :id, :address, :prompt => true %><br>
                   
-                    <%= f.submit %>
+                    <%= f.submit nil, class: 'btn btn-secondary' %>
                 <% end %>
             </div>
         </div>

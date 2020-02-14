@@ -15,5 +15,5 @@
     <%= f.label :genre %>
     <%= f.select  :genre, [["Inspiration", "Inspiration"], ["Design Plans", "Design Plans"], ["Before Photo", "Before Photo"], ["After Photo", "After Photo"], ["Work In Progress", "Work In Progress"]], :prompt => true %><br>
 
-    <%= f.submit %>
+    <%= f.submit nil, class: 'btn btn-secondary' %>
 <% end %>

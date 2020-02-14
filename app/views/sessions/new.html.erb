@@ -3,5 +3,6 @@
 <%= form_tag(sessions_path) do %>
     Username: <%= text_field_tag :username %><br>
     Password: <%= password_field_tag :password %><br>
-    <%= submit_tag value= "Log In" %>
+    <%= submit_tag value= "Log In", class: 'btn btn-secondary' %>
 <% end %>
+ 
