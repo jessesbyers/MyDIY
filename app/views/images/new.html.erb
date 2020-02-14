@@ -3,17 +3,14 @@
 
 <%= render partial: "layouts/errors", locals: {object: @image} %>
 
-<%= form_for(@image, url: goal_images_path) do |f| %>
+<%= bootstrap_form_for(@image, url: goal_images_path) do |f| %>
     <%= f.hidden_field :id %>
 
-    <%= f.label :url %>
-    <%= f.url_field :url %><br>
+    <%= f.url_field :url %>
 
-    <%= f.label :caption %>
-    <%= f.text_area :caption %><br>
+    <%= f.text_area :caption %>
 
-    <%= f.label :genre %>
-    <%= f.select  :genre, [["Inspiration", "Inspiration"], ["Design Plans", "Design Plans"], ["Before Photo", "Before Photo"], ["After Photo", "After Photo"], ["Work In Progress", "Work In Progress"]], :prompt => true %><br>
+    <%= f.select  :genre, [["Inspiration", "Inspiration"], ["Design Plans", "Design Plans"], ["Before Photo", "Before Photo"], ["After Photo", "After Photo"], ["Work In Progress", "Work In Progress"]], :prompt => true %>
 
     <%= f.submit nil, class: 'btn btn-secondary' %>
 <% end %>
