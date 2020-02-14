@@ -5,6 +5,9 @@
 
 
                 <h1>Project Details: <%= @project.address %></h1>
+                <h4><%= @project.overview %></h4>
+
+                <%= render "project_options" %>
                 
             </div>
         </div>
@@ -12,49 +15,36 @@
 </div>
 
 <div class="row">
-    <div class="col-sm-8">
-        <div class="card">
-            <div class="card-body">
-                <h4><%= @project.overview %></h4>
+    <div class="col-sm-6">  
 
-                <%= render "project_options" %>
+        <% @project.goals.each.with_index(1) do |goal, i| %>
 
-            </div>
-        </div>
- 
+                <div class="card">
+                    <div class="card-body">  
+                        <h4><%= link_to "Goal #{i}. #{goal.title}", goal_path(goal) %></h4>
+                    </div>
+                </div>
 
+        <% end %>
+
+    </div>
+
+    <div class="col-sm-6">
         <div class="card">
             <div class="card-body">
             <h5> Collaborators: </h5>
 
                 <% @project.collaborations.primary_owner.each do |collaboration| %>
-                    <div class="card">
-                        <div class="card-body">
+
                             <%= collaboration.user.username %> - <%= collaboration.role %><br>
-                        </div>
-                    </div>
-                <% end %>
+
+                        <% end %>
 
                 <%= render "collaboration_details" %>
 
             </div>
         </div>
-</div>    
-
-<div class="row">
-
-    <% @project.goals.each.with_index(1) do |goal, i| %>
-        <div class="col-sm-4">  
-        
-  
-            <div class="card">
-                <div class="card-body">  
-                    <h4><%= link_to "Goal #{i}. #{goal.title}", goal_path(goal) %></h4>
-                </div>
-            </div>
-        </div>
-    <% end %>
-</div>
+    </div>    
 </div>
 
 <%= render "delete_project" %>
