@@ -5,7 +5,10 @@
         <h3><%= link_to @goal.project.address, project_path(@goal.project) %></h3>
 
         Description: <%= @goal.description %><br>
-        Estimated Budget: $<%= @goal.budget %><br>
+
+        <% if current_user.projects.primary_or_owner.include?(@goal.project) %>
+            Estimated Budget: $<%= @goal.budget %><br>
+        <% end %>
         Status: <%= @goal.status %><br>
 
         <%= edit_goal(@goal) %><%= delete_goal(@goal) %>
