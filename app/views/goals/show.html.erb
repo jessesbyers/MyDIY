@@ -17,6 +17,10 @@
 <div class="row">
     <div class="col-sm-6">
         <div class="card">
+            <div class="card-header">
+                <h3>Latest Update </h3>
+            </div>
+
             <div class="card-body">
 
                 <%= render "view_latest_activity", {:string => "update", :goal => @goal} %>
@@ -29,6 +33,10 @@
 
     <div class="col-sm-6">
         <div class="card">
+            <div class="card-header">
+                <h3> Latest Resource </h3>
+            </div>
+
             <div class="card-body">
 
                 <%= render "view_latest_activity", {:string => "resource", :goal => @goal} %>
@@ -43,11 +51,15 @@
 <div class="row">
     <div class="col">
         <div class="card">
+            <div class="card-header">
+                <h3>Latest Image </h3>
+            </div>
+
             <div class="card-body">
 
                 <%= render "view_latest_activity", {:string => "image", :goal => @goal} %>
-                <button><%= add_("image", @goal) %></button>
-                <%= view_latest_image %><br>
+                <button class="btn btn-outline-primary"><%= add_("image", @goal) %></button><br>
+                <img class="mx-auto d-block" <%= view_latest_image %>
 
             </div>
         </div>
