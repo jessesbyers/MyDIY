@@ -26,6 +26,8 @@ gem 'omniauth'
 gem 'dotenv-rails'
 gem 'omniauth-google-oauth2'
 
+gem "bootstrap_form", "~> 4.0"
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
