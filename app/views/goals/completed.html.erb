@@ -9,16 +9,21 @@
     <% @goals.each.with_index(1) do |goal, i| %>
 <div class="row">
     <div class="col">
-        <div class="card">
-            <div class="card-body">
+        <div class="card" >
         
-                <h3><%= i %>. <%= link_to goal.title, goal_path(goal) %> at <%= goal.project.address %></h3><br>
+            <div class="card-header">
+                <h3 class="text-center"><%= i %>. <%= link_to goal.title, goal_path(goal) %> at <%= goal.project.address %></h3>
+            </div>
+
+            <div class="card-body">
+
 
                 <% if goal.images.any? %>
 
                     <% goal.images.after.each do |image| %>
-                        <img src="<%=image.url%>" alt="<%=image.caption%>"><br>
-                        <h5><%= image.genre %>: <%= image.caption %></h5>
+                        <h5 class="card-title text-center" ><%= image.genre %>: <%= image.caption %></h5>
+
+                        <img class="mx-auto d-block" src="<%=image.url%>" alt="<%=image.caption%>"></br>
                     <% end %>
                 
                 <% else %>
