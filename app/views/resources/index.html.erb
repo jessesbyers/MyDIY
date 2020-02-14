@@ -6,7 +6,7 @@
         <h3><%= link_to @goal.project.address, project_path(@goal.project) %></h3>
 
         <% if current_user.projects.primary_or_owner_or_update.include?(@goal.project) %>
-            <button class="btn btn-outline-primary "><%= link_to "Add a Resource for this Goal", new_goal_resource_path(@goal) %> </button>
+            <%= button_to "Add a Resource for this Goal", new_goal_resource_path(@goal), method: "get", :class => "btn btn-outline-primary"  %>
         <% end %>
 
     </div>
