@@ -30,7 +30,7 @@ class GoalsController < ApplicationController
     end
 
     def edit
-        before_action :block_access_if_not_primary_or_owner
+        block_access_if_not_primary_or_owner
     end
 
     def update

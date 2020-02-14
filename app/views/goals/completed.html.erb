@@ -24,7 +24,7 @@
                 <% if goal.images.any? %>
 
                     <% goal.images.after.each do |image| %>
-                        <h5 class="card-title text-center" ><%= image.genre %>: <%= image.caption %></h5>
+                        <h5 class="card-title text-center" ><%= image.caption %></h5>
 
                         <img class="mx-auto d-block img-fluid"" src="<%=image.url%>" alt="<%=image.caption%>"></br>
                     <% end %>
