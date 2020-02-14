@@ -1,7 +1,7 @@
 <% @project.collaborations.not_primary_owner.each do |collaboration| %>
     <div class="card">
         <div class="card-body">                   
-            <%= collaboration.user.username %> - <%= collaboration.role %>
+            <%= collaboration.user.username %> - <%= collaboration.role %><br>
 
             <% if current_user.projects.primary_owner.include?(@project) %>
                 <button class = "btn btn-outline-primary" ><%= link_to "Edit Collaboration Details", edit_collaboration_path(collaboration) %></button>

@@ -2,7 +2,7 @@
 <h3><%= link_to @goal.project.address, project_path(@goal.project) %></h3>
 
 <% if current_user.projects.primary_or_owner_or_update.include?(@goal.project) %>
-    <button><%= link_to "Add an Update for this Goal", new_goal_update_path(@goal) %></button>
+    <button class="btn btn-outline-primary" ><%= link_to "Add an Update for this Goal", new_goal_update_path(@goal) %></button>
 <% end %>
 
 
@@ -14,7 +14,7 @@
     <% if current_user.projects.primary_or_owner_or_update.include?(@goal.project) %>
     <%= form_with(url: update_path(update), method: 'delete') do |f| %>
         <%= f.hidden_field :goal_id, :value => params[:goal_id] %>
-        <%= f.submit "Delete Update" %>
+        <%= f.submit "Delete Update", :class => "btn btn-outline-danger" %>
       <% end %>
     <% end %>
     <% end %>

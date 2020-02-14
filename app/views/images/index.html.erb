@@ -1,23 +1,37 @@
-<h1> Gallery for <%= link_to @goal.title, goal_path(@goal) %> </h1>
-<h3><%= link_to @goal.project.address, project_path(@goal.project) %></h3>
+<div class="row">
+    <div class="col"> 
 
-<% if current_user.projects.primary_or_owner_or_update.include?(@goal.project) %>
-    <button><%= link_to "Add an Image for this Goal", new_goal_image_path(@goal) %></button>
-    <% end %>
-<br>
+        <h1> Gallery for <%= link_to @goal.title, goal_path(@goal) %> </h1>
+        <h3><%= link_to @goal.project.address, project_path(@goal.project) %></h3>
+
+        <% if current_user.projects.primary_or_owner_or_update.include?(@goal.project) %>
+            <button class="btn btn-outline-primary" ><%= link_to "Add an Image for this Goal", new_goal_image_path(@goal) %></button>
+        <% end %>
+    </div>
+</div>
 
 <% @images.each do |image| %>
-    <div>
-        <img src="<%= image.url %>" alt="<%= image.caption %>"><br>
-        <h5><%= image.genre %>: <%= image.caption %></h5>
+    <div class="row">
+        <div class="col">
+            <div class="card" >
+            
+                <div class="card-header">
+                    <h5><%= image.genre %>: <%= image.caption %></h5>
+                </div>
+
+                <div class="card-body">
+
+                    <img class="mx-auto d-block" src="<%= image.url %>" alt="<%= image.caption %>"><br>
 
 
-    <% if current_user.projects.primary_or_owner_or_update.include?(@goal.project) %>
-        <%= form_with(url: image_path(image), method: 'delete') do |f| %>
-            <%= f.hidden_field :goal_id, :value => params[:goal_id] %>
-            <%= f.submit "Delete Image" %>
-          <% end %>
-          <br>
-          <% end %>
+                    <% if current_user.projects.primary_or_owner_or_update.include?(@goal.project) %>
+                        <%= form_with(url: image_path(image), method: 'delete') do |f| %>
+                            <%= f.hidden_field :goal_id, :value => params[:goal_id] %>
+                            <%= f.submit "Delete Image", :class => "btn btn-outline-danger" %>
+                        <% end %>
+                    <% end %>
+                </div>
+            </div>
+        </div>
     </div>
 <% end %>
