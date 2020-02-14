@@ -3,17 +3,14 @@
         <div class="card">
             <div class="card-body">
 
-                <%= form_for(@collaboration) do |f| %>
+                <%= bootstrap_form_for(@collaboration) do |f| %>
 
                     <%= f.hidden_field :id %>
 
-                    Choose a <%= f.label :user_id %>
                     <%= f.collection_select :user_id, @users, :id, :username, :prompt => true %><br>
                   
-                    Choose their <%= f.label :role %>
                     <%= f.select  :role, [["Project Owner", "Project Owner"], ["Update and View", "Update and View"], ["View Only", "View Only"]], :prompt => true %><br>
                       
-                    Choose a <%= f.label :project_id %> to Collaborate on
                     <%= f.collection_select :project_id, current_user.projects.primary_owner, :id, :address, :prompt => true %><br>
                   
                     <%= f.submit nil, class: 'btn btn-secondary' %>
