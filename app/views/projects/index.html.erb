@@ -1,33 +1,70 @@
-    <h1><%= current_user.username %>'s Projects and Collaborations</h1>
-    <%= button_to "Create A New Project", new_project_path, method: "get", :class => "btn btn-outline-primary" %><br>
+<div class="row">
+    <div class="col-sm">
+        <div class="card">
+            <div class="card-body">
 
-    <% if current_user.projects.primary_or_owner.any? %>
+                <h1><%= current_user.username %>'s Projects and Collaborations</h1>
+                <%= button_to "Create A New Project", new_project_path, method: "get", :class => "btn btn-outline-primary" %><br>
 
-        <h3> Projects I Own </h3>
-        <% current_user.projects.primary_or_owner.each do |p| %>
-            <ul>
-                <%= render "project_link", {p: p} %> 
-            </ul>
-        <% end %>
-    <% end %>
+            </div>
+        </div>
+    </div>
+</div>
 
+<div class="row">
+    <div class="col-sm-4">
+        <div class="card">
+            <% if current_user.projects.primary_or_owner.any? %>
 
-    <% if current_user.projects.update_and_view.any? %>
-        <h3> Projects I Can Update </h3>
-            <% current_user.projects.update_and_view.each do |p| %>
-                <ul>
-                <%= render "project_link", {p: p} %> 
-                </ul>
+            <h3> Projects I Own </h3>
+
+            <div class="card-body">
+
+                <% current_user.projects.primary_or_owner.each do |p| %>
+                    <ul>
+                        <%= render "project_link", {p: p} %> 
+                    </ul>
+                <% end %>
             <% end %>
-    <% end %>
+            </div>
+        </div>
+    </div>
 
 
-    <% if current_user.projects.view_only.any? %>
-        <h3> Projects I Can View </h3>
-            <% current_user.projects.view_only.each do |p| %>
-                <ul>
-                <%= render "project_link", {p: p} %> 
-                </ul>
+    <div class="col-sm-4">
+        <div class="card">
+
+            <% if current_user.projects.update_and_view.any? %>
+                <h3> Projects I Can Update </h3>
+
+                <div class="card-body">
+
+                    <% current_user.projects.update_and_view.each do |p| %>
+                        <ul>
+                        <%= render "project_link", {p: p} %> 
+                        </ul>
+                    <% end %>
             <% end %>
-    <% end %>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="card">
+
+            <% if current_user.projects.view_only.any? %>
+                <h3> Projects I Can View </h3>
+
+                <div class="card-body">
+
+                    <% current_user.projects.view_only.each do |p| %>
+                        <ul>
+                        <%= render "project_link", {p: p} %> 
+                        </ul>
+                    <% end %>
+            <% end %>
+            </div>
+        </div>
+    </div>
+</div>  
 
