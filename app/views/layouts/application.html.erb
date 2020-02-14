@@ -16,7 +16,7 @@
 
   <body>
     <nav id='mainNav' class='navbar navbar-full  navbar-dark bg-faded navbar-fixed-top'>
-    <h1 class="float-xs-right">My DIY</h1>
+    <h1 class="float-xs-right text-light">My DIY</h1>
 
         <button class='navbar-toggler hidden-sm-up light float-xs-top' type='button' data-toggle='collapse' data-target='#minimenu'></button>
 
@@ -33,10 +33,9 @@
           <% else %>
             <div id='minimenu' class='collapse navbar-toggleable-xs'>
               <ul class='nav navbar-nav float-right'>
-                <li class='nav-item'><a class='nav-link' <%= link_to "Sign Up", signup_path %></a></li>
-                <li class='nav-item'><a class='nav-link' <%= link_to "Log In", login_path %></a></li>
-                <li class='nav-item'><a class='nav-link' <%= link_to "Log In with Google", "/auth/google_oauth2" %></a></li>
-
+                <li class='nav-item'><%= button_to "Sign Up", signup_path, method: "get", :class => "btn btn-outline-secondary" %></li>
+                <li class='nav-item'><%= button_to "Log In", login_path, method: "get", :class => "btn btn-outline-secondary" %></li>
+                <li class='nav-item'><%= button_to "Log In with Google", "/auth/google_oauth2", method: "get", :class => "btn btn-outline-secondary" %></li>
               </ul>
             </div>
           <% end %>

@@ -34,7 +34,7 @@ body {
 }
 
 .content {
-    margin-bottom: 60px;
+    margin-bottom: 80px;
 }
 
 #mainNav {
@@ -78,5 +78,10 @@ body {
 
 .card, .card-body {
     padding: 1em;
+}
+
+h1.float-xs-right {
+    color:	#808080;
+    font-size: 3rem;
 }
 
