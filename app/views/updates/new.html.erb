@@ -3,10 +3,9 @@
 <%= render partial: "layouts/errors", locals: {object: @update} %>
 
 
-<%= form_for(@update, url: goal_updates_path) do |f| %>
+<%= bootstrap_form_for(@update, url: goal_updates_path) do |f| %>
     <%= f.hidden_field :id %>
 
-    <%= f.label :content %>
     <%= f.text_area :content %><br>
 
     <%= f.submit nil, class: 'btn btn-secondary' %>
