@@ -85,6 +85,8 @@ h1.float-xs-right {
     font-size: 3rem;
 }
 
-/* .card {
-    border-style: none;
-} */
+
+.card, .card_body {
+    border: none;
+  }
+
