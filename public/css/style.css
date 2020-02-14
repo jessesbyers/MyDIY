@@ -14,11 +14,13 @@
     }
 }
 
-body,
-html {
+body {
     height: 90%;
     width: 100%;
-    margin-bottom: 100px;
+}
+
+.content {
+    margin-bottom: 20px;
 }
 
 #mainNav {
@@ -58,5 +60,10 @@ html {
     height: auto;
     padding: 20px;
     margin-top: 40px;
+}
+
+.card, .card-body {
+    padding: 1em;
+
 }
 
