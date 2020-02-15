@@ -2,7 +2,6 @@ class GoalsController < ApplicationController
      before_action :login_required
      before_action :set_goal, only: [:show, :edit, :update, :destroy]
 
-
     def show
         block_access_if_not_collaborator
     end
@@ -21,51 +20,8 @@ class GoalsController < ApplicationController
     end
 
     def index
-        if params[:status]
-            status = params[:status]
-            @goals = current_user.goals.filter_status(status)
-        elsif params[:priority]
-            priority = params[:priority]
-            @goals = current_user.goals.filter_priority(priority)
-        elsif params[:difficulty]
-            difficulty = params[:difficulty]
-            @goals = current_user.goals.filter_difficulty(difficulty)
-        elsif params[:time_commitment]
-            time_commitment = params[:time_commitment]
-            @goals = current_user.goals.filter_time_commitment(time_commitment)
-        elsif params[:budget]
-            budget = params[:budget]
-            @goals = current_user.goals.sort_budget(budget)
-        else
-            @goals = current_user.goals.order("project_id")
-        end
+        set_goals_for_filter
     end
-
-
-
-
-
-
-    #     if params[:status]
-    #         status = params[:status]
-    #         @goals = current_user.goals.filter_status(status)
-    #     elsif params[:priority]
-    #         priority = params[:priority]
-    #         @goals = current_user.goals.filter_priority(priority)
-    #     # elsif
-    #     #     params
-    #     else
-    #         @goals = current_user.goals.order("project_id")
-    #     end
-
-    #     # code for title search bar
-    #     # if params[:title]
-    #     #     title = params[:title]
-    #     #     @goals = current_user.goals.search_name(title)
-    #     # else
-    #     #     @goals = current_user.goals.order("project_id")
-    #     # end
-    # end
 
     def edit
         block_access_if_not_primary_or_owner
@@ -110,6 +66,28 @@ class GoalsController < ApplicationController
         if !current_user.projects.collaborator_of_any_kind.include?(@goal.project)
             redirect_to root_path, alert: "You may only view this page if you are a Project Collaborator."
             return
+        end
+    end
+
+    # logic for setting instance variable @goals for filtering goals index view.
+    def set_goals_for_filter
+        if params[:status]
+            status = params[:status]
+            @goals = current_user.goals.filter_status(status)
+        elsif params[:priority]
+            priority = params[:priority]
+            @goals = current_user.goals.filter_priority(priority)
+        elsif params[:difficulty]
+            difficulty = params[:difficulty]
+            @goals = current_user.goals.filter_difficulty(difficulty)
+        elsif params[:time_commitment]
+            time_commitment = params[:time_commitment]
+            @goals = current_user.goals.filter_time_commitment(time_commitment)
+        elsif params[:budget]
+            budget = params[:budget]
+            @goals = current_user.goals.sort_budget(budget)
+        else
+            @goals = current_user.goals.order("project_id")
         end
     end
 
