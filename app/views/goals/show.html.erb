@@ -13,12 +13,18 @@
     <div class="col-sm-7">
         <div class="card">
             <div class="card-body">
-                Description: <%= @goal.description %><br>
 
-                <% if current_user.projects.primary_or_owner.include?(@goal.project) %>
-                    Estimated Budget: $<%= @goal.budget %><br>
-                <% end %>
+                <h3><%= @goal.description %></h3>
                 Status: <%= @goal.status %><br>
+
+                <% if current_user.projects.primary_or_owner_or_update.include?(@goal.project) %>
+                    Estimated Budget: $<%= @goal.budget %><br>
+                    Difficulty: <%= @goal.difficulty %><br>
+                    Priority: <%= @goal.priority %><br>
+                    Time Commitment: <%= @goal.time_commitment %><br>
+                    Time Spent: <%= @goal.time_spent %><br>
+                    Actual Cost: <%= @goal.cost %><br>
+                <% end %>
         
                 <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                     <div class="btn-group mr-2" role="group" aria-label="First group">
@@ -29,7 +35,6 @@
                         <%= delete_goal(@goal) %>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
