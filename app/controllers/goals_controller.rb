@@ -33,9 +33,9 @@ class GoalsController < ApplicationController
         elsif params[:time_commitment]
             time_commitment = params[:time_commitment]
             @goals = current_user.goals.filter_time_commitment(time_commitment)
-
-
-
+        elsif params[:budget]
+            budget = params[:budget]
+            @goals = current_user.goals.sort_budget(budget)
         else
             @goals = current_user.goals.order("project_id")
         end

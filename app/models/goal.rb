@@ -43,11 +43,7 @@ class Goal < ApplicationRecord
         where('time_commitment = ?', "#{params}")
     end
 
-    # def self.filter_budget(params)
-    #     where('budget = ?', "#{params}")
-    # end
-
-    def self.filter_attribute(attribute)
-        where("attribute = ?", "#{attribute}")
+    def self.sort_budget(params)
+        order(budget: :"#{params}")
     end
 end

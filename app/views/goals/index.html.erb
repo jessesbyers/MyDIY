@@ -22,7 +22,7 @@
                 <% end %>
 
                 <%= form_tag(goals_path, method: :get) do %>
-                    <%= select_tag :budget, options_for_select(["Low to High Cost", "High to Low Cost"]), {:include_blank => 'Sort by Budget', onchange: 'this.form.submit();'} %>
+                    <%= select_tag :budget, options_for_select([["Low to High Cost", "ASC"], ["High to Low Cost", "DESC"]]), {:include_blank => 'Sort by Budget', onchange: 'this.form.submit();'} %>
                 <% end %>
 
             </div>
