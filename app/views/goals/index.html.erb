@@ -4,10 +4,25 @@
             <div class="card-body">
 
                 <h1>My Goals</h1>
-                <h3>Choose a Filter</h3>
 
                 <%= form_tag(goals_path, method: :get) do %>
-                    <%= select_tag :status, options_for_select(["Not Started", "Incomplete", "Completed"]), {:include_blank => 'Filter by Completion Status', onchange: 'this.form.submit();'} %>
+                    <%= select_tag :status, options_for_select(["Not Started", "Incomplete", "Completed"]), {:include_blank => 'Filter by Status', onchange: 'this.form.submit();'} %>
+                <% end %>
+
+                <%= form_tag(goals_path, method: :get) do %>
+                    <%= select_tag :priority, options_for_select(["Not Rated", "High", "Medium", "Low"]), {:include_blank => 'Filter by Priority', onchange: 'this.form.submit();'} %>
+                <% end %>
+
+                <%= form_tag(goals_path, method: :get) do %>
+                    <%= select_tag :difficulty, options_for_select(["Not Rated", "Easy DIY", "Requires New Skills", "Hire an Expert"]), {:include_blank => 'Filter by Difficulty', onchange: 'this.form.submit();'} %>
+                <% end %>
+
+                <%= form_tag(goals_path, method: :get) do %>
+                    <%= select_tag :time_commitment, options_for_select(["Unrated", "Under 1 Hour", "1-2 Hours", "Half Day", "Full Day", "Weekend", "Long Term"]), {:include_blank => 'Filter by Time Commitment', onchange: 'this.form.submit();'} %>
+                <% end %>
+
+                <%= form_tag(goals_path, method: :get) do %>
+                    <%= select_tag :budget, options_for_select(["Low to High Cost", "High to Low Cost"]), {:include_blank => 'Sort by Budget', onchange: 'this.form.submit();'} %>
                 <% end %>
 
             </div>
@@ -52,9 +67,9 @@
     <div class="col-sm-4">
         <div class="card">
 
-            <h3> Completed </h3>
+            <h3> Not Started </h3>
             <ul>
-                <%= raw list_goals(@goals.completed) %>
+                <%= raw list_goals(@goals.not_started) %>
             </ul>
         </div>
     </div>
@@ -70,9 +85,10 @@
 
     <div class="col-sm-4">
         <div class="card">
-            <h3> Not Started </h3>
+
+            <h3> Completed </h3>
             <ul>
-                <%= raw list_goals(@goals.not_started) %>
+                <%= raw list_goals(@goals.completed) %>
             </ul>
         </div>
     </div>
