@@ -18,15 +18,13 @@
     <div class="col-sm-6">  
 
         <% @project.goals.each.with_index(1) do |goal, i| %>
-
                 <div class="card">
                     <div class="card-body">  
                         <h4><%= link_to "Goal #{i}. #{goal.title}", goal_path(goal) %></h4>
+                        <p><%= goal.status %>
                     </div>
                 </div>
-
         <% end %>
-
     </div>
 
     <div class="col-sm-6">
