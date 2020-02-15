@@ -12,31 +12,75 @@
                 <% else %>
                     <h1>All Goals</h1>
                 <% end %>
-
-                        <%= form_tag(goals_path, method: :get) do %>
-                            <%= select_tag :status, options_for_select(["Not Started", "Incomplete", "Completed"]), {:include_blank => 'Filter by Status', onchange: 'this.form.submit();'} %>
-                        <% end %>
-
-                        <%= form_tag(goals_path, method: :get) do %>
-                            <%= select_tag :priority, options_for_select(["Not Rated", "High", "Medium", "Low"]), {:include_blank => 'Filter by Priority', onchange: 'this.form.submit();'} %>
-                        <% end %>
-
-                        <%= form_tag(goals_path, method: :get) do %>
-                            <%= select_tag :difficulty, options_for_select(["Not Rated", "Easy DIY", "Requires New Skills", "Hire an Expert"]), {:include_blank => 'Filter by Difficulty', onchange: 'this.form.submit();'} %>
-                        <% end %>
-
-                        <%= form_tag(goals_path, method: :get) do %>
-                            <%= select_tag :time_commitment, options_for_select(["Unrated", "Under 1 Hour", "1-2 Hours", "Half Day", "Full Day", "Weekend", "Long Term"]), {:include_blank => 'Filter by Time Commitment', onchange: 'this.form.submit();'} %>
-                        <% end %>
-
-                        <%= form_tag(goals_path, method: :get) do %>
-                            <%= select_tag :budget, options_for_select([["Low to High Cost", "ASC"], ["High to Low Cost", "DESC"]]), {:include_blank => 'Sort by Budget', onchange: 'this.form.submit();'} %>
-                        <% end %>
-
             </div>
         </div>
     </div>
 </div>
+
+<div class="row">
+    <div class="col-sm-2">
+        <div class="card">
+
+        <%= form_tag(goals_path, method: :get) do %>
+            <%= select_tag :priority, options_for_select(["Not Rated", "High", "Medium", "Low"]), {:include_blank => 'Filter by Priority', onchange: 'this.form.submit();'} %>
+        <% end %>
+
+        </div>
+    </div>
+
+
+
+    <div class="col-sm-2">
+        <div class="card">
+
+            <%= form_tag(goals_path, method: :get) do %>
+                <%= select_tag :time_commitment, options_for_select(["Unrated", "Under 1 Hour", "1-2 Hours", "Half Day", "Full Day", "Weekend", "Long Term"]), {:include_blank => 'Filter by Time', onchange: 'this.form.submit();'} %>
+            <% end %>
+
+        </div>
+    </div>
+
+    <div class="col-sm-2">
+        <div class="card">
+        
+            <%= form_tag(goals_path, method: :get) do %>
+                <%= select_tag :status, options_for_select(["Not Started", "Incomplete", "Completed"]), {:include_blank => 'Filter by Status', onchange: 'this.form.submit();'} %>
+            <% end %>
+
+        </div>
+    </div>
+
+    <div class="col-sm-2">
+        <div class="card">
+
+            <%= form_tag(goals_path, method: :get) do %>
+                <%= select_tag :difficulty, options_for_select(["Not Rated", "Easy DIY", "Requires New Skills", "Hire an Expert"]), {:include_blank => 'Filter by Difficulty', onchange: 'this.form.submit();'} %>
+            <% end %>
+        
+        </div>
+    </div>
+
+    <div class="col-sm-2">
+        <div class="card">
+
+            <%= form_tag(goals_path, method: :get) do %>
+                <%= select_tag :budget, options_for_select([["Low to High Cost", "ASC"], ["High to Low Cost", "DESC"]]), {:include_blank => 'Sort by Budget', onchange: 'this.form.submit();'} %>
+            <% end %>
+
+        </div>
+    </div>
+
+    <div class="col-sm-2">
+        <div class="card">
+
+            <%= button_to "Reset", goals_path, method: "get", :class => "btn btn-outline-primary" %><br>
+
+    </div>
+</div>
+
+
+</div>
+
 
 
 <div class="row">
