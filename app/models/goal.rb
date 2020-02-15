@@ -26,16 +26,24 @@ class Goal < ApplicationRecord
     scope :incomplete, -> { where(status: 'Incomplete') }
     scope :not_started, -> { where(status: 'Not Started') }
 
-
-    # scope :search_name, -> { where(title: 'params[]')}
-
-    def self.search_name(params)
-        where('title = ?', "#{params}")
-    end
-    
-
+    # Scope methods for filter/sort options on Goals index view. Called in goals#index to set @goals for view.
     def self.filter_status(params)
         where('status = ?', "#{params}")
-
     end
+
+    def self.filter_priority(params)
+        where('priority = ?', "#{params}")
+    end
+
+    def self.filter_difficulty(params)
+        where('difficulty = ?', "#{params}")
+    end
+
+    def self.filter_time_commitment(params)
+        where('time_commitment = ?', "#{params}")
+    end
+
+    # def self.filter_budget(params)
+    #     where('budget = ?', "#{params}")
+    # end
 end
