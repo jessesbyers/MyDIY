@@ -4,18 +4,19 @@
             <div class="card-body">
 
                 <h1>My Goals</h1>
+                <h3>Choose a Filter</h3>
 
                 <%= form_tag(goals_path, method: :get) do %>
-                    <%= text_field_tag :title %>
-                    <%= submit_tag "Search by Goal Title", :class=> "btn btn-outline-primary" %>
+                    <%= select_tag :status, options_for_select(["Not Started", "Incomplete", "Completed"]), {:include_blank => 'Filter by Completion Status', onchange: 'this.form.submit();'} %>
                 <% end %>
+
             </div>
         </div>
     </div>
 </div>
 
 <div class="row">
-    <div class="col-sm-4">
+    <div class="col-sm">
 
         <% if @goals.completed.any? %>
         <div class="card">

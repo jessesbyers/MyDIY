@@ -32,5 +32,10 @@ class Goal < ApplicationRecord
     def self.search_name(params)
         where('title = ?', "#{params}")
     end
+    
 
+    def self.filter_status(params)
+        where('status = ?', "#{params}")
+
+    end
 end
