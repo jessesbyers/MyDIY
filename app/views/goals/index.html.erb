@@ -3,15 +3,8 @@
         <div class="card">
             <div class="card-body">
 
-                <% if @filter_applied == "status" || @filter_applied == "priority" || @filter_applied == "difficulty" || @filter_applied == "time_commitment" %>
-                    <h1>Goals: <%= @filter %></h1>
-                <% elsif @filter_applied == "budget" && @filter == "ASC"%>
-                    <h1>All Goals, Sorted by Cost (Low to High)</h1>
-                <% elsif @filter_applied == "budget" && @filter == "DESC"%>
-                    <h1>All Goals, Sorted by Cost (High to Low)</h1>
-                <% else %>
-                    <h1>All Goals</h1>
-                <% end %>
+                <%= goals_index_title %>
+
             </div>
         </div>
     </div>

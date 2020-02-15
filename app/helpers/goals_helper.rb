@@ -35,4 +35,15 @@ module GoalsHelper
         end.join
     end
 
+    def goals_index_title
+        if @filter_applied == "status" || @filter_applied == "priority" || @filter_applied == "difficulty" || @filter_applied == "time_commitment"
+            content_tag(:h1, "Goals: #{@filter}")
+        elsif @filter_applied == "budget" && @filter == "ASC"
+            content_tag(:h1, "All Goals, Sorted by Cost (Low to High)")
+        elsif @filter_applied == "budget" && @filter == "DESC"
+            content_tag(:h1, "All Goals, Sorted by Cost (High to Low)")
+        else
+            content_tag(:h1, "All Goals")
+        end 
+    end
 end
