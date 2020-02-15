@@ -46,7 +46,7 @@ class ProjectsController < ApplicationController
     private
 
     def project_params
-        params.require(:project).permit(:address, :overview, goals_attributes: [:id, :title, :description, :budget, :status])
+        params.require(:project).permit(:address, :overview, goals_attributes: [:id, :title, :description, :budget, :status, :difficulty, :priority, :time_commitment, :time_spent, :cost])
     end
 
     def set_project

@@ -14,8 +14,14 @@
 
                 <%= ff.number_field :budget %>
 
-                <%= ff.select :status, [["Not Started", "Not Started"], ["Incomplete", "Incomplete"], ["Completed", "Completed"]], :prompt => true %>
+                <%= ff.select :difficulty, [["Not Rated", "Not Rated"], ["Easy DIY", "Easy DIY"], ["Requires New Skills", "Requires New Skills"], ["Hire an Expert", "Hire an Expert"]] %>
 
+                <%= ff.select :priority, [["Not Rated", "Not Rated"], ["High", "High"], ["Medium", "Medium"], ["Low", "Low"]] %>
+            
+                <%= ff.select :time_commitment, [["Unrated", "Unrated"], ["Under 1 Hour", "Under 1 Hour"], ["1-2 Hours", "1-2 Hours"], ["Half Day", "Half Day"], ["Full Day", "Full Day"], ["Weekend", "Weekend"], ["Long Term", "Long Term"]] %>
+            
+                <%= ff.select :status, [["Not Started", "Not Started"], ["Incomplete", "Incomplete"], ["Completed", "Completed"]] %>
+            
             <% end %>
 
     <%= f.submit nil, class: 'btn btn-secondary' %>
