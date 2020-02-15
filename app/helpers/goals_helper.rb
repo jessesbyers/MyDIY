@@ -35,6 +35,7 @@ module GoalsHelper
         end.join
     end
 
+    # Logic for dynamically changing goals index title based on filters applied.
     def goals_index_title
         if @filter_applied == "status" || @filter_applied == "priority" || @filter_applied == "difficulty" || @filter_applied == "time_commitment"
             content_tag(:h1, "Goals: #{@filter}")
