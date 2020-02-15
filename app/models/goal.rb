@@ -46,4 +46,8 @@ class Goal < ApplicationRecord
     # def self.filter_budget(params)
     #     where('budget = ?', "#{params}")
     # end
+
+    def self.filter_attribute(attribute)
+        where("attribute = ?", "#{attribute}")
+    end
 end

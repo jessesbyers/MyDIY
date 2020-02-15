@@ -24,21 +24,48 @@ class GoalsController < ApplicationController
         if params[:status]
             status = params[:status]
             @goals = current_user.goals.filter_status(status)
-        elsif params[:title]
-            title = params[:title]
-            @goals = current_user.goals.search_name(title)
-        else
-            @goals = @goals = current_user.goals.order("project_id")
-        end
+        elsif params[:priority]
+            priority = params[:priority]
+            @goals = current_user.goals.filter_priority(priority)
+        elsif params[:difficulty]
+            difficulty = params[:difficulty]
+            @goals = current_user.goals.filter_difficulty(difficulty)
+        elsif params[:time_commitment]
+            time_commitment = params[:time_commitment]
+            @goals = current_user.goals.filter_time_commitment(time_commitment)
 
-        # code for title search bar
-        # if params[:title]
-        #     title = params[:title]
-        #     @goals = current_user.goals.search_name(title)
-        # else
-        #     @goals = current_user.goals.order("project_id")
-        # end
+
+
+        else
+            @goals = current_user.goals.order("project_id")
+        end
     end
+
+
+
+
+
+
+    #     if params[:status]
+    #         status = params[:status]
+    #         @goals = current_user.goals.filter_status(status)
+    #     elsif params[:priority]
+    #         priority = params[:priority]
+    #         @goals = current_user.goals.filter_priority(priority)
+    #     # elsif
+    #     #     params
+    #     else
+    #         @goals = current_user.goals.order("project_id")
+    #     end
+
+    #     # code for title search bar
+    #     # if params[:title]
+    #     #     title = params[:title]
+    #     #     @goals = current_user.goals.search_name(title)
+    #     # else
+    #     #     @goals = current_user.goals.order("project_id")
+    #     # end
+    # end
 
     def edit
         block_access_if_not_primary_or_owner
