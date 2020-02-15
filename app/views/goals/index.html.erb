@@ -3,64 +3,40 @@
         <div class="card">
             <div class="card-body">
 
-                <h1>My Goals</h1>
-
-                <%= form_tag(goals_path, method: :get) do %>
-                    <%= select_tag :status, options_for_select(["Not Started", "Incomplete", "Completed"]), {:include_blank => 'Filter by Status', onchange: 'this.form.submit();'} %>
+                <% if @filter_applied == "status" || @filter_applied == "priority" || @filter_applied == "difficulty" || @filter_applied == "time_commitment" %>
+                    <h1>Goals: <%= @filter %></h1>
+                <% elsif @filter_applied == "budget" && @filter == "ASC"%>
+                    <h1>All Goals, Sorted by Cost (Low to High)</h1>
+                <% elsif @filter_applied == "budget" && @filter == "DESC"%>
+                    <h1>All Goals, Sorted by Cost (High to Low)</h1>
+                <% else %>
+                    <h1>All Goals</h1>
                 <% end %>
 
-                <%= form_tag(goals_path, method: :get) do %>
-                    <%= select_tag :priority, options_for_select(["Not Rated", "High", "Medium", "Low"]), {:include_blank => 'Filter by Priority', onchange: 'this.form.submit();'} %>
-                <% end %>
+                        <%= form_tag(goals_path, method: :get) do %>
+                            <%= select_tag :status, options_for_select(["Not Started", "Incomplete", "Completed"]), {:include_blank => 'Filter by Status', onchange: 'this.form.submit();'} %>
+                        <% end %>
 
-                <%= form_tag(goals_path, method: :get) do %>
-                    <%= select_tag :difficulty, options_for_select(["Not Rated", "Easy DIY", "Requires New Skills", "Hire an Expert"]), {:include_blank => 'Filter by Difficulty', onchange: 'this.form.submit();'} %>
-                <% end %>
+                        <%= form_tag(goals_path, method: :get) do %>
+                            <%= select_tag :priority, options_for_select(["Not Rated", "High", "Medium", "Low"]), {:include_blank => 'Filter by Priority', onchange: 'this.form.submit();'} %>
+                        <% end %>
 
-                <%= form_tag(goals_path, method: :get) do %>
-                    <%= select_tag :time_commitment, options_for_select(["Unrated", "Under 1 Hour", "1-2 Hours", "Half Day", "Full Day", "Weekend", "Long Term"]), {:include_blank => 'Filter by Time Commitment', onchange: 'this.form.submit();'} %>
-                <% end %>
+                        <%= form_tag(goals_path, method: :get) do %>
+                            <%= select_tag :difficulty, options_for_select(["Not Rated", "Easy DIY", "Requires New Skills", "Hire an Expert"]), {:include_blank => 'Filter by Difficulty', onchange: 'this.form.submit();'} %>
+                        <% end %>
 
-                <%= form_tag(goals_path, method: :get) do %>
-                    <%= select_tag :budget, options_for_select([["Low to High Cost", "ASC"], ["High to Low Cost", "DESC"]]), {:include_blank => 'Sort by Budget', onchange: 'this.form.submit();'} %>
-                <% end %>
+                        <%= form_tag(goals_path, method: :get) do %>
+                            <%= select_tag :time_commitment, options_for_select(["Unrated", "Under 1 Hour", "1-2 Hours", "Half Day", "Full Day", "Weekend", "Long Term"]), {:include_blank => 'Filter by Time Commitment', onchange: 'this.form.submit();'} %>
+                        <% end %>
+
+                        <%= form_tag(goals_path, method: :get) do %>
+                            <%= select_tag :budget, options_for_select([["Low to High Cost", "ASC"], ["High to Low Cost", "DESC"]]), {:include_blank => 'Sort by Budget', onchange: 'this.form.submit();'} %>
+                        <% end %>
 
             </div>
         </div>
     </div>
 </div>
-
-<div class="row">
-    <div class="col-sm">
-        <div class="card">
-
-        <% if @goals.completed.any? %>
-            <h3> Completed </h3>
-                <ul>
-                    <%= raw list_goals(@goals.completed) %>
-                </ul>
-        <% end %>
-
-        <% if @goals.incomplete.any? %>
-            <h3> Incomplete </h3>
-                <ul>
-                    <%= raw list_goals(@goals.incomplete) %>
-                </ul>
-        <% end %>
-
-        <% if @goals.not_started.any? %>
-            <h3> Not Started </h3>
-                <ul>
-                    <%= raw list_goals(@goals.not_started) %>
-                </ul>
-        <% end %>
-
-        </div>
-    </div>
-</div>
-
-
-
 
 
 <div class="row">

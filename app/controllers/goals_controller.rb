@@ -21,6 +21,8 @@ class GoalsController < ApplicationController
 
     def index
         set_goals_for_filter
+        @filter_applied = params.keys.first
+        @filter = params.values.first
     end
 
     def edit

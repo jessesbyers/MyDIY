@@ -14,7 +14,6 @@
 <div class="row">
     <div class="col-sm-4">
         <div class="card">
-            <% if current_user.projects.primary_or_owner.any? %>
 
             <h3> Projects I Own </h3>
 
@@ -25,7 +24,6 @@
                         <%= render "project_link", {p: p} %> 
                     </ul>
                 <% end %>
-            <% end %>
             </div>
         </div>
     </div>
@@ -34,17 +32,15 @@
     <div class="col-sm-4">
         <div class="card">
 
-            <% if current_user.projects.update_and_view.any? %>
-                <h3> Projects I Can Update </h3>
+            <h3> Projects I Can Update </h3>
 
-                <div class="card-body">
+            <div class="card-body">
 
-                    <% current_user.projects.update_and_view.each do |p| %>
-                        <ul>
-                        <%= render "project_link", {p: p} %> 
-                        </ul>
-                    <% end %>
-            <% end %>
+                <% current_user.projects.update_and_view.each do |p| %>
+                    <ul>
+                    <%= render "project_link", {p: p} %> 
+                    </ul>
+                <% end %>
             </div>
         </div>
     </div>
@@ -52,17 +48,15 @@
     <div class="col-sm-4">
         <div class="card">
 
-            <% if current_user.projects.view_only.any? %>
-                <h3> Projects I Can View </h3>
+            <h3> Projects I Can View </h3>
 
-                <div class="card-body">
+            <div class="card-body">
 
-                    <% current_user.projects.view_only.each do |p| %>
-                        <ul>
-                        <%= render "project_link", {p: p} %> 
-                        </ul>
-                    <% end %>
-            <% end %>
+                <% current_user.projects.view_only.each do |p| %>
+                    <ul>
+                    <%= render "project_link", {p: p} %> 
+                    </ul>
+                <% end %>
             </div>
         </div>
     </div>
