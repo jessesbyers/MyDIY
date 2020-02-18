@@ -28,6 +28,8 @@ gem 'dotenv-rails'
 gem 'omniauth-google-oauth2'
 gem 'certified'
 
+gem 'omniauth-github'
+
 gem "bootstrap_form", "~> 4.0"
 
 # Use Active Storage variant
