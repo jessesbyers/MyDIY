@@ -39,8 +39,12 @@
               <ul class='nav navbar-nav float-right'>
                 <li class='nav-item'><%= button_to "Sign Up", signup_path, method: "get", :class => "btn btn-outline-secondary" %></li>
                 <li class='nav-item'><%= button_to "Log In", login_path, method: "get", :class => "btn btn-outline-secondary" %></li>
-                <li class='nav-item'><%= button_to "Log In with Google", "/auth/google_oauth2", method: "get", :class => "btn btn-outline-secondary" %></li>
-                <li class='nav-item'><%= button_to "Log In with Github", "/auth/github", method: "get", :class => "btn btn-outline-secondary" %></li>
+                
+                  <% if false %>
+                  Commenting out omniauth isgn-in links for heroku deployment
+                  <li class='nav-item'><%= button_to "Log In with Google", "/auth/google_oauth2", method: "get", :class => "btn btn-outline-secondary" %></li>
+                  <li class='nav-item'><%= button_to "Log In with Github", "/auth/github", method: "get", :class => "btn btn-outline-secondary" %></li>
+                  <% end %>
 
               </ul>
             </div>
