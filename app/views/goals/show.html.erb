@@ -22,8 +22,10 @@
                     Difficulty: <%= @goal.difficulty %><br>
                     Priority: <%= @goal.priority %><br>
                     Time Commitment: <%= @goal.time_commitment %><br>
-                    Time Spent: <%= @goal.time_spent %><br>
-                    Actual Cost: <%= @goal.cost %><br>
+                    <% if @goal.status == "Completed" %>
+                        Time Spent: <%= @goal.time_spent %><br>
+                        Actual Cost: <%= @goal.cost %><br>
+                    <% end %>
                 <% end %>
         
                 <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
