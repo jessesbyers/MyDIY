@@ -27,7 +27,7 @@
         <div class="card">
 
             <%= form_tag(goals_path, method: :get) do %>
-                <%= select_tag :time_commitment, options_for_select(["Unrated", "Under 1 Hour", "1-2 Hours", "Half Day", "Full Day", "Weekend", "Long Term"]), {:include_blank => 'Filter by Time', onchange: 'this.form.submit();'} %>
+                <%= select_tag :time_commitment, options_for_select(["Not Rated", "Under 1 Hour", "1-2 Hours", "Half Day", "Full Day", "Weekend", "Long Term"]), {:include_blank => 'Filter by Time', onchange: 'this.form.submit();'} %>
             <% end %>
 
         </div>

@@ -17,7 +17,7 @@ class Goal < ApplicationRecord
     PRIORITY_OPTIONS = ["Not Rated", "High", "Medium", "Low"]
     validates :priority, presence: true, inclusion: PRIORITY_OPTIONS
 
-    TIME_OPTIONS = ["Unrated", "Under 1 Hour", "1-2 Hours", "Half Day", "Full Day", "Weekend", "Long Term"]
+    TIME_OPTIONS = ["Not Rated", "Under 1 Hour", "1-2 Hours", "Half Day", "Full Day", "Weekend", "Long Term"]
     validates :time_commitment, presence: true, inclusion: TIME_OPTIONS
     
     # Scope methods called in Goals index view to sort goals by completion status.
